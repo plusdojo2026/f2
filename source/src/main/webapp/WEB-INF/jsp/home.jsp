@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ホーム画面</title>
 </head>
 <body>
+<div></div>
 
 </body>
 </html>
