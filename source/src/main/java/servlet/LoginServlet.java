@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user_no", dao.getUserNo(user));
 			
 			//menu.jsp にフォワードする
-			response.sendRedirect("MenuServlet");
+			response.sendRedirect("/MenuServlet");
 		}else {
 			//login.jsp にフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
