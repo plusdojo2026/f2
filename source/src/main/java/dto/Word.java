@@ -8,10 +8,15 @@ public class Word implements Serializable{
 	private String pronounce;
 	private String meaning;
 	private int era_no;
-	private int genre_no;
+	int genre_no;
 	private int level;
 	
-	public Word(int word_no, String word, String pronounce, String meaning, int era_no, int genre_no, int level) {
+	private String era_name;
+	private String genre_name;
+	
+	
+	public Word(int word_no, String word, String pronounce, String meaning, int era_no, int genre_no, int level,
+			String era_name, String genre_name) {
 		super();
 		this.word_no = word_no;
 		this.word = word;
@@ -20,7 +25,10 @@ public class Word implements Serializable{
 		this.era_no = era_no;
 		this.genre_no = genre_no;
 		this.level = level;
+		this.era_name = era_name;
+		this.genre_name = genre_name;
 	}
+	
 	public int getWord_no() {
 		return word_no;
 	}
@@ -64,5 +72,19 @@ public class Word implements Serializable{
 		this.level = level;
 	}
 	
+	
+	//erasテーブルとgenreテーブル分
+	public String getEra_name() {
+		return era_name;
+	}
+	public void setEra_name(String era_name) {
+		this.era_name = era_name;
+	}
+	public String getGenre_name() {
+		return genre_name;
+	}
+	public void setGenre_name(String genre_name) {
+		this.genre_name = genre_name;
+	}
 	
 }
