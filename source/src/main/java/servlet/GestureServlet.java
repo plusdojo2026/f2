@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class StartServlet
+ * Servlet implementation class Gesture
  */
-@WebServlet("/StartServlet")
-public class StartServlet extends HttpServlet {
+@WebServlet("/Gesture")
+public class GestureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// ランダムに一つデータを取得してgesture.jspに返す処理
 	}
 
 }

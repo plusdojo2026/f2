@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class StartServlet
+ * Servlet implementation class MagicServlet
  */
-@WebServlet("/StartServlet")
-public class StartServlet extends HttpServlet {
+@WebServlet("/MagicServlet")
+public class MagicServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 選択された条件を受け取って、検索結果をmagic.jspに返す箇所
 	}
 
 }
