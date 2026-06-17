@@ -2,6 +2,6 @@ package dto;
 
 import java.io.Serializable;
 
-public class Check implements Serializable{
+public class History implements Serializable{
 
 }

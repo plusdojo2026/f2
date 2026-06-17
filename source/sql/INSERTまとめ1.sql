@@ -25,7 +25,7 @@ INSERT INTO genres(genre_name) VALUES
 長すぎるので、INSERTまとめ2.sql をみてね☆。
 
 
-◆checkテーブル
+◆historyテーブル
 用語を検索した際にその度々追加していくのでここでは追加しない。
 DAOに書く文は、
 
