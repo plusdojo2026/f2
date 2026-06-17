@@ -5,16 +5,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import dto.Template;
 
 public class TemplateDAO {
 	// 引数card指定された項目で検索して、取得されたデータのリストを返す
-	public List<Template> findAll() {
+	public String getTemplate(Template temp) {
 		Connection conn = null;
-		List<Template> templateList = new ArrayList<>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -26,10 +23,12 @@ public class TemplateDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT sentence FROM templates WHERE ORDER BY genre_no";
+			String sql = "SELECT sentence FROM templates WHERE genre_no = ?";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-
+			
+			pStmt.setInt(1, temp.getGenre_no());
+			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
