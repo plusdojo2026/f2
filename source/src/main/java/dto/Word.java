@@ -28,6 +28,16 @@ public class Word implements Serializable{
 		this.genre_name = genre_name;
 	}
 	
+	public Word(String word, String pronounce, String meaning){
+		this.word = word;
+		this.pronounce = pronounce;
+		this.meaning = meaning;
+	}
+	
+	public Word() {
+		
+	}
+	
 	public int getWord_no() {
 		return word_no;
 	}
