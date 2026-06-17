@@ -9,9 +9,9 @@ import java.sql.SQLException;
 import dto.Word;
 
 public class WordsDAO {
-	public String getTheme() {
+	public Word getTheme() {
 		Connection conn = null;
-		String word = null;
+		Word word = new Word();
 
 		try {
 			// JDBCドライバを読み込む
@@ -33,7 +33,7 @@ public class WordsDAO {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				word = rs.getString("word");
+				word = new Word(rs.getString("word"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
