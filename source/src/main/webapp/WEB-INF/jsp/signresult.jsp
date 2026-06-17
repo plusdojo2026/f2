@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>新規登録完了</title>
+	</head>
+	<body>
+		<a href="/f2/MenuServlet">Welcome！</a>
+	</body>
 </html>
