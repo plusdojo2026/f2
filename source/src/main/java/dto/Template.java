@@ -26,6 +26,10 @@ public class Template implements Serializable {
 		this.sentence = sentence;
 	}
 
+	public Template(int genre_no) {
+		this.genre_no = genre_no;
+	}
+	
 	public Template() {
 		this.sentence = "";
 	}
