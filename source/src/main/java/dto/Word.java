@@ -17,7 +17,6 @@ public class Word implements Serializable{
 	
 	public Word(int word_no, String word, String pronounce, String meaning, int era_no, int genre_no, int level,
 			String era_name, String genre_name) {
-		super();
 		this.word_no = word_no;
 		this.word = word;
 		this.pronounce = pronounce;
