@@ -27,7 +27,7 @@ public class HomeServlet extends HttpServlet {
 		Word word = dao.getTheme();
 		request.setAttribute("word",word);
 		
-		// メニューページにフォワードする
+		// home.jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 		dispatcher.forward(request, response);
 		
@@ -39,7 +39,7 @@ public class HomeServlet extends HttpServlet {
 		String word = (String)session.getAttribute("word");
 		request.setAttribute("word",word);
 		
-		// メニューページにフォワードする
+		// home.jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 		dispatcher.forward(request, response);
 	}
