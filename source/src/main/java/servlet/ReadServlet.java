@@ -24,7 +24,6 @@ public class ReadServlet extends HttpServlet {
 		//初回通過時に来る。game_countセッションを作成し、何問目かを保持する。
 		HttpSession session = request.getSession();
 		
-		
 		if(session.getAttribute("game_count") == null) {
 			session.setAttribute("game_count", 1);
 		} else {
