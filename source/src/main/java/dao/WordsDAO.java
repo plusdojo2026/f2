@@ -6,10 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dto.Word;
-
 public class WordsDAO {
-	public String getTheme(Word theme) {
+	public String getTheme() {
 		Connection conn = null;
 		String word = null;
 
