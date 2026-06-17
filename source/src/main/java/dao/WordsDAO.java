@@ -5,104 +5,39 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import dto.Word;
 
 public class WordsDAO {
 	public String getTheme(Word card) {
 		Connection conn = null;
-		List<Bc> cardList = new ArrayList<Bc>();
+		String word = null;
 
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp1?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT number, company, department, jobtype, position, name, zipcode, address, phone, fax, email, remarks, is_hosi FROM Bc WHERE company LIKE ? AND department LIKE ? AND jobtype LIKE ? AND"
-					+ " position LIKE ? AND name LIKE ? AND zipcode LIKE ? AND address LIKE ? AND phone LIKE ? AND fax LIKE ? AND email LIKE ? AND remarks LIKE ? ORDER BY number";
+			String sql = "SELECT word FROM words ORDER BY RAND() LIMIT 1;";
+			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-			// SQL文を完成させる
-			 if (card.getCompany() != null) {
-				pStmt.setString(1,"%" + card.getCompany() + "%");
-			} else {
-				pStmt.setString(1, "%");
-			}
-			if (card.getDepartment() != null) {
-				pStmt.setString(2,"%" + card.getDepartment() + "%");
-			} else {
-				pStmt.setString(2, "%");
-			}
-			if (card.getJobtype() != null) {
-				pStmt.setString(3,"%" + card.getJobtype() + "%");
-			} else {
-				pStmt.setString(3, "%");
-			}
-			if (card.getPosition() != null) {
-				pStmt.setString(4,"%" + card.getPosition() + "%");
-			} else {
-				pStmt.setString(4, "%");
-			}
-			if (card.getName() != null) {
-				pStmt.setString(5,"%" + card.getName() + "%");
-			} else {
-				pStmt.setString(5, "%");
-			}
-			if (card.getZipcode() != null) {
-				pStmt.setString(6,"%" + card.getZipcode() + "%");
-			} else {
-				pStmt.setString(6, "%");
-			}
-			if (card.getAddress() != null) {
-				pStmt.setString(7,"%" + card.getAddress() + "%");
-			} else {
-				pStmt.setString(7, "%");
-			}
-			if (card.getPhone() != null) {
-				pStmt.setString(8,"%" + card.getPhone() + "%");
-			} else {
-				pStmt.setString(8, "%");
-			}
-			if (card.getFax() != null) {
-				pStmt.setString(9,"%" + card.getFax() + "%");
-			} else {
-				pStmt.setString(9, "%");
-			}
-			if (card.getEmail() != null) {
-				pStmt.setString(10,"%" + card.getEmail() + "%");
-			} else {
-				pStmt.setString(10, "%");
-			}
-			if (card.getRemarks() != null) {
-				pStmt.setString(11,"%" + card.getRemarks() + "%");
-			} else {
-				pStmt.setString(11, "%");
-			}
-
+			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Bc bc = new Bc(rs.getInt("number"), rs.getString("company"),
-						rs.getString("department"), rs.getString("jobtype"), rs.getString("position"), rs.getString("name"),
-						rs.getString("zipcode"), rs.getString("address"), rs.getString("phone"), rs.getString("fax"),
-						rs.getString("email"), rs.getString("remarks"),rs.getBoolean("is_hosi"));
-				cardList.add(bc);
+				word = rs.getString("word");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			cardList = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			cardList = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -110,12 +45,11 @@ public class WordsDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					cardList = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return cardList;
+		return word;
 	}
 }
