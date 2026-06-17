@@ -27,14 +27,14 @@ public class MagicServlet extends HttpServlet {
 
 		//jspからのキー入力値受け取り
 		int genre_no = Integer.parseInt(request.getParameter("genre_no"));
-				
+		
 		Template temp = new Template();
-				
+		
 		temp.setGenre_no(genre_no);
 		
 		TemplateDAO dao = new TemplateDAO();
 		dao.getTemplate(temp);
-				
+		
 		// メニューページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/magic.jsp");
 		dispatcher.forward(request, response);

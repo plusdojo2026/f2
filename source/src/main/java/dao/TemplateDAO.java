@@ -11,6 +11,8 @@ import dto.Template;
 public class TemplateDAO {
 	// 引数card指定された項目で検索して、取得されたデータのリストを返す
 	public String getTemplate(Template temp) {
+		String sentence = null;
+		
 		Connection conn = null;
 
 		try {
@@ -34,15 +36,12 @@ public class TemplateDAO {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Template tem = new Template(rs.getString("sentence"));
-				templateList.add(tem);
+				sentence = rs.getString("sentence");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			templateList = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			templateList = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -50,12 +49,11 @@ public class TemplateDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					templateList = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return templateList;
+		return sentence;
 	}
 }
