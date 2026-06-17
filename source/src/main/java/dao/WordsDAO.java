@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import dto.Word;
 
 public class WordsDAO {
+	//ランダムに一つお題を取得するメソッド
 	public Word getTheme() {
 		Connection conn = null;
 		Word word = new Word();
@@ -54,6 +55,7 @@ public class WordsDAO {
 		return word;
 	}
 	
+	//読み書きゲームでlevel1のお題を取得するメソッド
 	public Word getLevel1() {
 		Word word = null;
 		Connection conn = null;
@@ -102,6 +104,7 @@ public class WordsDAO {
 		
 	}
 	
+	//読み書きゲームでlevel2のお題を取得するメソッド
 	public Word getLevel2() {
 		Word word = null;
 		Connection conn = null;
@@ -150,6 +153,7 @@ public class WordsDAO {
 		
 	}
 	
+	//読み書きゲームでlevel3のお題を取得するメソッド
 	public Word getLevel3() {
 		Word word = null;
 		Connection conn = null;
