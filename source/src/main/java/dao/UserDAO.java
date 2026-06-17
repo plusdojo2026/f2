@@ -156,7 +156,7 @@ public class UserDAO {
 		return false;
 	}
 	
-	// 新規登録時、入力したメールアドレスがデータベースにあるかをチェックする
+	// 実際にメールアドレスとパスワードの登録を行う処理
 	public boolean addAcount(User user) {
 		// データベースに接続と切断を行うオブジェクト
 		Connection conn = null;

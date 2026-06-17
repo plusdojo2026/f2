@@ -24,5 +24,6 @@ public class ReadServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//キー入力して成語判定を行う時はこっちを通る。
 	}
+	
 
 }
