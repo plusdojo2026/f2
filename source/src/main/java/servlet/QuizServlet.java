@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WordsDAO;
+import dto.Word;
 
 /**
  * Servlet implementation class QuizServlet
@@ -25,7 +26,7 @@ public class QuizServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		WordsDAO wDao = new WordsDAO();
-		String word = wDao.getTheme();
+		Word word = wDao.getTheme();
 		
 		//取得情報をリクエストスコープに格納する
 		request.setAttribute("word", word);
