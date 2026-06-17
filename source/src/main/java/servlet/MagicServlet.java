@@ -38,7 +38,7 @@ public class MagicServlet extends HttpServlet {
 		TemplateDAO dao = new TemplateDAO();
 		dao.getTemplate(temp);
 		
-		// メニューページにフォワードする
+		// magic.jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/magic.jsp");
 		dispatcher.forward(request, response);
 	}
