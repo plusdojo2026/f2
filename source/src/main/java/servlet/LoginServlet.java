@@ -39,14 +39,19 @@ public class LoginServlet extends HttpServlet {
 		if(judge == true) {
 			// セッションを取得（なければ作成）
 			HttpSession session = request.getSession();
+			
+			// すでにログイン中のユーザーがいる場合は user_no を削除
+			if (session.getAttribute("user_no") != null) {
+			    session.removeAttribute("user_no");
+			 }
 			  
 			// ログインしたユーザー番号をセッションに保存
 			session.setAttribute("user_no", dao.getUserNo(user));
 			
 			//menu.jsp にフォワードする
-			response.sendRedirect("MenuServlet");
+			response.sendRedirect("/f2/MenuServlet");
 		}else {
-			//login.jsp にフォワードする
+			//何らかの理由でログイン失敗。login.jsp にフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}
