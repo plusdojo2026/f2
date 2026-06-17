@@ -208,7 +208,7 @@ INSERT INTO words(word, pronounce, meaning, era_no, genre_no, level) VALUES
 ('globe','ぐろーぶ','小室哲哉プロデュースのユニット',2,5,1),
 ('SPEED','すぴーど','沖縄出身の女性グループ',2,5,1),
 ('小室ファミリー','こむろふぁみりー','小室哲哉が手掛けた歌手群',2,5,1),
-('L''Arc〜en〜Ciel','らるくあんしえる','人気ロックバンド',2,5,1),
+('L Arc〜en〜Ciel','らるくあんしえる','人気ロックバンド',2,5,1),
 ('GLAY','ぐれい','ミリオンセラーを連発したバンド',2,5,1),
 ('Every Little Thing','えぶりりとるしんぐ','人気音楽ユニット',2,5,2),
 ('JUDY AND MARY','じゅでぃあんどまりー','人気ロックバンド',2,5,2),
@@ -441,7 +441,7 @@ INSERT INTO words(word, pronounce, meaning, era_no, genre_no, level) VALUES
 ('TWICE','とぅわいす','K-POPグループ',4,5,1),
 ('Mrs. GREEN APPLE','みせすぐりーんあっぷる','ロックバンド',4,5,1),
 ('RADWIMPS','らっどうぃんぷす','ロックバンド',4,5,1),
-('GENERATIONS from EXILE TRIBE','じぇねれーしょんず','ダンス＆ボーカルグループ',4,5,2),
+('GENERATIONS','じぇねれーしょんず','ダンス＆ボーカルグループ',4,5,2),
 ('E-girls','いーがーるず','ダンスグループ',4,5,2),
 ('SPYAIR','すぱいえあー','ロックバンド',4,5,2),
 ('DA PUMP','だぱんぷ','ダンス＆ボーカルグループ',4,5,2).
