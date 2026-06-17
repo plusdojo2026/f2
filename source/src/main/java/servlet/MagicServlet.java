@@ -19,7 +19,12 @@ import dto.Template;
 public class MagicServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//magic.jsp にフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/magic.jsp");
+		dispatcher.forward(request, response);
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 選択された条件を受け取って、検索結果をmagic.jspに返す箇所
 		//文字化け防止のエンコーディング
