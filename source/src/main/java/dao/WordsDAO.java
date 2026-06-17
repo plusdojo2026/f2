@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import dto.Word;
 
 public class WordsDAO {
-	public String getTheme(Word card) {
+	public String getTheme(Word theme) {
 		Connection conn = null;
 		String word = null;
 
@@ -25,6 +25,7 @@ public class WordsDAO {
 			// SQL文を準備する
 			String sql = "SELECT word FROM words ORDER BY RAND() LIMIT 1;";
 			
+			//データベースに直接ユーザー入力値を入れず、?を介して安全に値をセットする(対SQLインジェクション)
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			// SQL文を実行し、結果表を取得する
