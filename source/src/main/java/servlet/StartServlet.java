@@ -24,6 +24,7 @@ public class StartServlet extends HttpServlet {
 		//スタート画面を表示するための処理
 		WordsDAO dao = new WordsDAO();
 		
+		//ランダムに一つ単語を取得する。条件なし
 		Word word = dao.getTheme();
 		request.setAttribute("word",word);
 		
@@ -31,7 +32,7 @@ public class StartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("word", word);	
 		
-		// スタート画面にフォワードする
+		// start.jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/start.jsp");
 		dispatcher.forward(request, response);
 	}
