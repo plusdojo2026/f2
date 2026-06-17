@@ -9,10 +9,9 @@ import java.sql.SQLException;
 import dto.Template;
 
 public class TemplateDAO {
-	// 引数card指定された項目で検索して、取得されたデータのリストを返す
+	// 引数temp指定された項目で検索して、取得されたデータのリストを返す
 	public String getTemplate(Template temp) {
 		String sentence = null;
-		
 		Connection conn = null;
 
 		try {
