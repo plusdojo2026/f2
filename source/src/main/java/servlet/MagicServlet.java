@@ -2,11 +2,15 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.TemplateDAO;
+import dto.Template;
 
 /**
  * Servlet implementation class MagicServlet
@@ -18,6 +22,21 @@ public class MagicServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 選択された条件を受け取って、検索結果をmagic.jspに返す箇所
-	}
+		//文字化け防止のエンコーディング
+		request.setCharacterEncoding("UTF-8");
 
+		//jspからのキー入力値受け取り
+		int genre_no = Integer.parseInt(request.getParameter("genre_no"));
+				
+		Template temp = new Template();
+				
+		temp.setGenre_no(genre_no);
+		
+		TemplateDAO dao = new TemplateDAO();
+		dao.getTemplate(temp);
+				
+		// メニューページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/magic.jsp");
+		dispatcher.forward(request, response);
+	}
 }
