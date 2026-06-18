@@ -26,6 +26,40 @@ align-items: center;
 gap: 40px;
 }
 
+.logo-layer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOutSplash 2.5s forwards;
+}
+.logo-img {
+  width: 800px; 
+  height: auto;
+}
+
+@keyframes fadeOutSplash {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  80% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% { 
+    opacity: 0;
+    visibility: hidden; 
+  }
+}
+
+
 .record-player {
   position: relative;
   width: 1000px;
@@ -122,6 +156,10 @@ gap: 40px;
 
 </head>
 <body>
+
+<div class="logo-layer">
+  <img src="/webapp/image/logo.png" class="logo-img">
+</div>
 
 <div class="record-player">
   <div class="bg-player">
