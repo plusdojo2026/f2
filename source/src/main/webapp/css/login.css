@@ -1,1 +1,116 @@
-@charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 黒板とフォームを中央に置く */
+.container{
+    position: fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:80%;
+    max-width:600px;
+    z-index:10;
+}
+
+.background{
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #000;
+}
+
+.bg{
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
+
+/* 黒板の基本設定 */
+.board {
+  width: 100%;
+  transition: transform 1s ease;
+}
+
+.board-area{
+    position: relative;
+    top:100px;
+}
+
+/* menu.jsp の斜め状態 */
+.board-tilt {
+  transform: rotateY(-40deg) rotateX(15deg) scale(1);
+}
+
+/* login/signup の正面状態 */
+.board-front {
+  transform: rotateY(0deg) rotateX(0deg) scale(1.3);
+}
+
+/* 黒板中央にフォーム配置 */
+.input {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 400px;
+  z-index: 10;
+}
+
+/* 入力欄 */
+.input input[type="text"],
+.input input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+/* ボタン */
+.input input[type="submit"],
+.input input[type="reset"] {
+  width: 48%;
+  padding: 14px;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+/* menu.jsp のメニュー配置 */
+.menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.menu a {
+  display: block;
+  padding: 15px;
+  font-size: 20px;
+  background: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* スマホ対応 */
+@media screen and (max-width: 600px) {
+  .input {
+    width: 90%;
+    max-width: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
