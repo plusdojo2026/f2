@@ -5,9 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>ホーム画面</title>
+<style>
+.record{
+background-color:red;
+
+}
+</style>
 </head>
 <body>
-<div></div>
+<div>
+<div class="record">
+</div>
+</div>
 
 </body>
 </html>
