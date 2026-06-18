@@ -33,14 +33,15 @@ public class LoginServlet extends HttpServlet {
 		
 		User user = new User(mail_add,password);
 		
+		//ログイン処理。成功ならtrue,失敗ならfalseが返ってくる
 		UserDAO dao = new UserDAO();
 		boolean judge = dao.login(user);
 		
+		//ログインに失敗したか否かの判断文
 		if(judge == true) {
-			// セッションを取得（なければ作成）
 			HttpSession session = request.getSession();
 			
-			// すでにログイン中のユーザーがいる場合は user_no を削除
+			// すでに別ユーザーでログイン中の場合に、複数アカウント同時ログイン防止のため、"user_no"セッションを削除
 			if (session.getAttribute("user_no") != null) {
 			    session.removeAttribute("user_no");
 			 }
@@ -48,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 			// ログインしたユーザー番号をセッションに保存
 			session.setAttribute("user_no", dao.getUserNo(user));
 			
-			//menu.jsp にフォワードする
+			//MenuServletのdoGetメソッドにリダイレクトする
 			response.sendRedirect("/f2/MenuServlet");
 		}else {
 			//何らかの理由でログイン失敗。login.jsp にフォワードする

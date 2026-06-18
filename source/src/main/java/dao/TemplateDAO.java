@@ -10,8 +10,8 @@ import dto.Template;
 
 public class TemplateDAO {
 	// 引数temp指定された項目で検索して、取得されたデータのリストを返す
-	public String getTemplate(Template temp) {
-		String sentence = null;
+	public Template getTemplate(Template temp) {
+		Template sentence = null;
 		Connection conn = null;
 
 		try {
@@ -35,7 +35,7 @@ public class TemplateDAO {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				sentence = rs.getString("sentence");
+				sentence = new Template(rs.getString("sentence"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

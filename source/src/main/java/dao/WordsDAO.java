@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import dto.Word;
 
 public class WordsDAO {
+	//ランダムに一つお題を取得するメソッド
 	public Word getTheme() {
 		Connection conn = null;
 		Word word = new Word();
@@ -54,6 +55,7 @@ public class WordsDAO {
 		return word;
 	}
 	
+	//読み書きゲームでlevel1のお題を取得するメソッド
 	public Word getLevel1() {
 		Word word = null;
 		Connection conn = null;
@@ -69,7 +71,8 @@ public class WordsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 1 ORDER BY RAND() LIMIT 1;";
+			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 1 AND word REGEXP '\\p{Han}'"
+					+ "AND word REGEXP '[A-Za-z]' ORDER BY RAND() LIMIT 1;";
 			
 			//データベースに直接ユーザー入力値を入れず、?を介して安全に値をセットする(対SQLインジェクション)
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -102,6 +105,7 @@ public class WordsDAO {
 		
 	}
 	
+	//読み書きゲームでlevel2のお題を取得するメソッド
 	public Word getLevel2() {
 		Word word = null;
 		Connection conn = null;
@@ -117,7 +121,8 @@ public class WordsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 2 ORDER BY RAND() LIMIT 1;";
+			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 2 AND word REGEXP '[一-龠]'"
+					+ "AND word REGEXP '[A-Za-z]' ORDER BY RAND() LIMIT 1;";
 			
 			//データベースに直接ユーザー入力値を入れず、?を介して安全に値をセットする(対SQLインジェクション)
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -150,6 +155,7 @@ public class WordsDAO {
 		
 	}
 	
+	//読み書きゲームでlevel3のお題を取得するメソッド
 	public Word getLevel3() {
 		Word word = null;
 		Connection conn = null;
@@ -165,7 +171,8 @@ public class WordsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 3 ORDER BY RAND() LIMIT 1;";
+			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 3 AND word REGEXP '[一-龠]'"
+					+ "AND word REGEXP '[A-Za-z]' ORDER BY RAND() LIMIT 1;";
 			
 			//データベースに直接ユーザー入力値を入れず、?を介して安全に値をセットする(対SQLインジェクション)
 			PreparedStatement pStmt = conn.prepareStatement(sql);

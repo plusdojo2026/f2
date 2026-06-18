@@ -25,13 +25,14 @@ public class QuizServlet extends HttpServlet {
 		//文字化け防止のエンコーディング
 		request.setCharacterEncoding("UTF-8");
 		
+		// ランダムに一つデータを取得する。条件なし。
 		WordsDAO wDao = new WordsDAO();
 		Word word = wDao.getTheme();
 		
 		//取得情報をリクエストスコープに格納する
 		request.setAttribute("word", word);
 		
-		// 結果ページにフォワードする
+		// quiz.jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/quiz.jsp");
 		dispatcher.forward(request, response);
 	}

@@ -117,7 +117,6 @@ INSERT INTO words(word, pronounce, meaning, era_no, genre_no, level) VALUES
 INSERT INTO words(word, pronounce, meaning, era_no, genre_no, level) VALUES
 ('コギャル','こぎゃる','派手なファッションの女子高校生',2,1,1),
 ('アムラー','あむらー','安室奈美恵風のファッションを真似する人',2,1,1),
-
 ('援助交際','えんじょこうさい','若者の間で社会問題化した行為',2,1,1),
 ('就職氷河期','しゅうしょくひょうがき','新卒採用が厳しかった時代',2,1,1),
 ('ガングロ','がんぐろ','日焼けした肌を特徴とする流行',2,1,1),

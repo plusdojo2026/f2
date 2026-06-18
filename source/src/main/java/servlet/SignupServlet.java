@@ -36,7 +36,7 @@ public class SignupServlet extends HttpServlet {
 		User user = new User(mail_add,password);
 		
 		UserDAO dao = new UserDAO();
-		// 入力したメールアドレスが既に登録済みかを調べる
+		// 入力したメールアドレスが既に登録済みかを調べる。一つでもヒットしたらtrue。一つもヒットしなかったらfalseが返る。
 		boolean judge = dao.DuplicateMailAdd(user);
 		
 		if(judge == true) {

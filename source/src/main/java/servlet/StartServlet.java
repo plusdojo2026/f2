@@ -21,17 +21,20 @@ public class StartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//各画面からホーム画面に戻るとき
-				WordsDAO dao = new WordsDAO();
-				
-				Word word = dao.getTheme();
-				request.setAttribute("word",word);
-				
-				HttpSession session = request.getSession();
-				session.setAttribute("word", word);	
-				// スタート画面にフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/start.jsp");
-				dispatcher.forward(request, response);
+		//スタート画面を表示するための処理
+		WordsDAO dao = new WordsDAO();
+		
+		//ランダムに一つ単語を取得する。条件なし
+		Word word = dao.getTheme();
+		request.setAttribute("word",word);
+		
+		//home画面でstart画面のお題を表示するためのセッション保持
+		HttpSession session = request.getSession();
+		session.setAttribute("word", word);	
+		
+		// start.jspにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/start.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
