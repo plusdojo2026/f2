@@ -71,7 +71,8 @@ public class WordsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 1 ORDER BY RAND() LIMIT 1;";
+			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 1 AND word REGEXP '\\p{Han}'"
+					+ "AND word REGEXP '[A-Za-z]' ORDER BY RAND() LIMIT 1;";
 			
 			//データベースに直接ユーザー入力値を入れず、?を介して安全に値をセットする(対SQLインジェクション)
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -120,7 +121,8 @@ public class WordsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 2 ORDER BY RAND() LIMIT 1;";
+			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 2 AND word REGEXP '[一-龠]'"
+					+ "AND word REGEXP '[A-Za-z]' ORDER BY RAND() LIMIT 1;";
 			
 			//データベースに直接ユーザー入力値を入れず、?を介して安全に値をセットする(対SQLインジェクション)
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -169,7 +171,8 @@ public class WordsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 3 ORDER BY RAND() LIMIT 1;";
+			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 3 AND word REGEXP '[一-龠]'"
+					+ "AND word REGEXP '[A-Za-z]' ORDER BY RAND() LIMIT 1;";
 			
 			//データベースに直接ユーザー入力値を入れず、?を介して安全に値をセットする(対SQLインジェクション)
 			PreparedStatement pStmt = conn.prepareStatement(sql);
