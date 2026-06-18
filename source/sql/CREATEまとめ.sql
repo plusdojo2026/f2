@@ -44,7 +44,7 @@ FOREIGN KEY(word_no) REFERENCES words(word_no)
 );
 
 ◆ジャンルごとのテンプレート文
-CREATE TABLE template(
+CREATE TABLE templates(
 sentence_no INT AUTO_INCREMENT PRIMARY KEY,
 genre_no INT NOT NULL,
 sentence VARCHAR(30) NOT NULL,
