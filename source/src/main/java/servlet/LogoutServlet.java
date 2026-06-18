@@ -26,12 +26,12 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		
-		// セッションを破棄
+		// "user_no"セッションを破棄。誰もログインしていない状態に。
 		if (session != null) {
 		    session.removeAttribute("user_no");
 		}
 		
-		//logout.jsp にフォワードする
+		//logoutresult.jsp にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/logoutresult.jsp");
 		dispatcher.forward(request, response);
 	}

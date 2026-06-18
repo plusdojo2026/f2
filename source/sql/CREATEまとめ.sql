@@ -35,7 +35,7 @@ FOREIGHN KEY(genre_no) REFERENCES genre(genre_no)
 );
 
 ◆ユーザーごとにどの単語の閲覧履歴があるか(チェック)
-CREATE TABLE check(
+CREATE TABLE history(
 user_no INT NOT NULL,
 word_no INT NOT NULL,
 PRIMARY KEY(user_no,word_no),
