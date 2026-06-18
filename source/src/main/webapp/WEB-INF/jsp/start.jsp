@@ -14,7 +14,7 @@ margin:0;
 padding: 0;
 width: 100%;
 height: 100vh;
-background-image: url("image/starthaikei.png");
+background-image: url("/webapp/image/starthaikei.png");
 background-size: cover;
 background-position: center; 
 background-repeat: no-repeat;          
@@ -125,28 +125,28 @@ gap: 40px;
 
 <div class="record-player">
   <div class="bg-player">
-    <img src="image/record-player-notuse.png" alt="record" />
+    <img src="/webapp/image/record-player-notuse.png" alt="record" />
   </div>
   
   <div id="img2" class="disk">
-    <img src="image/disk-black.png" alt="disk" />
+    <img src="/webapp/image/disk-black.png" alt="disk" />
   </div>
   
   <div id="img3" class="needle">
-    <img src="image/record-needle.png" alt="needle" />
+    <img src="/webapp/image/record-needle.png" alt="needle" />
   </div>
 
   <div class="word_name">${word.word_name}</div>
 </div> 
 <div class="recordcases">
-  <img src="image/recordcase3.jpeg" class="record3" />
-  <img src="image/recordcase2.jpeg" class="record2" />
-  <img src="image/recordcase5.jpeg" class="record5" />
+  <img src="/webapp/image/recordcase3.jpeg" class="record3" />
+  <img src="/webapp/image/recordcase2.jpeg" class="record2" />
+  <img src="/webapp/image/recordcase5.jpeg" class="record5" />
 
 </div>
 <div class="eightball">
-  <img src ="image/eightball-black.png" class="blackball">
-  <img src ="image/eightball-white.png" class="whiteball">
+  <img src ="/webapp/image/eightball-black.png" class="blackball">
+  <img src ="/webapp/image/eightball-white.png" class="whiteball">
 </div>
 
 <div onclick="location.href='${pageContext.request.contextPath}/home.jsp'">
