@@ -6,11 +6,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>メニュー画面</title>
-		<link rel="stylesheet" href="login.css">
+		<link rel="stylesheet" href="css/login.css">
 	</head>
 	<body>
 		<div id="bg" class="bg">
-		    <img src="ログイン背景(仮).png">
+		    <img src="image/ログイン背景(仮).png">
 		</div>
 	</body>
 	<script>
@@ -21,7 +21,7 @@
 		}
 
 		window.onload=function(){
-		setImagePosition(window.innerWidth,800);
+		setImagePosition(window.innerWidth,window.innerHeight);
 		}
 	</script>
 </html>
