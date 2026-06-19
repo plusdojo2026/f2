@@ -174,7 +174,7 @@ gap: 40px;
     <img src="/webapp/image/record-needle.png" alt="needle" />
   </div>
 
-  <div class="word_name">${word.word_name}</div>
+  <div class="word_name">${word}</div>
 </div> 
 <div class="recordcases">
   <img src="/webapp/image/recordcase3.jpeg" class="record3" />
