@@ -32,7 +32,7 @@ public class ReadServlet extends HttpServlet {
 		} else {
 			Word word = new Word();
 			WordsDAO dao = new WordsDAO();
-			int game_count = (int)session.getAttribute("game_count");
+			int game_count = (Integer)session.getAttribute("game_count");
 			
 			switch(game_count) {
 			case 1,2:
@@ -76,7 +76,7 @@ public class ReadServlet extends HttpServlet {
 		if(pronounce == session.getAttribute("pronounce")) {
 			//正解だった時
 			//次の問題に進むため、game_countを+1する。
-			int game_count = (int)session.getAttribute("game_count");
+			int game_count = (Integer)session.getAttribute("game_count");
 			game_count++;
 			session.setAttribute("game_count",game_count);
 			

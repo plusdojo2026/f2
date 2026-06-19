@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dao.HistoryDAO;
 import dao.WordsDAO;
 import dto.Word;
 
@@ -33,23 +36,30 @@ public class SearchServlet extends HttpServlet {
 		
 		WordsDAO dao =new WordsDAO();
 		
-		List<Word> list=dao.search(genre_no,era_no,word);
+		List<Word> list = dao.search(genre_no,era_no,word);
+		
+		HttpSession session=request.getSession();
+		
+		if(session.getAttribute("user_no")!=null) {
+			int user_no = (Integer)session.getAttribute("user_no");
+			
+			HistoryDAO hdao = new HistoryDAO();
+			Set<Integer> history = hdao.getHistory(user_no);
+			
+			for(Word w : list){
+				if(history.contains(w.getWord_no())){
+					w.setViewed(true);
+				}
+			}
+		}
 		
 		request.setAttribute("list", list);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/selectresult.jsp");
 		dispatcher.forward(request, response);
 		
-		//HttpSession session=request.getSession();
-		
-		//     !!!!ラスボスが現れた!!!!
-		
-		//if(session.getAttribute("user_no")!=null) {
-			//int user_no = (int)session.getAttribute("user_no");
-			
-			//HistoryDAO hdao = new HistoryDAO();
-			//hdao.getHistory(user_no,list);
-		//}
-		
+		//<c:if test="${word.viewed}">
+	    //✓
+		//</c:if>
 	}
 
 }
