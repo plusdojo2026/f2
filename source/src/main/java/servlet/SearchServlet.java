@@ -3,12 +3,12 @@ package servlet;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.WordsDAO;
 import dto.Word;
@@ -35,11 +35,21 @@ public class SearchServlet extends HttpServlet {
 		
 		List<Word> list=dao.search(genre_no,era_no,word);
 		
-		HttpSession session=request.getSession();
+		request.setAttribute("list", list);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/selectresult.jsp");
+		dispatcher.forward(request, response);
 		
-		if(session.getAttribute("user_no")!=null) {
+		//HttpSession session=request.getSession();
+		
+		//     !!!!ラスボスが現れた!!!!
+		
+		//if(session.getAttribute("user_no")!=null) {
+			//int user_no = (int)session.getAttribute("user_no");
 			
-		}
+			//HistoryDAO hdao = new HistoryDAO();
+			//hdao.getHistory(user_no,list);
+		//}
+		
 	}
 
 }

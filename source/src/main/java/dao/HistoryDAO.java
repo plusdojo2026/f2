@@ -4,11 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
-import dto.History;
+import dto.Word;
 
 public class HistoryDAO {
-	public boolean check(History hist) {
+	public boolean getHistory(int user_no,List<Word> list) {
 		Connection conn = null;
 		
 		try {
@@ -20,14 +21,16 @@ public class HistoryDAO {
 					"root", "password");
 			
 			// SQL文を作成する
-			String sql = "SELECT user_no,word_no FROM history WHERE mail_add = ? AND password = ?";
+			String sql = "SELECT word_no FROM history WHERE user_no = ? AND word_no = ?";
 			
 			//データベースに直接ユーザー入力値を入れず、?を介して安全に値をセットする(対SQLインジェクション)
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			//?に値をセットする
-			pStmt.setInt(1, hist.getUser_no());
-			pStmt.setInt(2, hist.getWord_no());
+			for(Word w:list) {
+			pStmt.setInt(1, user_no);
+			pStmt.setInt(2, w.getWord_no());
+			}
 			
 			//SQL文を実行して検索結果を取得する
 			ResultSet rs = pStmt.executeQuery();
