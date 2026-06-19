@@ -5,27 +5,23 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>メニュー画面</title>
-		<link rel="stylesheet" href="/f2/css/login.css">
+		<link rel="stylesheet" href="login.css">
 	</head>
 	<body>
-		<div class="background">
-		    <div class="screen menu-view"></div>
-		</div>
-		<div class="container">
-			<div class="board-area">
-				<img src="/f2/image/blackbord.png" class="board board-front" id="board">
-				<div class="menu">
-					<a href="/f2/SignupServlet">新規登録</a>
-					<a href="/f2/LoginServlet">ログイン</a>
-					<c:if test="${not empty sessionScope.user_no}">
-						<form action="LogoutServlet" method="get">
-							 <button type="submit">ログアウト</button>
-						</form>
-					</c:if>
-				</div>
-			</div>
+		<div id="bg" class="bg">
+		    <img src="ログイン背景(仮).png">
 		</div>
 	</body>
+	<script>
+		const image=document.getElementById('bg');
+		function setImagePosition(x,y){
+		image.style.top=y+'px';
+		image.style.left=x+'px';
+		}
+
+		window.onload=function(){
+		setImagePosition(window.innerWidth,800);
+		}
+	</script>
 </html>
