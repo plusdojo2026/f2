@@ -19,7 +19,17 @@ import dto.Template;
 public class MagicServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//確認用。home.jspが出来たら削除する！！！
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+	//magic.jspにフォワードする
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/magic.jsp");
+	dispatcher.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		// 選択された条件を受け取って、検索結果をmagic.jspに返す箇所
 		
 		//文字化け防止のエンコーディング
@@ -33,6 +43,8 @@ public class MagicServlet extends HttpServlet {
 		//jspで選択されたジャンルを条件として、該当するテンプレート文を取得する。
 		TemplateDAO dao = new TemplateDAO();
 		dao.getTemplate(temp);
+		
+		request.setAttribute("sentence", "こんにちは！");
 		
 		//magic.jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/magic.jsp");
