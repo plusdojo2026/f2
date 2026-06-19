@@ -4,17 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>スタート画面|じぇね×りんく</title>
+<title>ジェスチャーゲーム|じぇね×りんく</title>
 <style>
-<link rel="stylesheet" href="/webapp/css/home.css">
-html,body{
+    html,body{
 /* スクロール禁止 */
 /* overflow:hidden; */
 margin:0;
 padding: 0;
 width: 100%;
 height: 100vh;
-background-image: url("/webapp/image/starthaikei.png");
 background-size: cover;
 background-position: center; 
 background-repeat: no-repeat;          
@@ -23,174 +21,140 @@ display: flex;
 flex-direction: column; 
 justify-content: center;
 align-items: center;
-gap: 40px;
 }
 
-.logo-layer{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #ffffff; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: fadeOutSplash 2.5s forwards;
+.gesture{
+    position: relative; 
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
-.logo-img {
-  width: 800px; 
-  height: auto;
+.bearback{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    z-index: 1;   
 }
 
-@keyframes fadeOutSplash {
-  0% {
-    opacity: 1;
-    visibility: visible;
-  }
-  80% {
-    opacity: 1;
-    visibility: visible;
-  }
-  100% { 
-    opacity: 0;
-    visibility: hidden; 
-  }
+.bearnose{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    max-width: 80%;
+    max-height: 60vh;
+    object-fit: contain;
+    z-index: 2; 
 }
 
 
-.record-player {
-  position: relative;
-  width: 1000px;
-  height: 700px;
-  
-  transform: rotate(90deg) scale(1.2);
-  transform-origin: 500px 350px; 
-}
-
-.record-player .bg-player,
-.record-player .disk,
-.record-player .needle,
-.record-player img {
-  width: 1000px;
-  height: 700px;
+/* 戻るボタン１ */
+.btn_box{
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 20px;
+  left: 20px;
+  margin: 0;
+  z-index: 10
 }
 
-.bg-player { z-index: 1; }
-.disk { z-index: 5; }
-.needle { z-index: 10; }
-
-.word_name {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-90deg); 
-  z-index: 20; 
-  width: 400px;
-  height: auto;
-  word-break: break-all;  
-  overflow-wrap: break-word;
-  
-  font-size: 60px;      
-  font-weight: bold;    
-  color: #1E3A8A;   
+.btn{
+  color: #FFF;
+  font-size: 50px;
+  font-weight: bold;
   text-align: center;
-  pointer-events: none;  
-}
-
-.recordcases{
-  position: fixed; 
-  width: 700px;  
-  height: 700px;
-  bottom: -250px;    
-  left: 50px;        
-  display: flex;
-  justify-content: space-between; 
-  pointer-events: none;   
-  align-items: flex-end; 
-  pointer-events: none;      
-  z-index: 30;
-
-}
-.recordcases img{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 550px;
-  height: auto;
+  line-height: 90px;
+  letter-spacing: 2px;
+  width: 350px;
+  height: 100px;
+  top: 8px;
+  left: 8px;
+  margin: auto;
+  background: #5a5faa;
+  position: relative;
   display: block;
-  pointer-events: auto;
-  transform-origin: left bottom;
-}
-.recordcases .record3{
-  transform: rotate(-40deg) translate(-20px, 20px);
-}
-.recordcases .record2{
-  transform: rotate(-25deg) translate(-15px, 15px);
-}
-.recordcases .record5{
-  transform: rotate(-10deg) translate(-5px, 40px);
+  text-decoration: none; 
 }
 
-.eightball{
-  position: fixed;
-  bottom: 20px;
-  right: 20px;        
-  width: 300px;
-  height: auto;
-  z-index: 30;
+.btn:before,
+.btn:after{
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 50%;
 }
 
-.eightball img{
-  position: absolute; 
+.btn:before{
+  top: 0;
+  left: 0;
+  border-left: 2px solid #000;
+  border-top: 2px solid #000;
+}
+
+.btn:after{
   bottom: 0;
   right: 0;
-  width: 100%; 
-  height: auto;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
 }
+
+.btn:hover:before,
+.btn:hover:after{
+  width: 98%;
+  height: 98%;
+}
+
+.btn:hover{
+  background: #818FBF;
+}
+
+/*アニメーション*/
+.btn, 
+.animation:before,
+.animation:after{
+  transition: all 0.3s ease;
+ }
+
+.randomword {
+    position: absolute;
+    top: 68%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 3; 
+    
+    
+    font-size: 40px; 
+    font-weight: bold;
+    color: #333; 
+    text-shadow: 2px 2px 0px #FFF; 
+    display: block;       
+    width: 260px;         
+    word-break: break-all; 
+    text-align: center;    
+}
+
 </style>
+</head> 
 
-</head>
 <body>
+    <div class="gesture">
+        
+        <img src="image/bear-back.png"  class="bearback">
+        <div class="randomword">
+        <c:out value="${word}"></c:out>
+      </div>
+        <img src="image/bear-nose.png"  class="bearnose">
 
-<div class="logo-layer">
-  <img src="/webapp/image/logo.png" class="logo-img">
-</div>
+    </div>
+    <div class="btn_box">
+  <a href="${pageContext.request.contextPath}/home.jsp" class="btn animation">Back</a>
 
-<div class="record-player">
-  <div class="bg-player">
-    <img src="/webapp/image/record-player-notuse.png" alt="record" />
-  </div>
-  
-  <div id="img2" class="disk">
-    <img src="/webapp/image/disk-black.png" alt="disk" />
-  </div>
-  
-  <div id="img3" class="needle">
-    <img src="/webapp/image/record-needle.png" alt="needle" />
-  </div>
-
-  <div class="word_name">${word}</div>
-</div> 
-<div class="recordcases">
-  <img src="/webapp/image/recordcase3.jpeg" class="record3" />
-  <img src="/webapp/image/recordcase2.jpeg" class="record2" />
-  <img src="/webapp/image/recordcase5.jpeg" class="record5" />
 
 </div>
-<div class="eightball">
-  <img src ="/webapp/image/eightball-black.png" class="blackball">
-  <img src ="/webapp/image/eightball-white.png" class="whiteball">
-</div>
-
-<div onclick="location.href='${pageContext.request.contextPath}/home.jsp'">
-</div>
-
 </body>
-</html>
+
 
 
