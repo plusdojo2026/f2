@@ -6,6 +6,11 @@ public class History implements Serializable{
 	private int user_no;
 	private int word_no;
 	
+	public History(int user_no,int word_no) {
+		this.user_no=user_no;
+		this.word_no=word_no;
+	}
+	
 	public int getUser_no() {
 		return user_no;
 	}
