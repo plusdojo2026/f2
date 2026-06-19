@@ -20,7 +20,7 @@ import dto.Word;
 public class StartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//スタート画面を表示するための処理
 		WordsDAO dao = new WordsDAO();
 		

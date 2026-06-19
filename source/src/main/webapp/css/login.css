@@ -6,10 +6,10 @@ body {
 /* 黒板とフォームを中央に置く */
 .container{
     position: fixed;
-    left:50%;
-    top:50%;
+    left: 56%;
+    top:32%;
     transform:translate(-50%,-50%);
-    width:80%;
+    width:90%;
     max-width:600px;
     z-index:10;
 }
@@ -23,46 +23,71 @@ body {
     justify-content: center;
     align-items: center;
 
-    background: #000;
+    background: #fff;
 }
 
-.bg{
-    width: 100vw;
-    height: 100vh;
-    object-fit: contain;
+.screen{
+    width:390px;
+    height:844px;
+
+    background-image:url("/f2/image/ログイン背景(仮).png");
+    background-repeat:no-repeat;
+
+    transition: all 1.5s ease;
 }
 
 /* 黒板の基本設定 */
 .board {
-  width: 100%;
-  transition: transform 1s ease;
+  width:min(80vw, 250px);
 }
 
 .board-area{
     position: relative;
-    top:100px;
+    width: 40%;
+    /*
+    top:115px;
+    left:110px; 
+    */
 }
 
 /* menu.jsp の斜め状態 */
 .board-tilt {
-  transform: rotateY(-40deg) rotateX(15deg) scale(1);
+  transform: rotateY(-40deg) rotateX(15deg);
 }
 
 /* login/signup の正面状態 */
 .board-front {
-  transform: rotateY(0deg) rotateX(0deg) scale(1.3);
+  transform: rotateY(0deg) rotateX(0deg);
 }
 
 /* 黒板中央にフォーム配置 */
 .input {
   position: absolute;
-  top: 45%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
   max-width: 400px;
   z-index: 10;
 }
+
+.menu-view{
+    background-size:155%;
+    background-position:right bottom;
+}
+
+.login-view{
+    background-size:220%;
+    background-position:60% 55%;
+}
+
+.logout-view{
+    background-size:300%;
+    background-position:left center;
+}
+
+
+
 
 /* 入力欄 */
 .input input[type="text"],
@@ -86,22 +111,21 @@ body {
 
 /* menu.jsp のメニュー配置 */
 .menu {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+    position:absolute;
+    top:37%;
+    left:25%;
+    transform:translate(-50%,-50%);
+    z-index:20;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
 }
 
 .menu a {
-  display: block;
-  padding: 15px;
-  font-size: 20px;
-  background: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #333;
-  margin-bottom: 10px;
+	background:none;
+	color:white;
+	font-size:clamp(18px, 3vw, 32px);
+	margin:15px 0;
 }
 
 /* スマホ対応 */
