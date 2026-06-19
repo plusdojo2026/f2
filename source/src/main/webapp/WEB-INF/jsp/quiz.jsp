@@ -13,14 +13,14 @@ html,body{
     overflow:hidden;
 }
 
-.image-container {
+.quiz {
     margin: 8px;
     position: relative;
     display: inline-block;
     width: 100%;
 }
 
-.image-container img{
+.quiz img{
     width: 100%;
 }
 
@@ -63,7 +63,7 @@ html,body{
 <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 </head>
 <body>
-	<div class="image-container">
+	<div class="quiz">
         <img src="image/steam.png" class="steam" id="steam">
         <img src="image/coffee-back.png" class="coffee">
         <img src="image/spoon1.png" class="spoon" id="spoon1" usemap="#spoonMap">
