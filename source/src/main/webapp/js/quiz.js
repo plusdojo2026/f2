@@ -10,6 +10,7 @@ const quiz_word = document.getElementById("quiz_word");
 
 let startTime = null;
 const duration = 1500; // 1.5秒
+let actiond = false;//一回だけお題を変更するための変数
 
 function animate(timestamp) {
     if (!startTime) startTime = timestamp;
@@ -79,7 +80,17 @@ function animate(timestamp) {
            spoon1.classList.remove("off");
         quiz_word.classList.remove("off");
     }
-
+	
+	 //お題変更機能
+    if (!actiond) {
+        actiond = true;//ここでtrueにすることで上の!actiondが動作しない
+    	fetch("QuizServlet?reroll=true")
+			.then(res => res.json())
+ 			.then(data => {
+    			document.getElementById("quiz_word").innerText = data.theme;
+   			});
+ 	}
+	
     if (progress < 1) {
         requestAnimationFrame(animate);
     } else {
@@ -92,8 +103,10 @@ function animate(timestamp) {
             steam.style.opacity = 1;
             spoon1.style.opacity = 1;
             quiz_word.style.opacity = 1;
+            actiond = false;
         }, 50);
     }
+    
 }
 
     // クリックでアニメーション開始
