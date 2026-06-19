@@ -33,6 +33,16 @@ public class SignupServlet extends HttpServlet {
 		String mail_add = request.getParameter("mail_add");
 		String password = request.getParameter("password");
 		
+		//両項目にちゃんと要素が入っているかを判断（空白チェック）
+		if(mail_add.isEmpty() || password.isEmpty()) {
+			//両項目のどちらかが空白だった場合。エラー処理。
+			request.setAttribute("error", "メールアドレス又はパスワードが空白です。");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
+			dispatcher.forward(request, response);
+			
+			return;
+		}
+		
 		User user = new User(mail_add,password);
 		
 		UserDAO dao = new UserDAO();
@@ -41,6 +51,7 @@ public class SignupServlet extends HttpServlet {
 		
 		if(judge == true) {
 			//既に登録済みのパスワード。エラー処理
+			request.setAttribute("error", "既に登録済みのメールアドレスです。");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
 			dispatcher.forward(request, response);
 		}else {
@@ -51,6 +62,7 @@ public class SignupServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}else {
 				//何らかの理由で登録失敗。エラー処理
+				request.setAttribute("error", "登録に失敗しました。");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
 				dispatcher.forward(request, response);
 			}

@@ -6,14 +6,34 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>メニュー画面</title>
+		<link rel="stylesheet" href="/f2/css/login.css">
 	</head>
 	<body>
-		<a href="/f2/SignupServlet">新規登録</a>
-		<a href="/f2/LoginServlet">ログイン</a>
-		<c:if test="${not empty sessionScope.user_no}">
-			<form action="LogoutServlet" method="get">
-				 <button type="submit">ログアウト</button>
-			</form>
-		</c:if>
+		<div class="background">
+		    <img src="/f2/image/ログイン背景(仮).png" class="bg">
+		</div>
+		<div class="container">
+			<div class="board-area">
+				<img src="/f2/image/blackbord.png" class="board board-front" id="board">
+				<div class="menu">
+					<a href="/f2/SignupServlet">新規登録</a>
+					<a href="/f2/LoginServlet">ログイン</a>
+					<c:if test="${not empty sessionScope.user_no}">
+						<form action="LogoutServlet" method="get">
+							 <button type="submit">ログアウト</button>
+						</form>
+					</c:if>
+				</div>
+			</div>
+		</div>
 	</body>
+		<script>
+		'use strict'
+		
+	    window.addEventListener("load", () => {
+	        const board = document.getElementById("board");
+	        board.classList.remove("board-front");
+	        board.classList.add("board-tilt");
+	    });
+	</script>
 </html>

@@ -31,6 +31,16 @@ public class LoginServlet extends HttpServlet {
 		String mail_add = request.getParameter("mail_add");
 		String password = request.getParameter("password");
 		
+		//両項目にちゃんと要素が入っているかを判断（空白チェック）
+		if(mail_add.isEmpty() || password.isEmpty()) {
+			//両項目のどちらかが空白だった場合。エラー処理。
+			request.setAttribute("error", "メールアドレス又はパスワードが空白です。");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
+			
+			return;
+		}
+		
 		User user = new User(mail_add,password);
 		
 		//ログイン処理。成功ならtrue,失敗ならfalseが返ってくる
@@ -53,6 +63,7 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("/f2/MenuServlet");
 		}else {
 			//何らかの理由でログイン失敗。login.jsp にフォワードする
+			request.setAttribute("error", "メールアドレスまたはパスワードが違います");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}
