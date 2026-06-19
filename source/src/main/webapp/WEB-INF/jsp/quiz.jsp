@@ -71,7 +71,7 @@ html,body{
             <area shape="rect" coords="13,579,318,654" href="#" id="spoon1_area" >
         </map>
         <div class="spoon-wrap"><img src="image/spoon2.png" class="spoon off" id="spoon2"></div>
-        <div class="text-overlay" id="quiz_word"><c:out value = "${word}"></c:out></div>
+        <div class="text-overlay" id="quiz_word"><c:out value="${word.word}"></c:out></div>
     </div>
     <script src="js/quiz.js"></script>
     <script>

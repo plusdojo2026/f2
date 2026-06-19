@@ -38,6 +38,20 @@ public class Word implements Serializable{
 		this.word = word;
 	}
 	
+	public Word(int genre_no,int era_no,String word) {
+		this.genre_no=genre_no;
+		this.era_no=era_no;
+		this.word=word;
+	}
+	public Word(int word_no,String word,String era_name,String genre_name,String pronounce,String meaning) {
+		
+		this.word_no=word_no;
+		this.word=word;
+		this.era_name=era_name;
+		this.genre_name=genre_name;
+		this.pronounce=pronounce;
+		this.meaning=meaning;
+	}
 	public Word() {
 		
 	}

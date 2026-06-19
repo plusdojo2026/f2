@@ -25,6 +25,10 @@ public class QuizServlet extends HttpServlet {
 		//文字化け防止のエンコーディング
 		request.setCharacterEncoding("UTF-8");
 		
+		//リロールかどうかの判断用	
+		boolean reroll = false;
+		reroll = Boolean.parseBoolean(request.getParameter("reroll"));
+		
 		// ランダムに一つデータを取得する。条件なし。
 		WordsDAO wDao = new WordsDAO();
 		Word word = wDao.getTheme();
@@ -32,9 +36,20 @@ public class QuizServlet extends HttpServlet {
 		//取得情報をリクエストスコープに格納する
 		request.setAttribute("word", word);
 		
-		// quiz.jspにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/quiz.jsp");
-		dispatcher.forward(request, response);
+		//上がリロールの時、下がページを開いたとき
+		if(reroll) {
+			response.setContentType("application/json; charset=UTF-8");
+
+			Word re_word = wDao.getTheme();
+
+			String json = "{ \"theme\": \"" + re_word.getWord() + "\" }";
+			response.getWriter().write(json);
+			return;
+		} else {
+			// quiz.jspにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/quiz.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 }

@@ -5,12 +5,13 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>メニュー画面</title>
 		<link rel="stylesheet" href="/f2/css/login.css">
 	</head>
 	<body>
 		<div class="background">
-		    <img src="/f2/image/ログイン背景(仮).png" class="bg">
+		    <div class="screen menu-view"></div>
 		</div>
 		<div class="container">
 			<div class="board-area">
@@ -27,13 +28,4 @@
 			</div>
 		</div>
 	</body>
-		<script>
-		'use strict'
-		
-	    window.addEventListener("load", () => {
-	        const board = document.getElementById("board");
-	        board.classList.remove("board-front");
-	        board.classList.add("board-tilt");
-	    });
-	</script>
 </html>
