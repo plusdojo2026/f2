@@ -132,7 +132,7 @@ html,body{
 		<div class="gesture_word" id="gesture_word"><c:out value="${word.word}"></c:out></div>
 		
 		<div class="btn_box">
-  			<a href="/webapp/HomeServlet" class="btn animation">Back</a>
+  			<a href="/f2/HomeServlet" class="btn animation">Back</a>
 		</div>
     </div>
 
