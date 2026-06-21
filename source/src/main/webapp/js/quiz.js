@@ -44,7 +44,8 @@ function animate(timestamp) {
         }
     } 
     let rotateZ = getTilt(progress);  // 0° → 360°
-        
+       
+    //消すとたまに動きが不安定になる
     function getTilt(progress) {
         if (progress < 0.5) {
             // 前半：0 → 30
@@ -109,7 +110,7 @@ function animate(timestamp) {
     
 }
 
-    // クリックでアニメーション開始
+// クリックでアニメーション開始
 const spoon1_area = document.getElementById("spoon1_area");
 
 spoon1_area.addEventListener("click", (e) => {

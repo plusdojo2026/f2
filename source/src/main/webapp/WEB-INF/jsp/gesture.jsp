@@ -1,57 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>ジェスチャーゲーム|じぇね×りんく</title>
 <style>
-    html,body{
-/* スクロール禁止 */
-/* overflow:hidden; */
-margin:0;
-padding: 0;
-width: 100%;
-height: 100vh;
-background-size: cover;
-background-position: center; 
-background-repeat: no-repeat;          
-background-attachment: fixed;
-display: flex;
-flex-direction: column; 
-justify-content: center;
-align-items: center;
+
+html,body{
+    /* スクロール禁止 */
+    overflow:hidden;
 }
 
-.gesture{
-    position: relative; 
+.gesture {
+    margin: 8px;
+    position: relative;
+    display: inline-block;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-.bearback{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    z-index: 1;   
 }
 
-.bearnose{
+.gesture img{
+    width: 100%;
+}
+
+.bearback {
+    display: block;
+    /* width: 90%; */
+}
+
+.bearnose {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); 
-    max-width: 80%;
+    max-width: 100%;
     max-height: 60vh;
     object-fit: contain;
-    z-index: 2; 
 }
 
+.gesture_word {
+    position: absolute;
+  	top: 70%;        /* 上からの位置 */
+  	left: 50%;       /* 左からの位置 */
+  	transform: translate(-50%, -50%); /* 中央に配置 */
+  	color: white;
+  	font-size: 72px;
+  	font-weight: bold;
+  	text-shadow: 0 0 5px black; 
+}
 
 /* 戻るボタン１ */
 .btn_box{
@@ -119,22 +116,29 @@ align-items: center;
   transition: all 0.3s ease;
  }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 </head> 
 
 <body>
     <div class="gesture">
         
-        <img src="image/bear-back.png"  class="bearback">
+        <img src="image/bear-back2.png"  class="bearback">
 
-        <img src="/webapp/image/bear-nose.png"  class="bearnose">
-
+        <img src="image/bear-nose.png"  class="bearnose" id="bearnose" usemap="#bearnoseMap">
+		<map name="bearnoseMap">
+  			<area shape="circle" coords="249,387,48" href="#" alt="" />
+		</map>
+		
+		<div class="gesture_word" id="gesture_word"><c:out value="${word.word}"></c:out></div>
+		
+		<div class="btn_box">
+  			<a href="/f2/HomeServlet" class="btn animation">Back</a>
+		</div>
     </div>
-    <div class="btn_box">
-  <a href="${pageContext.request.contextPath}/home.jsp" class="btn animation">Back</a>
 
-  <div class="randomword">
-        <c:out value="${word}"></c:out>
-    </div>
-</div>
+<script src="js/gesture.js"></script>
+<script>
+	imageMapResize();
+</script>
 </body>
 
