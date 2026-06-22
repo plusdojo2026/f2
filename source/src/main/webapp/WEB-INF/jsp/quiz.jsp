@@ -54,7 +54,7 @@ html,body{
   top: 20%;        /* 上からの位置 */
   left: 50%;       /* 左からの位置 */
   transform: translate(-50%, -50%); /* 中央に配置 */
-  color: white;
+  color: #d2691e;
   font-size: 72px;
   font-weight: bold;
   text-shadow: 0 0 5px black; /* 読みやすくする */
@@ -72,10 +72,47 @@ html,body{
         </map>
         <div class="spoon-wrap"><img src="image/spoon2.png" class="spoon off" id="spoon2"></div>
         <div class="text-overlay" id="quiz_word"><c:out value="${word.word}"></c:out></div>
+        
+        <div class="btn_box back">
+  			<a href="/f2/HomeServlet" class="btn animation">Back</a>
+		</div>
+		<div class="btn_box help">
+  			<div class="btn animation" onclick="help()">Help</div>
+		</div>
     </div>
+    
+    
+    <div class="overlay" id="overlay"></div>
+    <div class="setumei" id="setumei">
+    あｋｄｓぁｆｊｄｌｋｆじゃｌｄｆじゃｌｋｓｊｄｆぁｓｆｄ
+    <button id="closeBtn" class="close-btn" onclick="closeHelp()">閉じる</button>
+    </div>
+    
     <script src="js/quiz.js"></script>
     <script>
         imageMapResize();
     </script>
+<script>
+'use strict'
+function help(){
+	const overlay=document.getElementById('overlay');
+	const setumei=document.getElementById('setumei');
+	
+	setumei.style.top=300+"px";
+	setumei.style.left=300+"px";
+	overlay.style.display='flex';
+	setumei.classList.add('show');	
+}
+
+
+function closeHelp(){
+	const setumei =document.getElementById('setumei');
+	const overlay = document.getElementById('overlay');
+	
+    setumei.classList.remove('show');
+    setumei.style.display = 'none';
+    overlay.style.display = 'none';
+}
+</script>
 </body>
 </html>
