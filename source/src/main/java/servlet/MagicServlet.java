@@ -36,15 +36,15 @@ public class MagicServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		//jspからのキー入力値受け取り
-		int genre_no = Integer.parseInt(request.getParameter("genre_no"));
+		int genre_no = 1; //= Integer.parseInt(request.getParameter("genre_no"));
 		
 		Template temp = new Template(genre_no);
 		
 		//jspで選択されたジャンルを条件として、該当するテンプレート文を取得する。
 		TemplateDAO dao = new TemplateDAO();
-		dao.getTemplate(temp);
+		Template templ = dao.getTemplate(temp);
 		
-		request.setAttribute("sentence", temp);
+		request.setAttribute("temple", templ);
 		
 		//magic.jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/magic.jsp");

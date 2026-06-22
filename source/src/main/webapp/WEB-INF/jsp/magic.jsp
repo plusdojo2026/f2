@@ -73,14 +73,14 @@
         .text-overlay {
           pointer-events: none;
 		  position: absolute;
-		  top: 20%;        /* 上からの位置 */
+		  top: 50%;        /* 上からの位置 */
 		  left: 50%;       /* 左からの位置 */
 		  transform: translate(-50%, -50%); /* 中央に配置 */
 		  color: white;
 		  font-size: 72px;
 		  font-weight: bold;
 		  text-shadow: 0 0 5px black; /* 読みやすくする */
-		  z-index: 160 !important;
+		  z-index: 999 !important;
 	  }
     </style>
 <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
@@ -96,7 +96,7 @@
 	<div class="eightball">
 	    <img src="image/eightball-black.png" class="blackball" alt="black">
 	    <img src="image/eightball-white.png" class="whiteball" alt="white">
-	    <div class="text-overlay" id="sentence"><c:out value="${sentence}"></c:out></div>
+	    <div class="text-overlay" id="sentence"><c:out value="${temple.sentence}"></c:out></div>
 	</div>
 	<a href="HomeServlet"
 	       style="position:absolute; left:0; top:0; width:100%; height:100%; display:block;">
