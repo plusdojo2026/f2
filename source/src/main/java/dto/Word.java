@@ -14,7 +14,17 @@ public class Word implements Serializable{
 	private String era_name;
 	private String genre_name;
 	
+	private boolean viewed;
 	
+	
+	public boolean isViewed() {
+		return viewed;
+	}
+
+	public void setViewed(boolean viewed) {
+		this.viewed = viewed;
+	}
+
 	public Word(int word_no, String word, String pronounce, String meaning, int era_no, int genre_no, int level,
 			String era_name, String genre_name) {
 		this.word_no = word_no;
