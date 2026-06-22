@@ -42,9 +42,9 @@ public class MagicServlet extends HttpServlet {
 		
 		//jspで選択されたジャンルを条件として、該当するテンプレート文を取得する。
 		TemplateDAO dao = new TemplateDAO();
-		Template templ = dao.getTemplate(temp);
+		Template temple = dao.getTemplate(temp);
 		
-		request.setAttribute("temple", templ);
+		request.setAttribute("temple", temple);
 		
 		//magic.jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/magic.jsp");

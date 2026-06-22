@@ -23,7 +23,7 @@
 						<input type="reset" value="リセット">
 					</div>
 					<c:if test="${not empty error}">
-						<p style="color:red; font-weight:bold;">${error}</p>
+						<p style="color:red; font-size:10px; font-weight:bold;">${error}</p>
 					</c:if>
 				</form>
 			</div>
