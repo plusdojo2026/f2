@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user_no", dao.getUserNo(user));
 			
 			//MenuServletのdoGetメソッドにリダイレクトする
-			response.sendRedirect("/f2/MenuServlet");
+			response.sendRedirect("/f2/MenuServlet?from=login");
 		}else {
 			//何らかの理由でログイン失敗。login.jsp にフォワードする
 			request.setAttribute("error", "メールアドレスまたはパスワードが違います");

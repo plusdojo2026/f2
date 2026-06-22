@@ -1,15 +1,276 @@
 body{
-    margin: 0;
-    padding: 0;
+    margin:0;
+
+    display:flex;
+    justify-content:center;
+
+    min-height:100vh;
 }
 
-.bg{
-    width: 1560px;
-    height: 3376px;
- }
 
-.bg img{
-    width: 100%;
-    transform-origin: right;
-    transform:scale(2.1);
+#view{
+    width:390px;
+    height:844px;
+
+    overflow:hidden;
+    position:relative;
+}
+
+#bg{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+#camera {
+    width:100%;
+    height:100%;
+    position:relative;
+
+    transition:transform 1.5s;
+    transform-origin:center center;
+}
+
+/* 黒板のログインボタン座標にカーソルを合わせたときに明るくなるやつ */
+.signupHover{
+    position:absolute;
+
+    left:230px;
+    top:465px;
+    width:135px;
+    height:35px;
+
+    background:transparent;
+    transition:.2s;
+    cursor:pointer;
+}
+
+.loginHover{
+    position:absolute;
+
+    left:230px;
+    top:500px;
+    width:135px;
+    height:35px;
+
+    background:transparent;
+    transition:.2s;
+    cursor:pointer;
+}
+
+/* ログインしているとき */
+.logoutHover{
+    position:absolute;
+
+    left:230px;
+    top:535px;
+    width:135px;
+    height:38px;
+
+    transition:.2s;
+    cursor:pointer;
+}
+
+/* ログインしてないとき */
+.logoutDisable{
+    position:absolute;
+    left:230px;
+    top:535px;
+    width:135px;
+    height:35px;
+
+    opacity:.35;
+    cursor:default;
+    
+    opacity:.4;
+    filter:grayscale(100%);
+}
+
+.backHover{
+    position:absolute;
+    left:220px;
+    top:325px;
+    width:50px;
+    height:25px;
+
+    background:transparent;
+    transition:.2s;
+    cursor:pointer;
+    z-index:100;
+    opacity:0.5;
+}
+
+.noHover{
+    width:18px;
+    height:8px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:3px;
+    font-weight:bold;
+	
+    border-radius:8px;
+    background-color:rgb(172,170,170);
+    
+    position: relative;
+    top: -1px;
+    
+    cursor:pointer;
+    transition:.2s;
+}
+
+/* ログイン・新規登録用 */
+/* 入力フォームの配置 */
+.input1{
+    position:absolute;
+    left:77%;
+    top:64%;
+    transform:translate(-50%,-50%);
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    width:130px;
+}
+
+/* 入力欄 */
+.input1 input[type="text"],
+.input1 input[type="password"]{
+    width:100%;
+    height:30px;
+
+    font-size:9px;
+
+    padding:0 12px;
+
+    border:1px solid #888;
+    border-radius:8px;
+
+    box-sizing:border-box;
+}
+
+/* ボタンを横並び */
+.input1 div{
+    display:flex;
+    gap:10px;
+}
+
+/* ボタン */
+.input1 input[type="submit"],
+.input1 input[type="reset"]{
+    flex:1;
+
+    height:24px;
+
+    font-size:8px;
+    font-weight: bold;
+
+    border:none;
+    border-radius:8px;
+
+    background-color: rgb(172, 170, 170);
+
+    cursor:pointer;
+}
+
+/* ログイン・新規登録用 */
+/* ボードの配置 */
+.board{
+    width: 20%;
+    height:10%;
+    left: 17%;
+    top:36%;
+    position: absolute;
+}
+
+.board-inner{
+
+    width:100%;
+    height:100%;
+
+    position:relative;
+
+    transition:transform .8s;
+
+    transform-style:preserve-3d;
+
+}
+
+.board.is-flipped .board-inner{
+
+    transform:rotateY(180deg);
+
+}
+
+.board-front,
+.board-back{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    backface-visibility:hidden;
+
+}
+
+.board-back{
+
+    transform:rotateY(180deg);
+
+}
+
+/* 入力フォームの配置 */
+.input2{
+    position:absolute;
+    left:26.5%;
+    top:43%;
+    transform:translate(-50%,-50%);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* 登録完了・ログアウト＆完了用 */
+/* ボタンを横並び */
+.input2 div{
+    display:flex;
+    gap:4px;
+}
+
+.input2 p{
+    margin:0 0 7px 1px;
+    font-size:4px;
+    color:white;
+}
+
+.yes{
+	position: relative;
+    top: -1px;
+}
+
+.buttonArea{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+/* ボタン */
+.input2 input[type="submit"]{
+    flex:1;
+
+    height:8px;
+
+    font-size:3px;
+    font-weight: bold;
+
+    border:none;
+    border-radius:8px;
+
+    background-color: rgb(172, 170, 170);
+
+    cursor:pointer;
 }

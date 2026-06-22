@@ -5,23 +5,19 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>メニュー画面</title>
-		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="/f2/css/login.css">
 	</head>
-	<body>
-		<div id="bg" class="bg">
-		    <img src="image/ログイン背景(仮).png">
+	<body data-scene="menu">
+		<div id="view">
+			<div id="camera">
+				<img src="/f2/image/ログイン背景(仮).png" id="bg">
+				<div class="signupHover"></div>
+				<div class="loginHover"></div>
+				<div class="${isLogin ? 'logoutHover' : 'logoutDisable'}"></div>
+			</div>
 		</div>
 	</body>
-	<script>
-		const image=document.getElementById('bg');
-		function setImagePosition(x,y){
-		image.style.top=y+'px';
-		image.style.left=x+'px';
-		}
-
-		window.onload=function(){
-		setImagePosition(window.innerWidth,window.innerHeight);
-		}
-	</script>
+	<script src="/f2/js/login.js"></script>
 </html>
