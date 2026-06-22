@@ -18,3 +18,4 @@ bearnose.addEventListener("click", (e) => {
 	e.preventDefault(); // href="#" の遷移を止める
     requestAnimationFrame(animate);
 });
+

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,6 +155,7 @@ gap: 40px;
 <div class="logo-layer">
   <img src="image/logo.png" class="logo-img">
 </div>
+<div onclick="location.href='/f2/HomeServlet'">
 <div class="record-player">
   <div class="bg-player">
     <img src="image/record-player-notuse.png" alt="record" />
@@ -166,7 +169,7 @@ gap: 40px;
     <img src="image/record-needle.png" alt="needle" />
   </div>
 
-  <div class="word_name">${word.word_name}</div>
+  <div class="word_name">${word.word}</div>
 </div> 
 <div class="recordcases">
   <img src="image/recordcase3.jpeg" class="record3" />
@@ -179,7 +182,7 @@ gap: 40px;
   <img src ="image/eightball-white.png" class="whiteball">
 </div>
 
-<div onclick="location.href='${pageContext.request.contextPath}/home.jsp'">
+
 </div>
 
 </body>

@@ -49,11 +49,11 @@
         .eightball {
         	pointer-events: none;
             position: absolute !important;
-            top: 65% !important;
+            top: 50% !important;
             left: 50% !important;
             transform: translate(-50%, -50%) !important;
-            width: 1000px !important;  
-            height: 1000px !important; 
+            width: 1200px !important;  
+            height: 1200px !important; 
             z-index: 100 !important;
         }
         
@@ -90,12 +90,6 @@
 	<div class="record-player">
 	    <div class="bg-player">
 	        <img src="image/record-player-notuse.png" alt="record" />
-	    </div>
-	    <div id="img2" class="disk">
-	        <img src="image/disk-black.png" alt="disk" />
-	    </div>
-	    <div id="img3" class="needle">
-	        <img src="image/record-needle.png" alt="needle" />
 	    </div>
 	</div> 
 	
