@@ -53,10 +53,20 @@ html,body{
 /* 戻るボタン１ */
 .btn_box{
   position: absolute;
-  top: 20px;
-  left: 20px;
   margin: 0;
   z-index: 10
+}
+
+.back{
+	cursor: pointer;
+	top: 20px;
+  	left: 20px;
+}
+
+.help{
+	cursor: pointer;
+	top: 20px;
+  	right: 40px;
 }
 
 .btn{
@@ -115,6 +125,48 @@ html,body{
 .animation:after{
   transition: all 0.3s ease;
  }
+ 
+ .overlay{
+ 	position:fixed;
+	top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.3);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+ }
+ 
+ .setumei{
+ 	background-color:white;
+ 	position:absolute;
+ 	width:50%;
+ 	height:50%;
+ 	margin:0;
+    opacity:0;
+    visibility: hidden;
+    z-index:1001;
+    transition:opacity 0.5s,visibility 0.5s;
+ }
+ .setumei.show{
+ 	display:block;
+    visibility: visible;
+    opacity:1;
+ }
+ 
+ .close-btn {
+ 	position: fixed;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #d3d3d3;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 </head> 
@@ -124,21 +176,52 @@ html,body{
         
         <img src="image/bear-back2.png"  class="bearback">
 
-        <img src="image/bear-nose.png"  class="bearnose" id="bearnose" usemap="#bearnoseMap">
+        <img src="image/bear-nose.png"  class="bearnose" usemap="#bearnoseMap">
 		<map name="bearnoseMap">
-  			<area shape="circle" coords="249,387,48" href="#" alt="" />
+  			<area shape="circle" coords="249,386,62" href="#" alt="" id="bearnose"/>
 		</map>
 		
 		<div class="gesture_word" id="gesture_word"><c:out value="${word.word}"></c:out></div>
 		
-		<div class="btn_box">
+		<div class="btn_box back">
   			<a href="/f2/HomeServlet" class="btn animation">Back</a>
 		</div>
+		<div class="btn_box help">
+  			<div class="btn animation" onclick="help()">Help</div>
+		</div>
     </div>
+    
+    <div class="overlay" id="overlay"></div>
+    <div class="setumei" id="setumei">
+    あｋｄｓぁｆｊｄｌｋｆじゃｌｄｆじゃｌｋｓｊｄｆぁｓｆｄ
+    <button id="closeBtn" class="close-btn" onclick="closeHelp()">閉じる</button>
+    </div>
+    
 
 <script src="js/gesture.js"></script>
 <script>
 	imageMapResize();
+</script>
+<script>
+function help(){
+	const overlay=document.getElementById('overlay');
+	const setumei=document.getElementById('setumei');
+	
+	setumei.style.top=300+"px";
+	setumei.style.left=300+"px";
+	overlay.style.display='flex';
+	setumei.classList.add('show');	
+}
+
+
+function closeHelp(){
+	const setumei =document.getElementById('setumei');
+	const overlay = document.getElementById('overlay');
+	
+    setumei.classList.remove('show');
+    setumei.style.display = 'none';
+    overlay.style.display = 'none';
+}
 </script>
 </body>
 
