@@ -6,20 +6,19 @@
 <meta charset="UTF-8">
 <title>スタート画面|じぇね×りんく</title>
 <style>
-/* 💡ブラウザの画面全体（PCの全画面）のベース設定 */
+
 html {
-  background-color: #222 !important; /* 外側の余白を暗いグレーにして、390x844の箱を際立たせる */
+  background-color: #222 !important; 
   width: 100vw !important;
   height: 100vh !important;
   margin: 0 !important;
   padding: 0 !important;
-  overflow: hidden !important; /* PC画面自体のスクロールを完全に禁止 */
+  overflow: hidden !important; 
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
 }
 
-/* 💡ここが「390×844」の絶対的なスマホの箱 */
 body {
   position: relative !important;
   width: 390px !important;
@@ -29,31 +28,31 @@ body {
   max-height: 844px !important;
   min-height: 844px !important;
   
-  /* 390x844からはみ出る要素（レコードなど）を強制非表示 */
+
   overflow: hidden !important; 
   margin: 0 auto !important;
   padding: 0 !important;
   
-  /* 背景画像の設定 */
+  
   background-image: url("image/starthaikei.png") !important;
   background-size: cover !important;
   background-position: center !important; 
   background-repeat: no-repeat !important;       
   
-  /* 中央配置用のレイアウト */
+
   display: flex !important;
   flex-direction: column !important; 
   justify-content: center !important;
   align-items: center !important;
   gap: 40px !important;
   
-  /* PC全画面で見ていることがわかりやすいように白い枠線と影をつける */
+ 
   border: 1px solid #ffffff !important;
   box-shadow: 0 0 30px rgba(0,0,0,0.8) !important;
   box-sizing: border-box !important;
 }
 
-/* 💡スプラッシュ画面（bodyの390x844の中に固定） */
+
 .logo-layer {
   position: absolute;
   top: 0;
@@ -69,7 +68,7 @@ body {
 }
 
 .logo-img {
-  width: 90%; /* 390pxの90%のサイズに自動縮小 */
+  width: 90%; 
   height: auto;
 }
 
@@ -79,7 +78,7 @@ body {
   100% { opacity: 0; visibility: hidden; }
 }
 
-/* 💡レコードプレーヤー（1000pxあるので、390pxに収まるようscaleを0.35に縮小） */
+
 .record-player {
   position: relative;
   width: 1000px;
@@ -121,7 +120,7 @@ body {
   pointer-events: none;  
 }
 
-/* 💡レコードケース（390pxのベースに合わせる） */
+
 .recordcases {
   position: absolute; 
   width: 100%;  
@@ -135,7 +134,7 @@ body {
   z-index: 30;
 }
 
-/* 390px幅に合わせてレコードの大きさを調整 */
+
 .recordcases img {
   position: absolute;
   bottom: -30px;
@@ -150,7 +149,7 @@ body {
 .recordcases .record2 { transform: rotate(-25deg) translate(-5px, 5px); }
 .recordcases .record5 { transform: rotate(-10deg) translate(0px, 20px); }
 
-/* 💡エイトボール（390px幅に合わせて縮小） */
+
 .eightball {
   position: absolute;
   bottom: 20px;
