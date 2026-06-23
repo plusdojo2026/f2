@@ -11,6 +11,7 @@
             padding: 0;
             width: 100%;
             height: 100vh;
+            background-image: url("image/record-haikei.png");
             background-size: cover;
             background-position: center; 
             background-repeat: no-repeat;          
@@ -87,6 +88,7 @@
 </head>
 <body>
 <div>
+	
 	<div class="record-player">
 	    <div class="bg-player">
 	        <img src="image/record-player-notuse.png" alt="record" />
