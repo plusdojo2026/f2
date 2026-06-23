@@ -19,7 +19,7 @@
             position: relative;
             overflow: hidden; 
         }
-
+		/*レコードプレーヤーの配置*/
         .record-player {
         	pointer-events: none;
             position: absolute;
@@ -31,10 +31,8 @@
             height: 700px;
             z-index: 10;
         }
-
+		/*レコードプレイヤーの設定*/
         .record-player .bg-player,
-        .record-player .disk,
-        .record-player .needle,
         .record-player img {
             width: 1000px;
             height: 700px;
@@ -42,11 +40,10 @@
             top: 0;
             left: 0;
         }
-
+		
         .bg-player { z-index: 1; }
-        .disk { z-index: 5; }
-        .needle { z-index: 10; }
 
+		/*エイトボールの配置*/
         .eightball {
         	pointer-events: none;
             position: absolute !important;
@@ -57,7 +54,7 @@
             height: 1200px !important; 
             z-index: 100 !important;
         }
-        
+        /*エイトボールの写真の設定*/
         .eightball img {
         	pointer-events: none;
             position: absolute !important; 
@@ -67,28 +64,29 @@
             height: 100% !important;
             object-fit: contain !important;
         }
-        
+        /*エイトボールの二つの写真を重ねる*/
         .blackball { z-index: 101 !important; } 
         .whiteball { z-index: 102 !important; } 
         
+        /*テンプレ文のレイヤー*/
         .text-overlay {
-          pointer-events: none;
-		  position: absolute;
-		  top: 50%;        /* 上からの位置 */
-		  left: 50%;       /* 左からの位置 */
-		  transform: translate(-50%, -50%); /* 中央に配置 */
-		  color: black;
-		  font-size: 72px;
-		  font-weight: bold;
-		  text-shadow: 0 0 5px black; /* 読みやすくする */
-		  z-index: 999 !important;
+            pointer-events: none;
+		    position: absolute;
+		    top: 50%;        /* 上からの位置 */
+		    left: 50%;       /* 左からの位置 */
+		    transform: translate(-50%, -50%); /* 中央に配置 */
+		    color: black;
+		    font-size: 72px;
+		    font-weight: bold;
+		    text-shadow: 0 0 5px black; /* 読みやすくする */
+		    z-index: 999 !important;
 	  }
+	 
     </style>
 <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 </head>
 <body>
 <div>
-	
 	<div class="record-player">
 	    <div class="bg-player">
 	        <img src="image/record-player-notuse.png" alt="record" />
