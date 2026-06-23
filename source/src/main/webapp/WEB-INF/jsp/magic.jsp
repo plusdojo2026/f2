@@ -76,7 +76,7 @@
 		  top: 50%;        /* 上からの位置 */
 		  left: 50%;       /* 左からの位置 */
 		  transform: translate(-50%, -50%); /* 中央に配置 */
-		  color: white;
+		  color: black;
 		  font-size: 72px;
 		  font-weight: bold;
 		  text-shadow: 0 0 5px black; /* 読みやすくする */
