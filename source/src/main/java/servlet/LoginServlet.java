@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 		//両項目にちゃんと要素が入っているかを判断（空白チェック）
 		if(mail_add.isEmpty() || password.isEmpty()) {
 			//両項目のどちらかが空白だった場合。エラー処理。
-			request.setAttribute("error", "メールアドレス又はパスワードが空白です。");
+			request.setAttribute("error", "メールアドレスかパスワードが空白です");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
 			
@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("/f2/MenuServlet?from=login");
 		}else {
 			//何らかの理由でログイン失敗。login.jsp にフォワードする
-			request.setAttribute("error", "メールアドレスまたはパスワードが違います");
+			request.setAttribute("error", "メールアドレスかパスワードが違います");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}

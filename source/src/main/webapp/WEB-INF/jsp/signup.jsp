@@ -13,7 +13,8 @@
 		<div id="view">
 			<div id="camera">
 				<img src="/f2/image/ログイン背景(仮)2.png" id="bg">
-				<div class="backHover">戻る</div>
+				<div class="backHover">Back</div>
+				<div class="ruleHover">利用規約</div>
 				<form action="/f2/SignupServlet" method="post" class="input1">
 					<input type="text" name="mail_add" placeholder="メールアドレス">
 					<input type="password" name="password" placeholder="パスワード">
@@ -22,9 +23,11 @@
 						<input type="submit" id="signupButton" value="登録">
 						<input type="reset" value="リセット">
 					</div>
-					<c:if test="${not empty error}">
-						<p style="color:red; font-size:10px; font-weight:bold;">${error}</p>
-					</c:if>
+					<div class="error">
+						<c:if test="${not empty error}">
+							<p>${error}</p>
+						</c:if>
+					</div>
 				</form>
 			</div>
 		</div>

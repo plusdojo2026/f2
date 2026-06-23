@@ -89,15 +89,37 @@ body{
 .backHover{
     position:absolute;
     left:220px;
-    top:325px;
-    width:50px;
-    height:25px;
-
-    background:transparent;
+    top:330px;
+    width:45px;
+    height:20px;
+    font-size: 9px;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+	
+    background:rgb(90,95,170);
+    padding-top: 4px;
     transition:.2s;
     cursor:pointer;
     z-index:100;
-    opacity:0.5;
+}
+
+.ruleHover{
+    position:absolute;
+    left:330px;
+    top:330px;
+    width:50px;
+    height:20px;
+    font-size: 9px;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+
+    background:rgb(90,95,170);
+    padding-top: 4px;
+    transition:.2s;
+    cursor:pointer;
+    z-index:100;
 }
 
 .noHover{
@@ -126,7 +148,7 @@ body{
 .input1{
     position:absolute;
     left:77%;
-    top:64%;
+    top:60%;
     transform:translate(-50%,-50%);
 
     display:flex;
@@ -173,6 +195,16 @@ body{
     background-color: rgb(172, 170, 170);
 
     cursor:pointer;
+}
+
+.error{
+	color:red;
+	width: 120%;
+	height: 7px;
+	font-size:8px;
+	text-align: center;
+	font-weight:bold;
+	margin: 0 0 0 -8px;
 }
 
 /* ログイン・新規登録用 */

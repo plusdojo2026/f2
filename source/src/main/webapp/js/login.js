@@ -1,3 +1,6 @@
+//今のズーム値を保管しておく変数
+let currentZoom = 1;
+
 // カメラ位置
 const cameraPos = {
 	menu:{
@@ -28,6 +31,7 @@ const cameraPos = {
 
 // カメラ移動
 const camera = document.getElementById("camera");
+
 function move(position, animate = true){
 	const p = cameraPos[position];
 
@@ -35,14 +39,19 @@ function move(position, animate = true){
 		console.error(position + " が定義されていません");
 		return;
 	}
-
+	
+	currentZoom = p.zoom;
+	
 	camera.style.transition = animate ? "transform 1.5s" : "none";
 	camera.style.transform = `translate(${p.x}px, ${p.y}px) scale(${p.zoom})`;
 
 }
 
+
 //新規登録→登録完了画面時など、スライドする時に使うもの
 function slide(toPosition, duration = 1500){
+	console.log("slide開始", toPosition);
+
 	const to = cameraPos[toPosition];
 
 	camera.style.transition = `transform ${duration}ms ease`;
@@ -50,6 +59,7 @@ function slide(toPosition, duration = 1500){
 	camera.style.transform = `translate(${to.x}px, ${to.y}px) scale(currentZoom)`;
 
 }
+
 
 //ズーム、スライドなどのエフェクトを管理
 function playEffect(effect, position, nextPage, fromPosition = null){
@@ -123,6 +133,7 @@ initScene();
 const bg = document.getElementById("bg");
 
 bg.addEventListener("click", function(e){
+	console.log("登録ボタン押された");
 	console.log("X:", e.offsetX, "Y:", e.offsetY);
 });
 
@@ -168,11 +179,11 @@ function setBack(selector, position, nextPage, effect, fromPosition = null){
 	if(!obj) return;
 
 	obj.addEventListener("mouseenter",function(){
-		obj.style.background="rgba(255,255,255,.2)";
+		obj.style.background="rgba(90,95,170,.2)";
 	});
 
 	obj.addEventListener("mouseleave",function(){
-		obj.style.background="rgba(172,170,170,1)";
+		obj.style.background="rgb(90,95,170)";
 	});
 
 	obj.addEventListener("click",function(){

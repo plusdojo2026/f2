@@ -1,4 +1,5 @@
 SQL 用語集(wordsテーブル)INSERTまとめ
+INSERTまとめ1の項目10のところね
 
 ◆昭和後期(～1989)
 INSERT INTO words(word, pronounce, meaning, era_no, genre_no, level) VALUES
