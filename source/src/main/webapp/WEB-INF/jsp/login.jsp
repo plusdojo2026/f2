@@ -22,9 +22,11 @@
 						<input type="submit" id="loginButton" value="ログイン">
 						<input type="reset" value="リセット">
 					</div>
-					<c:if test="${not empty error}">
-						<p class="error">${error}</p>
-					</c:if>
+					<div class="error">
+						<c:if test="${not empty error}">
+							<p>${error}</p>
+						</c:if>
+					</div>
 				</form>
 			</div>
 		</div>

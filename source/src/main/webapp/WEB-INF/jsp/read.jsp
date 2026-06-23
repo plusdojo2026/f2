@@ -57,6 +57,7 @@ html,body{
 	font-size: 72px;
 	font-weight: bold;
 	text-shadow: 0 0 5px black; /* 読みやすくする */
+	z-index:50;
 }
 .ansForm{
 	position: absolute;
@@ -104,6 +105,7 @@ html,body{
         const spoon2 = document.getElementById("screen2");
         const quiz_word = document.getElementById("read_word");
         const actiond = false;
+        let startTime = null;
 
         function animate(timestamp) {
             

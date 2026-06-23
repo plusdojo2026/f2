@@ -18,7 +18,7 @@ public class HistoryDAO {
 			
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					+ "characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"f2", "VLKAX3uTDc9NJDQL");
 			
 			// SQL文を作成する
