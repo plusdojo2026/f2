@@ -58,6 +58,7 @@ public class SignupServlet extends HttpServlet {
 			//実際に登録する処理
 			if(dao.addAcount(user)) {
 				//登録成功。signresult.jsp にフォワードする
+				request.setAttribute("from", "signup");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signresult.jsp");
 				dispatcher.forward(request, response);
 			}else {

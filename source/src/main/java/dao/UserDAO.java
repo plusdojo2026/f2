@@ -19,7 +19,7 @@ public class UserDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を作成する
 			String sql = "SELECT mail_add, password FROM users WHERE mail_add = ? AND password = ?";
@@ -69,7 +69,7 @@ public class UserDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を作成する
 			String sql = "SELECT user_no FROM users WHERE mail_add = ? AND password = ?";
@@ -118,7 +118,7 @@ public class UserDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を作成する
 			String sql = "SELECT mail_add FROM users WHERE mail_add = ?";
@@ -167,7 +167,7 @@ public class UserDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を作成する
 			String sql = "INSERT INTO users(mail_add,password) VALUES (?,?)";
