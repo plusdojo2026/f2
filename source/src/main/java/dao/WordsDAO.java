@@ -23,7 +23,7 @@ public class WordsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を準備する
 			String sql = "SELECT word FROM words ORDER BY RAND() LIMIT 1;";
@@ -69,7 +69,7 @@ public class WordsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を準備する
 			String sql = "SELECT word_no, word, era_name, genre_name, pronounce, meaning "
@@ -132,7 +132,7 @@ public class WordsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を準備する
 			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 1 ORDER BY RAND() LIMIT 1;";
@@ -181,7 +181,7 @@ public class WordsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を準備する
 			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 2 ORDER BY RAND() LIMIT 1;";
@@ -230,7 +230,7 @@ public class WordsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f2?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を準備する
 			String sql = "SELECT word, pronounce, meaning FROM words WHERE level = 3 ORDER BY RAND() LIMIT 1;";

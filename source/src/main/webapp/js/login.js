@@ -1,5 +1,6 @@
 //今のズーム値を保管しておく変数
 let currentZoom = 1;
+const sceneName = document.body.dataset.scene;
 
 // カメラ位置
 const cameraPos = {
@@ -18,7 +19,14 @@ const cameraPos = {
 	signup:{
 		x:-230,
 		y:-190,
-		zoom:2.2
+		zoom:2.2,
+		
+		slide:{
+			board:{
+				x:200,
+				y:100
+			}
+		}
 	},
 
 	board:{
@@ -50,13 +58,23 @@ function move(position, animate = true){
 
 //新規登録→登録完了画面時など、スライドする時に使うもの
 function slide(toPosition, duration = 1500){
-	console.log("slide開始", toPosition);
+	
+	const from = cameraPos[sceneName];
 
-	const to = cameraPos[toPosition];
+	let x;
+	let y;
+	
+	if(from.slide && from.slide[toPosition]){
+	    x = from.slide[toPosition].x;
+	    y = from.slide[toPosition].y;
+	}else{
+	    x = cameraPos[toPosition].x;
+	    y = cameraPos[toPosition].y;
+	}
 
 	camera.style.transition = `transform ${duration}ms ease`;
-
-	camera.style.transform = `translate(${to.x}px, ${to.y}px) scale(currentZoom)`;
+	
+	camera.style.transform = `translate(${x}px, ${y}px) scale(${currentZoom})`;
 
 }
 
@@ -86,13 +104,12 @@ function playEffect(effect, position, nextPage, fromPosition = null){
 			break;
 		default:
 			console.error(effect + " が存在しません");
-	}s
+	}
 }
 
 
 // 初期表示時のズーム制御
 function initScene(){
-	const sceneName = document.body.dataset.scene;
 	const params = new URLSearchParams(location.search);
 	const from = params.get("from") || document.body.dataset.from;
 
@@ -114,12 +131,22 @@ function initScene(){
 	}
     
 	if(sceneName == "board" && from == "signup"){
-		animate = false;
+		move("signup", false);
+		
+		requestAnimationFrame(function(){
+			slide("board");
+		});
+		return;
 	}
 
 	// ログイン・新規登録→メニュー
-	if(sceneName == "menu" && (params.get("from") == "login" ||params.get("from") == "signup")){
-		animate = false;
+	if(sceneName == "menu" && params.get("from") == "loginSuccess"){
+		move("login", false);
+	
+		requestAnimationFrame(function(){
+			move("menu", true);
+		});
+		return;
 	}
 
 	move(sceneName, animate);
@@ -133,7 +160,6 @@ initScene();
 const bg = document.getElementById("bg");
 
 bg.addEventListener("click", function(e){
-	console.log("登録ボタン押された");
 	console.log("X:", e.offsetX, "Y:", e.offsetY);
 });
 
@@ -192,28 +218,6 @@ function setBack(selector, position, nextPage, effect, fromPosition = null){
 }
 
 
-function setSubmitEffect(buttonId, formSelector, effect, position){
-	const button = document.getElementById(buttonId);
-	const form = document.querySelector(formSelector);
-
-	if(!button || !form) return;
-
-	button.addEventListener("click", function(e){
-		e.preventDefault();
-
-		if(effect == "zoom"){
-			move(position);
-		}else if(effect == "slide"){
-			slide(position);
-		}
-
-		setTimeout(function(){
-			form.submit();
-		},1500);
-	});
-}
-
-
 // メニュー画面のボタン
 setHover(".loginHover","login","/f2/LoginServlet?from=menu","zoom");
 setHover(".signupHover","signup","/f2/SignupServlet?from=menu","zoom");
@@ -225,9 +229,6 @@ setBack(".noHover","menu","/f2/MenuServlet?from=board","zoom");
 
 setBoard("#board","menu","/f2/MenuServlet?from=board");
 setBoard("#board","menu","/f2/MenuServlet?from=signup");
-
-setSubmitEffect("loginButton",".input1","zoom","menu");
-setSubmitEffect("signupButton",".input1","slide","board");
 
 
 // ログイン画面・新規登録画面の戻るボタン
