@@ -44,14 +44,14 @@ public class ReadServlet extends HttpServlet {
 				Word level1 = dao.getLevel1();
 				session.setAttribute("pronounce",word.getPronounce());
 				
-				request.setAttribute("level1",level1);
+				request.setAttribute("word",level1);
 				break;
 			case 3,4:
 				//3,4問目の時の処理
 				Word level2 = dao.getLevel2();
 				session.setAttribute("pronounce",word.getPronounce());
 				
-				request.setAttribute("level2",level2);
+				request.setAttribute("word",level2);
 				break;
 			case 5:
 				//5,6問目の時の処理
@@ -60,7 +60,7 @@ public class ReadServlet extends HttpServlet {
 				Word level3 = dao.getLevel3();
 				session.setAttribute("pronounce",word.getPronounce());
 				
-				request.setAttribute("level3",level3);
+				request.setAttribute("word",level3);
 				break;
 			}
 			
