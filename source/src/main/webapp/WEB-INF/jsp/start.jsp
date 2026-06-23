@@ -6,30 +6,60 @@
 <meta charset="UTF-8">
 <title>スタート画面|じぇね×りんく</title>
 <style>
-html,body{
-/* スクロール禁止 */
-/* overflow:hidden; */
-margin:0;
-padding: 0;
-width: 100%;
-height: 100vh;
-background-image: url("image/starthaikei.png");
-background-size: cover;
-background-position: center; 
-background-repeat: no-repeat;          
-background-attachment: fixed;
-display: flex;
-flex-direction: column; 
-justify-content: center;
-align-items: center;
-gap: 40px;
+/* 💡ブラウザの画面全体（PCの全画面）のベース設定 */
+html {
+  background-color: #222 !important; /* 外側の余白を暗いグレーにして、390x844の箱を際立たせる */
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important; /* PC画面自体のスクロールを完全に禁止 */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
-.logo-layer{
-  position: fixed;
+
+/* 💡ここが「390×844」の絶対的なスマホの箱 */
+body {
+  position: relative !important;
+  width: 390px !important;
+  max-width: 390px !important;
+  min-width: 390px !important;
+  height: 844px !important;
+  max-height: 844px !important;
+  min-height: 844px !important;
+  
+  /* 390x844からはみ出る要素（レコードなど）を強制非表示 */
+  overflow: hidden !important; 
+  margin: 0 auto !important;
+  padding: 0 !important;
+  
+  /* 背景画像の設定 */
+  background-image: url("image/starthaikei.png") !important;
+  background-size: cover !important;
+  background-position: center !important; 
+  background-repeat: no-repeat !important;       
+  
+  /* 中央配置用のレイアウト */
+  display: flex !important;
+  flex-direction: column !important; 
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 40px !important;
+  
+  /* PC全画面で見ていることがわかりやすいように白い枠線と影をつける */
+  border: 1px solid #ffffff !important;
+  box-shadow: 0 0 30px rgba(0,0,0,0.8) !important;
+  box-sizing: border-box !important;
+}
+
+/* 💡スプラッシュ画面（bodyの390x844の中に固定） */
+.logo-layer {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #ffffff; 
   display: flex;
   justify-content: center;
@@ -37,33 +67,25 @@ gap: 40px;
   z-index: 9999;
   animation: fadeOutSplash 2.5s forwards;
 }
+
 .logo-img {
-  width: 800px; 
+  width: 90%; /* 390pxの90%のサイズに自動縮小 */
   height: auto;
 }
 
 @keyframes fadeOutSplash {
-  0% {
-    opacity: 1;
-    visibility: visible;
-  }
-  80% {
-    opacity: 1;
-    visibility: visible;
-  }
-  100% { 
-    opacity: 0;
-    visibility: hidden; 
-  }
+  0% { opacity: 1; visibility: visible; }
+  80% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
 }
 
+/* 💡レコードプレーヤー（1000pxあるので、390pxに収まるようscaleを0.35に縮小） */
 .record-player {
   position: relative;
   width: 1000px;
   height: 700px;
-  
-  transform: rotate(90deg) scale(1.2);
-  transform-origin: 500px 350px; 
+  transform: rotate(90deg) scale(0.35); 
+  transform-origin: center center; 
 }
 
 .record-player .bg-player,
@@ -99,49 +121,46 @@ gap: 40px;
   pointer-events: none;  
 }
 
-.recordcases{
-  position: fixed; 
-  width: 700px;  
-  height: 700px;
-  bottom: -250px;    
-  left: 50px;        
+/* 💡レコードケース（390pxのベースに合わせる） */
+.recordcases {
+  position: absolute; 
+  width: 100%;  
+  height: 200px;
+  bottom: 0;    
+  left: 0;        
   display: flex;
   justify-content: space-between; 
   pointer-events: none;   
   align-items: flex-end;    
   z-index: 30;
-
 }
-.recordcases img{
+
+/* 390px幅に合わせてレコードの大きさを調整 */
+.recordcases img {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 550px;
+  bottom: -30px;
+  left: -20px;
+  width: 180px;
   height: auto;
   display: block;
   pointer-events: auto;
   transform-origin: left bottom;
 }
-.recordcases .record3{
-  transform: rotate(-40deg) translate(-20px, 20px);
-}
-.recordcases .record2{
-  transform: rotate(-25deg) translate(-15px, 15px);
-}
-.recordcases .record5{
-  transform: rotate(-10deg) translate(-5px, 40px);
-}
+.recordcases .record3 { transform: rotate(-40deg) translate(-10px, 10px); }
+.recordcases .record2 { transform: rotate(-25deg) translate(-5px, 5px); }
+.recordcases .record5 { transform: rotate(-10deg) translate(0px, 20px); }
 
-.eightball{
-  position: fixed;
+/* 💡エイトボール（390px幅に合わせて縮小） */
+.eightball {
+  position: absolute;
   bottom: 20px;
   right: 20px;        
-  width: 300px;
-  height: auto;
+  width: 100px; 
+  height: 100px;
   z-index: 30;
 }
 
-.eightball img{
+.eightball img {
   position: absolute; 
   bottom: 0;
   right: 0;
