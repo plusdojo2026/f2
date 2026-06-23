@@ -26,10 +26,14 @@ public class ReadServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
+		//リロールかどうかの判断用	
+		boolean reroll = false;
+		reroll = Boolean.parseBoolean(request.getParameter("reroll"));
+		
 		//game_countセッションに値が入っているか(初回か否か)を判断する。null(初回なら)、game_countを作成し、1問目を表す1をセットする。
 		if(session.getAttribute("game_count") == null) {
 			session.setAttribute("game_count", 1);
-		} else {
+		}
 			Word word = new Word();
 			WordsDAO dao = new WordsDAO();
 			int game_count = (Integer)session.getAttribute("game_count");
@@ -40,13 +44,15 @@ public class ReadServlet extends HttpServlet {
 				Word level1 = dao.getLevel1();
 				session.setAttribute("pronounce",word.getPronounce());
 				
-				request.setAttribute("level1",level1);			
+				request.setAttribute("level1",level1);
+				break;
 			case 3,4:
 				//3,4問目の時の処理
 				Word level2 = dao.getLevel2();
 				session.setAttribute("pronounce",word.getPronounce());
 				
 				request.setAttribute("level2",level2);
+				break;
 			case 5:
 				//5,6問目の時の処理
 				
@@ -55,11 +61,47 @@ public class ReadServlet extends HttpServlet {
 				session.setAttribute("pronounce",word.getPronounce());
 				
 				request.setAttribute("level3",level3);
+				break;
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/read.jsp");
-			dispatcher.forward(request, response);
+			
+			//上がリロールの時、下がページを開いたとき
+			if(reroll) {
+				String json;
+				
+				switch(game_count) {
+				case 1,2:
+					//1,2問目の時の処理
+					Word re_level1 = dao.getLevel1();
+					session.setAttribute("pronounce",word.getPronounce());
+					
+					json = "{ \"theme\": \"" + re_level1.getWord() + "\" }";
+					response.getWriter().write(json);
+					return;
+				case 3,4:
+					//3,4問目の時の処理
+					Word re_level2 = dao.getLevel2();
+					session.setAttribute("pronounce",word.getPronounce());
+
+					json = "{ \"theme\": \"" + re_level2.getWord() + "\" }";
+					response.getWriter().write(json);
+					return;
+				case 5:
+					//5,6問目の時の処理
+					
+					//問題文取得,問題解答時にキー入力値と解答を比較するために、読み方("pronounce")をセッションに保存しておく処理。
+					Word re_level3 = dao.getLevel3();
+					session.setAttribute("pronounce",word.getPronounce());
+
+					json = "{ \"theme\": \"" + re_level3.getWord() + "\" }";
+					response.getWriter().write(json);
+					return;
+				}
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/read.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
-	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//キー入力して正誤判定を行う時はこっちを通る。

@@ -13,6 +13,23 @@ html,body{
    	overflow:hidden;
 }
 
+body{
+    margin:0;
+
+    display:flex;
+    justify-content:center;
+
+    min-height:100vh;
+}
+
+#view{
+    width:390px;
+    height:844px;
+
+    overflow:hidden;
+    position:relative;
+}
+
 .gesture {
    	margin: 8px;
    	position: relative;
@@ -172,6 +189,7 @@ html,body{
 </head> 
 
 <body>
+<div id="view">
     <div class="gesture">
         
         <img src="image/bear-back2.png"  class="bearback">
@@ -196,7 +214,7 @@ html,body{
     あｋｄｓぁｆｊｄｌｋｆじゃｌｄｆじゃｌｋｓｊｄｆぁｓｆｄ
     <button id="closeBtn" class="close-btn" onclick="closeHelp()">閉じる</button>
     </div>
-    
+ </div>   
 
 <script src="js/gesture.js"></script>
 <script>
