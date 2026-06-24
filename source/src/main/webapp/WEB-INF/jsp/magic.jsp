@@ -115,7 +115,7 @@ body {
 	color: #00FF00;
 	font-size: 24px;
 	font-weight: bold;
-	text-shadow: 0 0 5px white;
+	text-shadow: 0 0 10px white;
 	z-index: 999 !important;
 	text-align: center;
 	width: 80%;
