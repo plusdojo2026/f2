@@ -136,7 +136,9 @@ body {
     <div class="eightball">
         <img src="image/eightball-black.png" class="blackball" alt="black">
         <img src="image/eightball-white.png" class="whiteball" alt="white">
-        <div class="text-overlay" id="sentence"><c:out value="${temple.sentence}">aaa</c:out></div>
+        <div class="text-overlay" id="sentence">
+        <c:out value="${temple.word}"></c:out><br>
+        <c:out value="${temple.sentence}"></c:out></div>
     </div>
     <a href="HomeServlet"
        style="position:absolute; left:0; top:0; width:100%; height:100%; display:block;">

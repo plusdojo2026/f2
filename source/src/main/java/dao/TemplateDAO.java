@@ -24,7 +24,8 @@ public class TemplateDAO {
 					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を準備する
-			String sql = "SELECT sentence FROM templates WHERE genre_no = ?";
+			String sql = "SELECT word,sentence FROM templates t JOIN words w "
+					+ "ON t.genre_no = w.genre_no WHERE t.genre_no = ? ORDER BY RAND() LIMIT 1;";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
@@ -35,7 +36,7 @@ public class TemplateDAO {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				sentence = new Template(rs.getString("sentence"));
+				sentence = new Template(rs.getString("word"),rs.getString("sentence"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
