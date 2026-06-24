@@ -21,28 +21,28 @@ html {
 }
 
 body {
-  position: relative !important;
-  width: 390px !important;
-  max-width: 390px !important;
-  min-width: 390px !important;
-  height: 844px !important;
-  max-height: 844px !important;
-  min-height: 844px !important;
+  position: relative ;
+  width: 390px ;
+  max-width: 390px;
+  min-width: 390px;
+  height: 844px;
+  max-height: 844px;
+  min-height: 844px;
   
-  overflow: hidden !important; 
-  margin: 0 auto !important;
-  padding: 0 !important;
+  overflow: hidden; 
+  margin: 0 auto;
+  padding: 0 ;
   
-  background-image: url("image/starthaikei.png") !important;
-  background-size: cover !important;
-  background-position: center !important; 
-  background-repeat: no-repeat !important;       
+  background-image: url("image/starthaikei.png");
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;       
   
-  display: flex !important;
-  flex-direction: column !important; 
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 40px !important;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
   
 }
 

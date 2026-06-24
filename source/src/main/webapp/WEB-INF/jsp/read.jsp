@@ -57,6 +57,7 @@ html,body{
 	font-size: 72px;
 	font-weight: bold;
 	text-shadow: 0 0 5px black; /* 読みやすくする */
+	z-index:50;
 }
 .ansForm{
 	position: absolute;
@@ -73,6 +74,24 @@ html,body{
 	padding: 10px;
 	background-color: #ddd;
 }
+
+.tf {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 </head>
@@ -88,7 +107,8 @@ html,body{
 		<map name="channelMap">
   			<area shape="rect" coords="620,1266,788,1434" href="#" alt="" id="channel_area"/>
 		</map>
-        <div class="read_word"><c:out value="${word.word}"></c:out></div>
+        <div class="read_word" id="read_word"><c:out value="${word.word}"></c:out></div>
+        <div class="tf" id="tf"></div>
         <form id="ansForm" action="ReadServlet" method="post" class="ansForm">
             <input type="text" name="pronounce" placeholder="Anser" class="ansText">
         </form>
@@ -103,7 +123,8 @@ html,body{
         const spoon1 = document.getElementById("screen1");
         const spoon2 = document.getElementById("screen2");
         const quiz_word = document.getElementById("read_word");
-        const actiond = false;
+		let actiond = false;
+		let startTime = null;
 
         function animate(timestamp) {
             

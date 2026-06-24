@@ -23,18 +23,27 @@ body{
 }
 
 #view{
-    width:390px;
+	width:390px;
     height:844px;
 
     overflow:hidden;
     position:relative;
 }
 
+#camera {
+    width:100%;
+    height:100%;
+    position:relative;
+
+    transition:transform 1.5s;
+    transform-origin:center center;
+}
+
 .gesture {
-   	margin: 8px;
    	position: relative;
    	display: inline-block;
    	width: 100%;
+   	height: 100%
 }
 
 .gesture img{
@@ -51,8 +60,8 @@ body{
    	top: 50%;
    	left: 50%;
    	transform: translate(-50%, -50%); 
-   	max-width: 100%;
-   	max-height: 60vh;
+   	max-width: 90%;
+   	max-height: 90%;
    	object-fit: contain;
 }
 
@@ -62,7 +71,7 @@ body{
   	left: 51.25%;       /* 左からの位置 */
   	transform: translate(-50%, -50%); /* 中央に配置 */
   	color: #663600;
-  	font-size: 72px;
+  	font-size: 36px;
   	font-weight: bold;
   	text-shadow: 0 0 5px #473838; 
 }
@@ -88,13 +97,13 @@ body{
 
 .btn{
   	color: #FFF;
-  	font-size: 50px;
+  	font-size: 25px;
   	font-weight: bold;
   	text-align: center;
-  	line-height: 90px;
+  	line-height: 45px;
   	letter-spacing: 2px;
-  	width: 350px;
-  	height: 100px;
+  	width:135px;
+    height:60px;
   	top: 8px;
   	left: 8px;
   	margin: auto;
@@ -190,6 +199,7 @@ body{
 
 <body>
 <div id="view">
+<div id="camera">
     <div class="gesture">
         
         <img src="image/bear-back2.png"  class="bearback">
@@ -214,7 +224,8 @@ body{
     あｋｄｓぁｆｊｄｌｋｆじゃｌｄｆじゃｌｋｓｊｄｆぁｓｆｄ
     <button id="closeBtn" class="close-btn" onclick="closeHelp()">閉じる</button>
     </div>
- </div>   
+</div>
+</div>   
 
 <script src="js/gesture.js"></script>
 <script>
@@ -244,3 +255,4 @@ function closeHelp(){
 </script>
 </body>
 
+</html>

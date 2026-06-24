@@ -23,7 +23,7 @@ public class ReadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//初回通過時に来る。game_countセッションを作成し、何問目かを保持する。
 		//テレビ叩いて、問題リセットしたい時にもこっちを通る。
-		
+		response.setContentType("application/json; charset=UTF-8");
 		HttpSession session = request.getSession();
 		
 		//リロールかどうかの判断用	
@@ -44,14 +44,14 @@ public class ReadServlet extends HttpServlet {
 				Word level1 = dao.getLevel1();
 				session.setAttribute("pronounce",word.getPronounce());
 				
-				request.setAttribute("level1",level1);
+				request.setAttribute("word",level1);
 				break;
 			case 3,4:
 				//3,4問目の時の処理
 				Word level2 = dao.getLevel2();
 				session.setAttribute("pronounce",word.getPronounce());
 				
-				request.setAttribute("level2",level2);
+				request.setAttribute("word",level2);
 				break;
 			case 5:
 				//5,6問目の時の処理
@@ -60,12 +60,13 @@ public class ReadServlet extends HttpServlet {
 				Word level3 = dao.getLevel3();
 				session.setAttribute("pronounce",word.getPronounce());
 				
-				request.setAttribute("level3",level3);
+				request.setAttribute("word",level3);
 				break;
 			}
 			
 			//上がリロールの時、下がページを開いたとき
 			if(reroll) {
+				response.setContentType("application/json; charset=UTF-8");
 				String json;
 				
 				switch(game_count) {
@@ -113,6 +114,8 @@ public class ReadServlet extends HttpServlet {
 		
 		//jspからのキー入力値取得
 		String pronounce = request.getParameter("pronounce");
+		Word word = new Word();
+		WordsDAO wDao = new WordsDAO();
 		
 		//入力された文字(pronounce)とdoGetでセッション保存しておいた答え("pronounce")を比較する処理。合ってたらtrue
 		if(pronounce == session.getAttribute("pronounce")) {
@@ -121,13 +124,44 @@ public class ReadServlet extends HttpServlet {
 			int game_count = (Integer)session.getAttribute("game_count");
 			game_count++;
 			session.setAttribute("game_count",game_count);
+			request.setAttribute("tf","正解！！！");
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/read.jsp");
-			dispatcher.forward(request, response);
+			response.setContentType("application/json; charset=UTF-8");
+			String json;
+			
+			switch(game_count) {
+			case 1,2:
+				//1,2問目の時の処理
+				Word re_level1 = wDao.getLevel1();
+				session.setAttribute("pronounce",word.getPronounce());
+				
+				json = "{ \"theme\": \"" + re_level1.getWord() + "\" }";
+				response.getWriter().write(json);
+				return;
+			case 3,4:
+				//3,4問目の時の処理
+				Word re_level2 = wDao.getLevel2();
+				session.setAttribute("pronounce",word.getPronounce());
+
+				json = "{ \"theme\": \"" + re_level2.getWord() + "\" }";
+				response.getWriter().write(json);
+				return;
+			case 5:
+				//5,6問目の時の処理
+				
+				//問題文取得,問題解答時にキー入力値と解答を比較するために、読み方("pronounce")をセッションに保存しておく処理。
+				Word re_level3 = wDao.getLevel3();
+				session.setAttribute("pronounce",word.getPronounce());
+
+				json = "{ \"theme\": \"" + re_level3.getWord() + "\" }";
+				response.getWriter().write(json);
+				return;
+			}
 		} else {
 			//間違いだった時
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/read.jsp");
-			dispatcher.forward(request, response);
+			request.setAttribute("tf","不正解...");
+			
+			
 		}
 	}
 	
