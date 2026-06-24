@@ -8,25 +8,26 @@
 <title>ジェスチャーゲーム|じぇね×りんく</title>
 <style>
 
-html,body{
+html{
     /* スクロール禁止 */
-   	overflow:hidden;
+   	margin:0;
+   	padding:0;
+   	width:100%;
+   	height:100%;
 }
 
 body{
-    margin:0;
-
     display:flex;
     justify-content:center;
-
-    min-height:100vh;
+    align-items:center;
 }
 
-#view{
+.view{
 	width:390px;
     height:844px;
 
     overflow:hidden;
+    background-color:red;
     position:relative;
 }
 
@@ -198,8 +199,7 @@ body{
 </head> 
 
 <body>
-<div id="view">
-<div id="camera">
+<div class="view">
     <div class="gesture">
         
         <img src="image/bear-back2.png"  class="bearback">
@@ -224,15 +224,34 @@ body{
     あｋｄｓぁｆｊｄｌｋｆじゃｌｄｆじゃｌｋｓｊｄｆぁｓｆｄ
     <button id="closeBtn" class="close-btn" onclick="closeHelp()">閉じる</button>
     </div>
-</div>
 </div>   
 
+</body>
 <script src="js/gesture.js"></script>
 <script>
 	imageMapResize();
 </script>
 <script>
 'use strict'
+
+const BASE_WIDTH = 390;
+const BASE_HEIGHT = 844;
+
+const container = document.querySelector(".view");
+
+function resize() {
+    const scale = Math.min(
+        window.innerWidth / BASE_WIDTH,
+        window.innerHeight / BASE_HEIGHT
+    );
+
+    container.style.transform = `scale(${scale})`;
+    container.style.transformOrigin = "center center";
+}
+
+resize();
+window.addEventListener("resize", resize);
+
 function help(){
 	const overlay=document.getElementById('overlay');
 	const setumei=document.getElementById('setumei');
@@ -253,6 +272,4 @@ function closeHelp(){
     overlay.style.display = 'none';
 }
 </script>
-</body>
-
 </html>
