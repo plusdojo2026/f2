@@ -54,7 +54,7 @@ public class SearchServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/selectresult.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/searchresult.jsp");
 		dispatcher.forward(request, response);
 		
 		//<c:if test="${word.viewed}">
