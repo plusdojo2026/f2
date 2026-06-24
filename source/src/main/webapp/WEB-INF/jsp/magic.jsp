@@ -112,7 +112,7 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	color: black;
+	color: #00FF00;
 	font-size: 24px;
 	font-weight: bold;
 	text-shadow: 0 0 5px white;
