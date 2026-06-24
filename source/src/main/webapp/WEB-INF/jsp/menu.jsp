@@ -13,6 +13,7 @@
 		<div id="view">
 			<div id="camera">
 				<img src="/f2/image/ログイン背景(仮).png" id="bg">
+				<div class="homeBack">ホームへ</div>
 				<div class="signupHover"></div>
 				<div class="loginHover"></div>
 				<div class="${isLogin ? 'logoutHover' : 'logoutDisable'}"></div>
