@@ -25,6 +25,6 @@
 <c:if test="${empty list}">
 <p>指定された条件に一致するデータはありません。</p>
 </c:if>
-<a href="/webapp/HomeServlet">ホームへ戻る</a>
+<a href="/f2/HomeServlet">ホームへ戻る</a>
 </body>
 </html>

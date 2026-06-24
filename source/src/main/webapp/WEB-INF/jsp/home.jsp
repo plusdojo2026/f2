@@ -45,7 +45,6 @@ background-color:red;
 <p>マジックエイトボール</p><br>
 <form class="magic" method="POST" action="/f2/MagicServlet">
 <select name="genre_no">
-<option value="0">指定なし</option>
 <option value="1">用語</option>
 <option value="2">物品・サービス</option>
 <option value="3">人物</option>
