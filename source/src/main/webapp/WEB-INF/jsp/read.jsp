@@ -64,7 +64,7 @@ body{
 .channel {
     position: absolute;
     top: 55%;   /* 上からの位置 */
-    left: 5%;  /* 左からの位置 */
+    right: 5%;  /* 左からの位置 */
     max-width: 20%;
 }
 
