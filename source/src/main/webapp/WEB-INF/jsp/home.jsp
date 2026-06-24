@@ -86,6 +86,3 @@ function menuServlet(){
 }
 </script>
 </html>
-
-
-
