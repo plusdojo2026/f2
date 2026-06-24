@@ -110,6 +110,26 @@ function animate(timestamp) {
     
 }
 
+function help(){
+
+    const overlay=document.getElementById("overlay");
+    const setumei=document.getElementById("setumei");
+
+    overlay.style.display="block";
+    setumei.classList.add("show");
+	console.log(document.getElementById("setumei").innerHTML);
+}
+
+function closeHelp(){
+
+    const overlay=document.getElementById("overlay");
+    const setumei=document.getElementById("setumei");
+
+    overlay.style.display="none";
+    setumei.classList.remove("show");
+
+}
+
 // クリックでアニメーション開始
 const spoon1_area = document.getElementById("spoon1_area");
 

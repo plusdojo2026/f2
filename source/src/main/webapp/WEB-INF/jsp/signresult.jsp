@@ -12,11 +12,11 @@
 	<body data-scene="board" data-from="${from}">
 		<div id="view">
 			<div id="camera">
-				<img src="/f2/image/ログイン背景(仮)2.png" id="bg">
+				<img src="/f2/image/ログイン背景2.png" id="bg">
 				<div id="board" class="board">
 					<div class="board-inner">
-						<img src="/f2/image/看板(仮)2.png" class="board-front">
-						<img src="/f2/image/看板(仮)3.png" class="board-back">
+						<img src="/f2/image/看板2.png" class="board-front">
+						<img src="/f2/image/看板3.png" class="board-back">
 					</div>
 				</div>
 			</div>

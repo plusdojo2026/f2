@@ -12,7 +12,7 @@
 	<body data-scene="menu">
 		<div id="view">
 			<div id="camera">
-				<img src="/f2/image/ログイン背景(仮).png" id="bg">
+				<img src="/f2/image/ログイン背景.png" id="bg">
 				<div class="homeBack">ホームへ</div>
 				<div class="signupHover"></div>
 				<div class="loginHover"></div>

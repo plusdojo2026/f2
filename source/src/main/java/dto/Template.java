@@ -5,6 +5,16 @@ import java.io.Serializable;
 public class Template implements Serializable {
 	private String sentence; // テンプレート文
 	private int genre_no;//ジャンル番号
+	
+	private String word;//Tenplatesテーブルにはない。jsp出力用に使用
+
+	public String getWord() {
+		return word;
+	}
+
+	public void setWord(String word) {
+		this.word = word;
+	}
 
 	//ジャンル番号のゲッター
 	public int getGenre_no() {
@@ -26,7 +36,8 @@ public class Template implements Serializable {
 	}
 	
     //テンプレート文のコンストラクタ
-	public Template(String sentence) {
+	public Template(String word,String sentence) {
+		this.word = word;
 		this.sentence = sentence;
 	}
 	//テンプレート文のデフォルトコンストラクタ
