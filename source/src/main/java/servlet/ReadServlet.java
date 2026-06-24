@@ -31,7 +31,7 @@ public class ReadServlet extends HttpServlet {
 		reroll = Boolean.parseBoolean(request.getParameter("reroll"));
 		
 		//game_countセッションに値が入っているか(初回か否か)を判断する。null(初回なら)、game_countを作成し、1問目を表す1をセットする。
-		if(session.getAttribute("game_count") == null) {
+		if(session.getAttribute("game_count") == null || (int)session.getAttribute("game_count") > 5) {
 			session.setAttribute("game_count", 1);
 		}
 			Word word = new Word();

@@ -5,11 +5,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>読み当てゲーム</title>
 <style>
 html,body{
     /* スクロール禁止 */
     overflow:hidden;
+}
+
+html{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+}
+body{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.box{
+	width:390px;
+	height:844px;
+	position:relative;
+	overflow:hidden;
+	background-color:red;
 }
 
 .read {
@@ -30,16 +50,16 @@ html,body{
 
 .screen {
     position: absolute;
-    top: -95px;   /* 上からの位置 */
-    left: 22.5px;  /* 左からの位置 */
+    top: -40px;   /* 上からの位置 */
+    left: 11.25px;  /* 左からの位置 */
     max-width: 95%;
     transform:scale(0.9);
 }
 
 .channel {
     position: absolute;
-    top: -50px;   /* 上からの位置 */
-    left: 15%;  /* 左からの位置 */
+    top: -25px;   /* 上からの位置 */
+    left: 10%;  /* 左からの位置 */
     max-width: 90%;
 }
 
@@ -54,7 +74,7 @@ html,body{
 	left: 50%;       /* 左からの位置 */
 	transform: translate(-50%, -50%); /* 中央に配置 */
 	color: white;
-	font-size: 72px;
+	font-size: 32px;
 	font-weight: bold;
 	text-shadow: 0 0 5px black; /* 読みやすくする */
 	z-index:50;
@@ -67,11 +87,11 @@ html,body{
 }
 
 .ansText{
- 	height: 150px;
- 	width: 110%;
-	font-size: 72px;
+ 	height: 60px;
+ 	width: 100%;
+	font-size: 24px;
 	font-weight: bold;
-	padding: 10px;
+	padding: 5px;
 	background-color: #ddd;
 }
 
@@ -134,16 +154,105 @@ html,body{
 
 .word-info {
     position: absolute;   
-    top: 900px;           /* 好きな位置に調整 */
-    left: 100px;
+    top: 20px;           /* 好きな位置に調整 */
+    left: 5px;
     color: white;
     font-size: 28px;
+}
+
+.btn_box{
+    position:absolute;
+    z-index:10;
+}
+
+.back{
+    left:20px;
+    top:20px;
+}
+
+.help{
+    right:20px;
+    top:20px;
+}
+
+.btn{
+    display:inline-block;
+	
+	width: 60px;
+    padding:10px 18px;
+
+    background:rgb(90,95,170);
+    color:#fff;
+
+    border:2px solid #333;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    font-size:18px;
+    font-weight:bold;
+    padding-left: 30px
+}
+
+.overlay{
+    display:none;
+
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.5);
+    z-index:100;
+}
+
+.setumei{
+    display:none;
+
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+
+    z-index:101;
+
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+.setumei.show{
+    display:block;
+}
+
+.close-btn{
+    display:block;
+    margin-top:20px;
+    padding:8px 16px;
+    cursor:pointer;
+}
+
+@media (max-width:390px){
+
+#screen{
+    width:100vw;
+    height:100vh;
+}
+
+.quiz{
+    width:100%;
+    height:100%;
+}
+
 }
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 </head>
 <body>
+<div class="box">
 	<div class="read">
 		<img src="image/tv-back-haikei.png" class="tv" id="tv" usemap="#tvMap">
 		<map name="tvMap">
@@ -175,7 +284,7 @@ html,body{
     		<input type="text" id="pronounce" name="pronounce" placeholder="Answer" class="ansText">
 		</form>
 	</div>
-	
+</div>
 	<script>
 	imageMapResize();
 	</script>
