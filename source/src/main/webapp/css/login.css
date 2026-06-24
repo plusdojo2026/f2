@@ -300,8 +300,8 @@ body{
 /* 入力フォームの配置 */
 .input2{
     position:absolute;
-    left:26.5%;
-    top:43%;
+    left:47%;
+    top:69%;
     transform:translate(-50%,-50%);
 
     display:flex;
