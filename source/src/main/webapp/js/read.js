@@ -113,3 +113,30 @@
 		document.getElementById("end-btn").addEventListener("click", () => {
     		window.location.href = "/f2/HomeServlet"; // ホームに戻る
 		});
+		
+		
+		
+		
+		
+		
+//ヘルプボタンの処理
+function help(){
+
+    const overlay=document.getElementById("overlay");
+    const setumei=document.getElementById("setumei");
+
+    overlay.style.display="block";
+    setumei.classList.add("show");
+	console.log(document.getElementById("setumei").innerHTML);
+}
+
+//ヘルプ内の戻るボタン処理
+function closeHelp(){
+
+    const overlay=document.getElementById("overlay");
+    const setumei=document.getElementById("setumei");
+
+    overlay.style.display="none";
+    setumei.classList.remove("show");
+
+}
