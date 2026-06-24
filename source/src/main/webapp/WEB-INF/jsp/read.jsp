@@ -23,6 +23,10 @@ body{
 	display:flex;
 	justify-content:center;
 	align-items:center;
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
 }
 .box{
 	width:390px;
@@ -30,10 +34,11 @@ body{
 	position:relative;
 	overflow:hidden;
 	background-color:red;
+	margin:0;
 }
 
 .read {
-    margin: 8px;
+    margin: 0;
     position: relative;
     display: inline-block;
     width: 100%;
@@ -58,8 +63,8 @@ body{
 
 .channel {
     position: absolute;
-    top: -25px;   /* 上からの位置 */
-    left: 10%;  /* 左からの位置 */
+    top: -20px;   /* 上からの位置 */
+    left: 15%;  /* 左からの位置 */
     max-width: 90%;
 }
 
