@@ -12,17 +12,17 @@
 	<body data-scene="board">
 		<div id="view">
 			<div id="camera">
-				<img src="/f2/image/ログイン背景(仮)2.png" id="bg">
+				<img src="/f2/image/ログイン背景2.png" id="bg">
 				<div id="board" class="board">
 					<div class="board-inner">
-						<img src="/f2/image/看板(仮).png" class="board-front">				</div>
+						<img src="/f2/image/看板1.png" class="board-front">
 					</div>
 					<form action="/f2/LogoutServlet" method="post" class="input2">
 						<p>ログアウトしますか？</p>
 						<div class="buttonArea">
 							<input type="submit" value="Yes" class="yes">
 							<div class="noHover">No</div>
-					    </div>
+						</div>
 					</form>
 				</div>
 			</div>

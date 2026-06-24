@@ -12,7 +12,7 @@
 	<body data-scene="login">
 		<div id="view">
 			<div id="camera">
-				<img src="/f2/image/ログイン背景(仮)2.png" id="bg">
+				<img src="/f2/image/ログイン背景2.png" id="bg">
 				<div class="backHover">Back</div>
 				<form action="/f2/LoginServlet" method="post" class="input1">
 					<input type="text" name="mail_add" placeholder="メールアドレス">

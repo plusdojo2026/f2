@@ -12,9 +12,8 @@
 	<body data-scene="signup">
 		<div id="view">
 			<div id="camera">
-				<img src="/f2/image/ログイン背景(仮)2.png" id="bg">
+				<img src="/f2/image/ログイン背景2.png" id="bg">
 				<div class="backHover">Back</div>
-				<div class="ruleHover">利用規約</div>
 				<form action="/f2/SignupServlet" method="post" class="input1">
 					<input type="text" name="mail_add" placeholder="メールアドレス">
 					<input type="password" name="password" placeholder="パスワード">
