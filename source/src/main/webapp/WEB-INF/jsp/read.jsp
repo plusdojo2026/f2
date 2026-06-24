@@ -148,7 +148,7 @@ body{
 .clear-buttons {
 	position: absolute;  
     margin-top: 30px;
-    bottom: 2000px;
+    bottom: 200px;
     display: flex;
     gap: 40px;
 }
