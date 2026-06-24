@@ -63,9 +63,9 @@ body{
 
 .channel {
     position: absolute;
-    top: -20px;   /* 上からの位置 */
-    left: 15%;  /* 左からの位置 */
-    max-width: 90%;
+    top: 55%;   /* 上からの位置 */
+    left: 5%;  /* 左からの位置 */
+    max-width: 20%;
 }
 
 .hide {
@@ -267,9 +267,9 @@ body{
 		</map>
 		<img src="image/tv-screen.png" class="screen" id="screen1" style="pointer-events: none;">
 		<img src="image/tv-screen1.png" class="screen hide" id="screen2" style="pointer-events: none;">
-		<img src="image/tv-channel.png" class="channel" usemap="#channelMap">
+		<img src="image/tv-channel2.png" class="channel" usemap="#channelMap">
 		<map name="channelMap">
-    		<area shape="rect" coords="620,1266,788,1434" href="#" alt="" id="channel_area"/>
+    		<area shape="rect" coords="23,39,198,212" href="#" alt="" id="channel_area"/>
 		</map>
 
 		<div class="read_word" id="read_word"><c:out value="${word.word}"></c:out></div>
