@@ -138,13 +138,15 @@ function adjustQuizWord(){
 
     const quizWord = document.getElementById("quiz_word");
 
-    let size = 23;      // 初期サイズ
-    const minSize = 3; // 最小サイズ
+    let size = 36;      // 初期サイズ
+    const minSize = 15; // 最小サイズ
 
     quizWord.style.fontSize = size + "px";
 
     while(
-        quizWord.scrollWidth > quizWord.clientWidth &&
+        (quizWord.scrollWidth > quizWord.clientWidth ||
+        quizWord.scrollHeight > quizWord.clientHeight)
+        &&
         size > minSize
     ){
         size--;

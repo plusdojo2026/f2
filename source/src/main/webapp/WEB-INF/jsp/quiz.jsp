@@ -60,10 +60,11 @@ body{
 
 .text-overlay{
     position:absolute;
-    width:73%;
+    width:67%;
     top:20%;
     left:53%;
     transform:translate(-50%,-50%);
+    white-space: nowrap;
     text-align:center;
     color:#d2691e;
     font-size:72px;
