@@ -27,7 +27,7 @@ public class MagicServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		//jspからのキー入力値受け取り
-		int genre_no = 3; //= Integer.parseInt(request.getParameter("genre_no"));
+		int genre_no = Integer.parseInt(request.getParameter("genre_no"));
 		
 		Template temp = new Template(genre_no);
 		
