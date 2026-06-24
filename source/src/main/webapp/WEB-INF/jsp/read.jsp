@@ -92,6 +92,54 @@ html,body{
     transition: opacity 0.3s;
 }
 
+.tf.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.clear {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    color: yellow;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+
+.clear.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.clear-buttons {
+	position: absolute;  
+    margin-top: 30px;
+    display: flex;
+    gap: 40px;
+}
+
+.clear-buttons button {
+    font-size: 30px;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+.word-info {
+    position: absolute;   
+    top: 900px;           /* 好きな位置に調整 */
+    left: 100px;
+    color: white;
+    font-size: 28px;
+}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 </head>
@@ -105,59 +153,33 @@ html,body{
 		<img src="image/tv-screen1.png" class="screen hide">
 		<img src="image/tv-channel.png" class="channel" usemap="#channelMap">
 		<map name="channelMap">
-  			<area shape="rect" coords="620,1266,788,1434" href="#" alt="" id="channel_area"/>
+    		<area shape="rect" coords="620,1266,788,1434" href="#" alt="" id="channel_area"/>
 		</map>
-        <div class="read_word" id="read_word"><c:out value="${word.word}"></c:out></div>
-        <div class="tf" id="tf"></div>
-        <form id="ansForm" action="ReadServlet" method="post" class="ansForm">
-            <input type="text" name="pronounce" placeholder="Anser" class="ansText">
-        </form>
+
+		<div class="read_word" id="read_word"><c:out value="${word.word}"></c:out></div>
+		<div class="tf" id="tf"></div>
+		<div class="word-info">
+    		<div id="word-meaning"></div>
+    		<div id="word-pronounce"></div>
+		</div>
+		<div id="clear" class="clear">
+			<div>クリア！！</div>
+			<div class="clear-buttons">
+        		<button id="retry-btn">もう一度</button>
+        		<button id="end-btn">終了する</button>
+    		</div>
+		</div>
+		
+
+		<form id="ansForm" class="ansForm">
+    		<input type="text" id="pronounce" name="pronounce" placeholder="Answer" class="ansText">
+		</form>
 	</div>
 	
 	<script>
 	imageMapResize();
 	</script>
 	
-    <script>
-        'use strict'
-        const spoon1 = document.getElementById("screen1");
-        const spoon2 = document.getElementById("screen2");
-        const quiz_word = document.getElementById("read_word");
-		let actiond = false;
-		let startTime = null;
-
-        function animate(timestamp) {
-            
-
-
-	        //お題変更機能
-			 if (!actiond) {
-				actiond = true;//ここでtrueにすることで上の!actiondが動作しない
-				fetch("ReadServlet?reroll=true")
-				.then(res => res.json())
- 				.then(data => {
-					document.getElementById("read_word").innerText = data.theme;
-   				});
-				actiond = false;
-			}
-    
-        }
-
-        // クリックでアニメーション開始
-        const tv_area = document.getElementById("tv_area");
-
-        tv_area.addEventListener("click", (e) => {
-            e.preventDefault(); // href="#" の遷移を止める
-            startTime = null;
-            requestAnimationFrame(animate);
-        });
-        
-        const channel_area = document.getElementById("channel_area");
-        
-        channel_area.addEventListener("click",(e) =>{
-        	const ans = document.getElementById("ansForm");
-        	ans.submit();
-        });
-    </script>
+    <script src="js/read.js"></script>
 </body>
 </html>
