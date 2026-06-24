@@ -58,14 +58,16 @@ body{
 }
 
 
-.text-overlay {
-  position: absolute;
-  top: 20%;        /* 上からの位置 */
-  left: 52%;       /* 左からの位置 */
-  transform: translate(-50%, -50%); /* 中央に配置 */
-  color: #d2691e;
-  font-size: 35px;
-  font-weight: bold;
+.text-overlay{
+    position:absolute;
+    width:73%;
+    top:20%;
+    left:53%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    color:#d2691e;
+    font-size:72px;
+    font-weight:bold;
 }
 
 .btn_box{
