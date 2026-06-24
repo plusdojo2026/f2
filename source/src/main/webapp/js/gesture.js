@@ -8,6 +8,8 @@
 	.then(res => res.json())
  	.then(data => {
     	document.getElementById("gesture_word").innerText = data.theme;
+    	adjustGestureWord();
+    	
    	});
  }
  
@@ -19,3 +21,26 @@ bearnose.addEventListener("click", (e) => {
     requestAnimationFrame(animate);
 });
 
+//フォントサイズ自動調整
+function adjustGestureWord(){
+
+    const gestureWord = document.getElementById("gesture_word");
+
+    let size = 36;
+    const minSize = 18;
+
+    gestureWord.style.fontSize = size + "px";
+
+    while(
+        (gestureWord.scrollWidth > gestureWord.clientWidth ||
+         gestureWord.scrollHeight > gestureWord.clientHeight)
+        &&
+        size > minSize
+    ){
+        size--;
+        gestureWord.style.fontSize = size + "px";
+    }
+
+}
+
+adjustGestureWord();

@@ -89,6 +89,7 @@ function animate(timestamp) {
 			.then(res => res.json())
  			.then(data => {
     			document.getElementById("quiz_word").innerText = data.theme;
+    			adjustQuizWord();
    			});
  	}
 	
@@ -110,6 +111,7 @@ function animate(timestamp) {
     
 }
 
+//ヘルプボタンの処理
 function help(){
 
     const overlay=document.getElementById("overlay");
@@ -120,6 +122,7 @@ function help(){
 	console.log(document.getElementById("setumei").innerHTML);
 }
 
+//ヘルプ内の戻るボタン処理
 function closeHelp(){
 
     const overlay=document.getElementById("overlay");
@@ -129,6 +132,30 @@ function closeHelp(){
     setumei.classList.remove("show");
 
 }
+
+//文字数に応じてフォントサイズを変える処理
+function adjustQuizWord(){
+
+    const quizWord = document.getElementById("quiz_word");
+
+    let size = 36;      // 初期サイズ
+    const minSize = 15; // 最小サイズ
+
+    quizWord.style.fontSize = size + "px";
+
+    while(
+        (quizWord.scrollWidth > quizWord.clientWidth ||
+        quizWord.scrollHeight > quizWord.clientHeight)
+        &&
+        size > minSize
+    ){
+        size--;
+        quizWord.style.fontSize = size + "px";
+    }
+
+}
+
+adjustQuizWord();
 
 // クリックでアニメーション開始
 const spoon1_area = document.getElementById("spoon1_area");

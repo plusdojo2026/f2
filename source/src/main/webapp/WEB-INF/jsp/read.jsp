@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>読み当てゲーム</title>
 <style>
 html,body{
@@ -12,8 +13,32 @@ html,body{
     overflow:hidden;
 }
 
+html{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+}
+body{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+}
+.box{
+	width:390px;
+	height:844px;
+	position:relative;
+	overflow:hidden;
+	background-color:red;
+	margin:0;
+}
+
 .read {
-    margin: 8px;
+    margin: 0;
     position: relative;
     display: inline-block;
     width: 100%;
@@ -30,15 +55,15 @@ html,body{
 
 .screen {
     position: absolute;
-    top: -95px;   /* 上からの位置 */
-    left: 22.5px;  /* 左からの位置 */
+    top: -40px;   /* 上からの位置 */
+    left: 11.25px;  /* 左からの位置 */
     max-width: 95%;
     transform:scale(0.9);
 }
 
 .channel {
     position: absolute;
-    top: -50px;   /* 上からの位置 */
+    top: -20px;   /* 上からの位置 */
     left: 15%;  /* 左からの位置 */
     max-width: 90%;
 }
@@ -54,7 +79,7 @@ html,body{
 	left: 50%;       /* 左からの位置 */
 	transform: translate(-50%, -50%); /* 中央に配置 */
 	color: white;
-	font-size: 72px;
+	font-size: 32px;
 	font-weight: bold;
 	text-shadow: 0 0 5px black; /* 読みやすくする */
 	z-index:50;
@@ -67,16 +92,16 @@ html,body{
 }
 
 .ansText{
- 	height: 150px;
- 	width: 110%;
-	font-size: 72px;
+ 	height: 60px;
+ 	width: 100%;
+	font-size: 24px;
 	font-weight: bold;
-	padding: 10px;
+	padding: 5px;
 	background-color: #ddd;
 }
 
 .tf {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -92,72 +117,200 @@ html,body{
     transition: opacity 0.3s;
 }
 
+.tf.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.clear {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    color: yellow;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+    z-index:80;
+}
+
+.clear.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.clear-buttons {
+	position: absolute;  
+    margin-top: 30px;
+    bottom: 2000px;
+    display: flex;
+    gap: 40px;
+}
+
+.clear-buttons button {
+    font-size: 20px;
+    padding: 10px 24px;
+    cursor: pointer;
+}
+
+.word-info {
+    position: absolute;   
+    top: 600px;           /* 好きな位置に調整 */
+    left: 5px;
+    color: white;
+    font-size: 28px;
+}
+
+.btn_box{
+    position:absolute;
+    z-index:10;
+}
+
+.back{
+    left:20px;
+    top:20px;
+}
+
+.help{
+    right:20px;
+    top:20px;
+}
+
+.btn{
+    display:inline-block;
+	
+	width: 60px;
+    padding:10px 18px;
+
+    background:rgb(90,95,170);
+    color:#fff;
+
+    border:2px solid #333;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    font-size:18px;
+    font-weight:bold;
+    padding-left: 30px
+}
+
+.overlay{
+    display:none;
+
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.5);
+    z-index:100;
+}
+
+.setumei{
+    display:none;
+
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+
+    z-index:101;
+
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+.setumei.show{
+    display:block;
+}
+
+.close-btn{
+    display:block;
+    margin-top:20px;
+    padding:8px 16px;
+    cursor:pointer;
+}
+
+@media (max-width:390px){
+
+#screen{
+    width:100vw;
+    height:100vh;
+}
+
+.quiz{
+    width:100%;
+    height:100%;
+}
+
+}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 </head>
 <body>
+<div class="box">
 	<div class="read">
 		<img src="image/tv-back-haikei.png" class="tv" id="tv" usemap="#tvMap">
 		<map name="tvMap">
 			<area shape="rect" coords="4,168,390,451" href="#" alt="" id="tv_area"/>
 		</map>
-		<img src="image/tv-screen.png" class="screen" id="screen1">
-		<img src="image/tv-screen1.png" class="screen hide">
+		<img src="image/tv-screen.png" class="screen" id="screen1" style="pointer-events: none;">
+		<img src="image/tv-screen1.png" class="screen hide" id="screen2" style="pointer-events: none;">
 		<img src="image/tv-channel.png" class="channel" usemap="#channelMap">
 		<map name="channelMap">
-  			<area shape="rect" coords="620,1266,788,1434" href="#" alt="" id="channel_area"/>
+    		<area shape="rect" coords="620,1266,788,1434" href="#" alt="" id="channel_area"/>
 		</map>
-        <div class="read_word" id="read_word"><c:out value="${word.word}"></c:out></div>
-        <div class="tf" id="tf"></div>
-        <form id="ansForm" action="ReadServlet" method="post" class="ansForm">
-            <input type="text" name="pronounce" placeholder="Anser" class="ansText">
-        </form>
+
+		<div class="read_word" id="read_word"><c:out value="${word.word}"></c:out></div>
+		
+		<div class="btn_box back">
+	  		<a href="/f2/HomeServlet" class="btn animation">Back</a>
+		</div>
+		<div class="btn_box help">
+	  		<div class="btn animation" onclick="help()">Help</div>
+		</div>
+		
+		<div class="tf" id="tf"></div>
+		<div class="word-info">
+    		<div id="word-meaning"></div>
+    		<div id="word-pronounce"></div>
+		</div>
+		<div id="clear" class="clear">
+			<div>クリア！！</div>
+			<div class="clear-buttons">
+        		<button id="retry-btn">もう一度</button>
+        		<button id="end-btn">終了する</button>
+    		</div>
+		</div>
+		
+
+		<form id="ansForm" class="ansForm">
+    		<input type="text" id="pronounce" name="pronounce" placeholder="Answer" class="ansText">
+		</form>
 	</div>
 	
+	<div class="overlay" id="overlay"></div>
+    <div class="setumei" id="setumei">
+    テレビ画面をたたけ<br>そこにすべてがある。
+    <button id="closeBtn" class="close-btn" onclick="closeHelp()">閉じる</button>
+    </div>
+	
+</div>
 	<script>
 	imageMapResize();
 	</script>
 	
-    <script>
-        'use strict'
-        const spoon1 = document.getElementById("screen1");
-        const spoon2 = document.getElementById("screen2");
-        const quiz_word = document.getElementById("read_word");
-		let actiond = false;
-		let startTime = null;
-
-        function animate(timestamp) {
-            
-
-
-	        //お題変更機能
-			 if (!actiond) {
-				actiond = true;//ここでtrueにすることで上の!actiondが動作しない
-				fetch("ReadServlet?reroll=true")
-				.then(res => res.json())
- 				.then(data => {
-					document.getElementById("read_word").innerText = data.theme;
-   				});
-				actiond = false;
-			}
-    
-        }
-
-        // クリックでアニメーション開始
-        const tv_area = document.getElementById("tv_area");
-
-        tv_area.addEventListener("click", (e) => {
-            e.preventDefault(); // href="#" の遷移を止める
-            startTime = null;
-            requestAnimationFrame(animate);
-        });
-        
-        const channel_area = document.getElementById("channel_area");
-        
-        channel_area.addEventListener("click",(e) =>{
-        	const ans = document.getElementById("ansForm");
-        	ans.submit();
-        });
-    </script>
+    <script src="js/read.js"></script>
 </body>
 </html>

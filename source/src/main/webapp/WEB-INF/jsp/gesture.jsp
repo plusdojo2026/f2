@@ -5,30 +5,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ジェスチャーゲーム|じぇね×りんく</title>
 <style>
 
-html{
-    /* スクロール禁止 */
-   	margin:0;
-   	padding:0;
-   	width:100%;
-   	height:100%;
-}
-
 body{
+    margin:0;
+    width:100%;
+    height:100%;
+
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
 .view{
-	width:390px;
+    width:390px;
     height:844px;
 
-    overflow:hidden;
-    background-color:red;
     position:relative;
+    overflow:hidden;
+
+    margin:auto;
+    background-color:red;
 }
 
 #camera {
@@ -68,13 +67,18 @@ body{
 
 .gesture_word {
     position: absolute;
-  	top: 70%;        /* 上からの位置 */
-  	left: 51.25%;       /* 左からの位置 */
-  	transform: translate(-50%, -50%); /* 中央に配置 */
-  	color: #663600;
-  	font-size: 36px;
-  	font-weight: bold;
-  	text-shadow: 0 0 5px #473838; 
+    top: 67%;
+    left: 51.25%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+
+    width: 76%;          /* 追加 */
+    text-align: center;  /* 追加 */
+
+    color: #663600;
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 0 0 5px #473838;
 }
 
 /* 戻るボタン１ */
@@ -154,29 +158,29 @@ body{
  }
  
  .overlay{
- 	position:fixed;
-	top:0;
-	left:0;
-	width:100vw;
-	height:100vh;
-	background:rgba(0,0,0,0.3);
-	display:none;
-	justify-content:center;
-	align-items:center;
-	z-index:100;
- }
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.3);
+    z-index:100;
+}
  
- .setumei{
- 	background-color:white;
- 	position:absolute;
- 	width:50%;
- 	height:50%;
- 	margin:0;
-	opacity:0;
-	visibility: hidden;
-	z-index:1001;
-	transition:opacity 0.5s,visibility 0.5s;
- }
+.setumei{
+    display:none;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:70%;
+    max-width:300px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    z-index:101;
+}
  .setumei.show{
  	display:block;
 	visibility: visible;
@@ -193,6 +197,15 @@ body{
 	cursor: pointer;
 	padding: 5px 10px;
 	border-radius: 4px;
+}
+
+@media (max-width:390px){
+
+    .view{
+        width:100vw;
+        height:100vh;
+    }
+
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
@@ -221,7 +234,7 @@ body{
     
     <div class="overlay" id="overlay"></div>
     <div class="setumei" id="setumei">
-    あｋｄｓぁｆｊｄｌｋｆじゃｌｄｆじゃｌｋｓｊｄｆぁｓｆｄ
+    鼻を押せ。<br>そこにすべてがある。
     <button id="closeBtn" class="close-btn" onclick="closeHelp()">閉じる</button>
     </div>
 </div>   
@@ -253,23 +266,24 @@ resize();
 window.addEventListener("resize", resize);
 
 function help(){
-	const overlay=document.getElementById('overlay');
-	const setumei=document.getElementById('setumei');
-	
-	setumei.style.top=300+"px";
-	setumei.style.left=300+"px";
-	overlay.style.display='flex';
-	setumei.classList.add('show');	
+
+    const overlay=document.getElementById("overlay");
+    const setumei=document.getElementById("setumei");
+
+    overlay.style.display="block";
+    setumei.classList.add("show");
+
 }
 
 
 function closeHelp(){
-	const setumei =document.getElementById('setumei');
-	const overlay = document.getElementById('overlay');
-	
-    setumei.classList.remove('show');
-    setumei.style.display = 'none';
-    overlay.style.display = 'none';
+
+    const setumei = document.getElementById("setumei");
+    const overlay = document.getElementById("overlay");
+
+    setumei.classList.remove("show");
+    overlay.style.display = "none";
+
 }
 </script>
 </html>

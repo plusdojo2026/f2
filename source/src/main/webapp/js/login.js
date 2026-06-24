@@ -23,8 +23,8 @@ const cameraPos = {
 		
 		slide:{
 			board:{
-				x:200,
-				y:100
+				x:700,
+				y:590
 			}
 		}
 	},
@@ -58,24 +58,25 @@ function move(position, animate = true){
 
 //新規登録→登録完了画面時など、スライドする時に使うもの
 function slide(toPosition, duration = 1500){
-	
-	const from = cameraPos[sceneName];
 
-	let x;
-	let y;
-	
-	if(from.slide && from.slide[toPosition]){
-	    x = from.slide[toPosition].x;
-	    y = from.slide[toPosition].y;
-	}else{
-	    x = cameraPos[toPosition].x;
-	    y = cameraPos[toPosition].y;
-	}
+    const fromScene = document.body.dataset.from;
+    const from = cameraPos[fromScene];
+    const to = cameraPos[toPosition];
 
-	camera.style.transition = `transform ${duration}ms ease`;
-	
-	camera.style.transform = `translate(${x}px, ${y}px) scale(${currentZoom})`;
+    let x;
+    let y;
 
+    if(from && from.slide && from.slide[toPosition]){
+        x = from.slide[toPosition].x;
+        y = from.slide[toPosition].y;
+    }else{
+        x = to.x;
+        y = to.y;
+    }
+
+    camera.style.transition = `transform ${duration}ms ease`;
+
+    camera.style.transform = `translate(${x}px, ${y}px) scale(${to.zoom})`;
 }
 
 
@@ -133,7 +134,7 @@ function initScene(){
 	if(sceneName == "board" && from == "signup"){
 		move("signup", false);
 		
-		requestAnimationFrame(function(){
+		setTimeout(function(){
 			slide("board");
 		});
 		return;
@@ -217,6 +218,13 @@ function setBack(selector, position, nextPage, effect, fromPosition = null){
     });
 }
 
+const logoutForm = document.querySelector(".input2");
+
+if(logoutForm){
+    logoutForm.addEventListener("click", function(e){
+        e.stopPropagation();
+    });
+}
 
 // メニュー画面のボタン
 setHover(".loginHover","login","/f2/LoginServlet?from=menu","zoom");
