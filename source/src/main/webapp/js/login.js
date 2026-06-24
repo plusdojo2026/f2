@@ -231,6 +231,25 @@ setBoard("#board","menu","/f2/MenuServlet?from=board");
 setBoard("#board","menu","/f2/MenuServlet?from=signup");
 
 
+//home画面に行くためのボタン
+const homeBack = document.querySelector(".homeBack");
+
+if(homeBack){
+
+    homeBack.addEventListener("mouseenter", function(){
+        homeBack.style.background = "rgba(255,255,255,.2)";
+    });
+
+    homeBack.addEventListener("mouseleave", function(){
+        homeBack.style.background = "transparent";
+    });
+
+    homeBack.addEventListener("click", function(){
+        location.href = "/f2/HomeServlet";
+    });
+
+}
+
 // ログイン画面・新規登録画面の戻るボタン
 // （作ったら有効になる）
 function setBackButton(selector, fromScene){
