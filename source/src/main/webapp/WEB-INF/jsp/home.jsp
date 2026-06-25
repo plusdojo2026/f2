@@ -5,10 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ホーム画面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-
+@media (max-width:390px){
+    #screen{
+        width:100vw;
+        height:100vh;
+    }
+}
             html{
                 margin:0;
                 padding:0;
@@ -16,6 +21,7 @@
                 height:100%;
             }
             body{
+            	margin:0;
                 display:flex;
                 justify-content:center;
                 align-items:center;
@@ -25,7 +31,7 @@
                 height:844px;
                 position:relative;
                 overflow:hidden;
-                background-color:red;
+                margin:0;
             }
 img{
     width:100%;
@@ -34,77 +40,70 @@ img{
     vertical-align: bottom;
 }
 .zentai{
-    background-color:purple;
     width:100%;
     height:100%;
     margin:0;
     /* display:block; */
-    transition:transform 0.5s ease;
+    transition:transform 0.7s ease;
     transform:translate(0px,-422px) scale(2);
 }
 .zentai.top{
-    transition:transform 0.5s ease;
+    transition:transform 1s ease;
     transform:translate(0px,422px) scale(2);
 }
 .zentai.left{
-    transition:transform 0.5s ease;
+    transition:transform 0.7s ease;
     transform:translate(195px,-500px) scale(2);
 }
 .zentai.right{
-    transition:transform 0.5s ease;
+    transition:transform 0.7s ease;
     transform:translate(-195px,-500px) scale(2);
 }
 .zentai.center{
-    transition:transform 0.5s ease;
+    transition:transform 0.7s ease;
     transform:translate(0px,-500px) scale(2);
 }
 
 .main{
-    /* background-color:aquamarine; */
     display:flex;
     width:100%;
     height:50%;
     margin:0;
 }
 .main2{
-    /* background-color:aquamarine; */
     display:flex;
     width:100%;
     height:25%;
     margin:0;
 }
 .side{
-    background-color:yellow;
     width:25%;
     height:100%;
     margin:0;
 }
 .gamen{
-    background-color:red;
     margin:0;
     width:50%;
     height:100%;
 }
 .shelf{
     position:absolute;
-    background-color:dodgerblue;
     width:100%;
     height:50%;
 }
 .shelf img{
-    /* left:-25px; */
+     left:-1.5%; 
     position:absolute;
 }
 .form-search{
-    background-color:yellow;
-    top:30%;
-    left:32%;
+    top:35%;
+    left:30%;
     width:40%;
     height:17%;
     position:absolute;
+    z-index:100;
 }
 .search-title{
-    background-color:yellowgreen;
     width:100%;
     height:20%;
     font-size:10%;
@@ -112,78 +111,67 @@ img{
     margin-top:0px;
 }
 .select-eraandgenre{
-    background-color:azure;
     width:100%;
-    height:15%;
+    height:35%;
     margin-top:5%; 
     display:flex;
 }
 .age{
-    background-color:fuchsia;
     height:100%;
-    width:20%;
+    width:30%;
     left:10%;
-    margin:0 10% 0 20%;
 }
 .genre{
-    background-color: indianred;
-    height:20%;
-    width:20%;
+    height:100%;
+    width:30%;
     right:10%;
-    margin:0 20% 0 10%;
 }
 .selectbox{
-    font-size:10%;
+    font-size:6px;
     text-align:center;
 }
 select{
-    font-size:10%;
+    font-size:6px;
     width:100%;
     height:50%;
     text-align:center;
 }
 .searchbox{
     text-align:center;
-    margin:15px 0 0 0;
     width:100%;
-    height:50px;
-    background-color:salmon;
+    height:22%;
 }
 input.word{
-    font-size:20px;
+    font-size:10%;
     height:100%;
     width:80%;
 }
 input.sub{
-    font-size:20px;
+    text-align: center;
+    font-size:6px;
     height:100%;
     width:15%;
 }
 .gamen2{
-    background-color:pink;
     margin:0;
     width:50%;
     height:100%;
 }
 .record{
-    /* transform-origin:center center; */
-    /* background-color:blue; */
     width:45%;/*700px*/
-    height:25%;/*1000px*/
+    height:29%;/*1000px*/
     /*カーソル形式*/
     cursor:pointer;
     text-align: center;
     transition: clip-path 0.5s;
+    transform-origin: bottom;
     transform:translate(-50%,0%);
     position:absolute;
-    transition: 0.5s ease;
-    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
+    transition: 1s ease;
     padding:0;
 }
 .record img{
     margin:0;
-    /* width:700px;
-    height:1000px; */
     width:100%;
     height:auto;
     position:absolute;
@@ -192,34 +180,36 @@ input.sub{
 }
 
 .record-top{
+    position:absolute;
+    top:0%;
     width:100%;
     height:100%;
     margin:0;
-    transition:transform 0.5s ease;
+    transform-origin:bottom center;
+    transition:transform 1s ease;
 }
 .record.polygon{
-    /* clip-path:polygon(10% 30%,90% 30%,100% 70%,0 70%); */
-    height:100px;
-    transition:transform 0.5s ease;
-    /* transform:translate(0,-20%); */
+    transform:scaleY(1) translate(-50%,-80%);
+    transition:transform 1s ease;
 }
 .record-top.polygon{
-    /* clip-path:polygon(10% 30%,90% 30%,100% 70%,0 70%); */
-    transition:transform 0.5s ease;
+    transition:transform 1s ease;
     transform:scaleY(0.1);
 }
 .record-under{
+    top:97%;
+    position:absolute;
     width:100%;
-    height:300px;
+    height:34%;
     margin:0;
-    /* background-color:blue; */
     transform-origin:top center;
-    transition: 0.5s ease;
-    transform:rotateX(90deg) translateY(9%);
+    transition:transform 1s ease;
+    transform:rotateX(90deg) translate(0%);
 }
 
 .record-under.polygon{
-    transform:rotateX(0deg) translateY(-10.5%); 
+    transition:transform 1s ease;
+    transform:rotateX(0deg) translateY(7%); 
 }
 
 .loop{
@@ -243,32 +233,30 @@ input.sub{
 .game{
     width:100%;
     height:25%;
-    background-color: blueviolet;
     transition: 0.5s ease;
 }
 
     .desk{
-/*        background-color:aquamarine;*/
         position:absolute;
         width:100%;
         height:auto;
         margin:0;
-        transition:transform 0.5s ease;
-/*        transition: clip-path 0.5s;*/
+        transition:transform 1s ease;
         transform-origin:center center;
-/*        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);*/
     }
     
     .desk.polygon{
-        transition:transform 0.5s ease;
+        transition:transform 1s ease;
         transform:perspective(500px) rotateX(65deg) skewX(-5deg) translate(0px,0px) scaleX(1.3);
-        /* transform:perspective(500px) translate(0px,0%) scaleX(1); */
-/*        clip-path:polygon(10% 30%,90% 30%,100% 70%,0 70%);*/
     }
     
+    .floor{
+    	position:absolute;
+    	width:100%;
+    	height:auto;
+    	margin:0;
+    }
 .letter{
-    /* transform-origin:center center; */
-    /* background-color:green; */
     cursor:pointer;
     width:31%;
     height:19%;
@@ -290,14 +278,12 @@ input.sub{
     height:50%;
     margin:0;
     position:relative;
-    /* background-color:yellowgreen; */
 }
 .letter2{
     width:100%;
     height:100%;
     margin:0;
     position:absolute;
-    /* background-color:black; */
     transform-origin:top center;
     transition:transform 0.5s ease;
     transform:rotateX(0deg);
@@ -310,8 +296,6 @@ input.sub{
     height:100%;
     margin:0;
     position:absolute;
-    /* display:none; */
-    /* background-color:white; */
     transform-origin:bottom center;
     transition:transform 0.5s ease;
     transform:rotateX(90deg);
@@ -334,12 +318,10 @@ input.sub{
 }
 
 .letdocument{
-    /* background-color: blanchedalmond; */
     width:47%;
     height:10%;
     margin:0;
     position:absolute;
-/*    display:none;*/
     opacity:0;
     visibility: hidden;
     z-index:1001;
@@ -350,30 +332,6 @@ input.sub{
     display:block;
     visibility: visible;
     opacity:1;
-}
-.selectQuiz{
-    background-color:red;
-    position:absolute;
-    width:70%;
-    height:20%;
-    top:90%;
-    left:20%
-}
-.selectGesture{
-    background-color:blue;
-    position:absolute;
-    width:70%;
-    height:20%;
-    top:150%;
-    left:20%
-}
-.selectRead{
-    background-color:yellow;
-    position:absolute;
-    width:70%;
-    height:20%;
-    top:200%;
-    left:20%;
 }
 
 .button{
@@ -391,8 +349,6 @@ input.sub{
 }
 
 .eight{
-    /* transform-origin:center center; */
-    /* background-color:darkgray; */
     cursor:pointer;
     width:80px;
     height:80px;
@@ -457,17 +413,13 @@ input.sub{
     position:absolute;
 }
 .record-case{
-    /* transform-origin:center center; */
-    /* background-color:aqua; */
     cursor:pointer;
     width:32%;
     height:20%;
     position:absolute;
     transition: 0.5s ease;
 }
-/* .record-case.bigrecordcase{
-    transform:scale(1.4);
-} */
+
 .record-case img{
     position:absolute;
 }
@@ -509,15 +461,6 @@ input.sub{
     width:10%;
     height:5%;
     background-color: blue;
-}
-
-@media (max-width:390px){
-
-#screen{
-    width:100vw;
-    height:100vh;
-}
-
 }
 
 </style>
@@ -571,6 +514,7 @@ input.sub{
 </div>
 
 <!--背景-->
+<img src="image/floor.JPG" class="floor" id="floor">
 <div class="desk" id="desk">
     <img src="image/背景3.png">
 </div>
@@ -579,13 +523,13 @@ input.sub{
     <div class="side"></div>
     
     <div class="gamen2" Id="gamen2">
-        <div class="record" id="record" data-mode="random" onclick="goToPosition()">
-            <div class="record-top" id="record-top">
+        <div class="record" id="record">
+            <div class="record-top" id="record-top"  data-mode="random" onclick="goToPosition()">
                 <img src="image/record-player-notuse90.png">
                 <img src="image/record-notuse90.png" class="loop" id="loop">
                 <img src="image/record-needle90.png">
             </div>
-            <div class="record-under" id="record-under">
+            <div class="record-under" id="record-under" onclick="goToPosition()">
                 <img src="image/record-player-under.png">
             </div>
             
@@ -649,9 +593,6 @@ input.sub{
   		<area shape="rect" coords="103,1016,1570,1344" href="/f2/GestureServlet" alt="" />
   		<area shape="rect" coords="119,1445,1560,1744" href="/f2/ReadServlet" alt="" />
 	</map>
-   <%-- <div class="selectQuiz" id="selectQuiz" onclick="quizServlet()"></div>
-    <div class="selectGesture" id="selectGesture"  onclick="gestureServlet()"></div>
-    <div class="selectRead" id="selectRead" onclick="readServlet()"></div> --%>
 </div>
 
 <div class="eightright" id="eightright" onclick="selectRight()"></div>
@@ -676,23 +617,6 @@ if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
     
-const BASE_WIDTH = 390;
-const BASE_HEIGHT = 844;
-
-const container = document.querySelector(".box");
-
-function resize() {
-    const scale = Math.min(
-        window.innerWidth / BASE_WIDTH,
-        window.innerHeight / BASE_HEIGHT
-    );
-
-    container.style.transform = `scale(${scale})`;
-    container.style.transformOrigin = "center center";
-}
-
-resize();
-window.addEventListener("resize", resize);
     
 //移動画像の座標指定用関数(absoluteはid取得のみ変更可能)
 const zentai=document.getElementById('zentai');
@@ -708,6 +632,7 @@ const left=document.getElementById('eightleft');
 const shelf=document.getElementById('shelf');
 const desk=document.getElementById('desk');
 const menu=document.getElementById('menu');
+const floor=document.getElementById('floor');
 
 
 function setRecordPosition(x,y){
@@ -759,6 +684,10 @@ function setMenuPosition(x,y){
     menu.style.top=y+"px";
     menu.style.left=x+"px";
 }
+function setFloorPosition(x,y){
+	floor.style.top=y+"px";
+    floor.style.left=x+"px";
+}
 
 //読み込み時、画面中央を表示
 window.onload=function(){
@@ -774,6 +703,7 @@ window.onload=function(){
     setRightPosition(101,660);
     setLeftPosition(266,660);
     setDeskPosition(0,422);
+    setFloorPosition(0,422);
     setShelfPosition(0,0);
     setMenuPosition(110,434);
     
@@ -1013,7 +943,7 @@ function goToCenter(){
         left.classList.remove('show');
         
         eight.classList.add('shake-animation');
-        
+
         eight.addEventListener('animationend',() =>{
         document.getElementById('magic-form').submit();
         },{once: true})
@@ -1042,15 +972,6 @@ function selectLeft(){
     magicgenre.textContent=val;
 }
 
-function quizServlet(){
-	window.location.href="QuizServlet";
-}
-function gestureServlet(){
-	window.location.href="GestureServlet";
-}
-function readServlet(){
-	window.location.href="ReadServlet";
-}
 function menuServlet(){
 	window.location.href="MenuServlet";
 }
