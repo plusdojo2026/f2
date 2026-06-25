@@ -67,7 +67,7 @@ body{
     white-space: nowrap;
     text-align:center;
     color:#d2691e;
-    font-size:72px;
+    overflow:hidden;
     font-weight:bold;
 }
 

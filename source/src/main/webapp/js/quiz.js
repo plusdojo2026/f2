@@ -69,8 +69,10 @@ function animate(timestamp) {
     spoon2.style.opacity = 0 + progress * 0.3;
     spoon2.style.transform = `translate(${x}px, ${y}px)  rotateZ(${rotateZ}deg)`;
     spoon2.style.opacity = 1 - progress * 0.3;
-
-    if (progress > 0.7) {
+	
+	let adjusted = false;
+	
+    if (progress > 0.7 && !adjusted) {
          let fadeInProgress = (progress - 0.7) / 0.3; // 0〜1 に正規化
 
         steam.style.opacity = fadeInProgress;
@@ -80,18 +82,31 @@ function animate(timestamp) {
         steam.classList.remove("off");
            spoon1.classList.remove("off");
         quiz_word.classList.remove("off");
+        
+        adjustQuizWord();
+        
+        adjusted = true;
     }
 	
 	 //お題変更機能
-    if (!actiond) {
-        actiond = true;//ここでtrueにすることで上の!actiondが動作しない
-    	fetch("QuizServlet?reroll=true")
-			.then(res => res.json())
- 			.then(data => {
-    			document.getElementById("quiz_word").innerText = data.theme;
-    			adjustQuizWord();
-   			});
- 	}
+  if (!actiond) {
+
+    actiond = true;
+
+    fetch("QuizServlet?reroll=true")
+        .then(res => res.json())
+        .then(data => {
+
+            const quizWord = document.getElementById("quiz_word");
+
+            quizWord.innerText = data.theme;
+
+            requestAnimationFrame(() => {
+
+                adjustQuizWord();
+            });
+        });
+}
 	
     if (progress < 1) {
         requestAnimationFrame(animate);
@@ -140,7 +155,8 @@ function adjustQuizWord(){
 
     let size = 36;      // 初期サイズ
     const minSize = 15; // 最小サイズ
-
+	
+	// 毎回リセット
     quizWord.style.fontSize = size + "px";
 
     while(
