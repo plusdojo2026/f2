@@ -153,6 +153,7 @@ body{
     left: 5px;
     color: white;
     font-size: 16px;
+    z-index:71;
 }
 
 .btn_box{
