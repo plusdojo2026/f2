@@ -827,6 +827,7 @@ function goToPosition(){
         record.classList.remove('polygon');
         recordtop.classList.remove('polygon');
         recordunder.classList.remove('polygon');
+        menu.style.display='block';
     }
 }
 
@@ -954,7 +955,7 @@ function closeRayer(){
         right.classList.remove('show');
         left.classList.remove('show');
         overlay.style.display = 'none';
-        menu.style.display='none';
+        magicgenre.style.display='none';
         fortune='genre';
     }
     
