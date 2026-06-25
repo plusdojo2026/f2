@@ -102,6 +102,7 @@ body{
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
+    z-index: 70;
 }
 
 .tf.show {
@@ -151,7 +152,7 @@ body{
     top: 600px;           /* 好きな位置に調整 */
     left: 5px;
     color: white;
-    font-size: 28px;
+    font-size: 16px;
 }
 
 .btn_box{
