@@ -1011,9 +1011,12 @@ function goToCenter(){
         setEightPosition(155,650);
         right.classList.remove('show');
         left.classList.remove('show');
-        document.getElementById('magic-form').submit();
         
         eight.classList.add('shake-animation');
+        
+        eight.addEventListener('animationend',() =>{
+        document.getElementById('magic-form').submit();
+        },{once: true})
     }
 }
 
