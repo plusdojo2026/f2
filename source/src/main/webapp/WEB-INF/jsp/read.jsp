@@ -61,11 +61,6 @@ body{
     transform:scale(0.9);
 }
 
-.off {
-    position: absolute;
-   	display: none;
-}
-
 .channel {
     position: absolute;
     top: 55%;   /* 上からの位置 */

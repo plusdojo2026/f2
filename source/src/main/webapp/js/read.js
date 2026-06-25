@@ -18,24 +18,30 @@
 			
 			if (progress > 1) progress = 1;
 			
-    		screen2.classList.remove("off");
+    		screen2.classList.remove("hide");
     		
     		if (fade === true) {
+				let rw = Math.min(progress * 1.5, 1);
+	
     			screen1.style.opacity = (1-progress);
     			screen2.style.opacity = progress;
-    			read_word.style.opacity = (1-progress);
+    			read_word.style.opacity = (1-rw);
 				
 				if (progress >= 1) {
             		fade = false;
             		startTime = timestamp; // 時間をリセット
         		}
 			} else if (fade === false) {
+				let rw = Math.max((progress - 0.3) / 0.7, 0);
+				
 				screen1.style.opacity = progress;
     			screen2.style.opacity = (1-progress);
-    			read_word.style.opacity = progress;
+    			read_word.style.opacity = rw;
     			
     			if (progress >= 1) {
-					screen2.classList.add("off");
+					screen2.classList.add("hide");
+					actiond = false;
+        			return;
 				}
 			}
 			
@@ -48,16 +54,7 @@
 					document.getElementById("read_word").innerText = data.theme;
    				});
 			}
-			if (progress < 1) {
-        		requestAnimationFrame(animate);
-    		}else {
-        		// 終了後の後処理
-         		setTimeout(() => {
-            		screen2.classList.add("off");
-            		actiond = false;
-				});
-			}
-    
+    		requestAnimationFrame(animate);
         }
 
         // クリックでアニメーション開始
