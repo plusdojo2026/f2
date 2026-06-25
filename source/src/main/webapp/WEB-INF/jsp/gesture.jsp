@@ -57,8 +57,8 @@ body{
 
 .bearnose {
    	position: absolute;
-   	top: 50%;
-   	left: 50%;
+   	top: 422px;
+   	left: 195px;
    	transform: translate(-50%, -50%); 
    	max-width: 90%;
    	max-height: 90%;
@@ -67,8 +67,8 @@ body{
 
 .gesture_word {
     position: absolute;
-    top: 67%;
-    left: 51.25%;
+    top: 565.48px;
+    left: 199.875px;
     transform: translate(-50%, -50%);
     white-space: nowrap;
 
