@@ -212,6 +212,13 @@ input.sub{
     transform:rotateX(0deg) translateY(7%); 
 }
 
+.disk-word{
+	position:absolute;
+	text-align:center;
+	width:70%;
+	top:47%;
+	left:15%;
+}
 .loop{
     animation:move 3s linear infinite;
     transform-origin:50% 40.7%;
@@ -335,13 +342,26 @@ input.sub{
 }
 
 .button{
-    background-color:brown;
-    width:10%;
-    height:5%;
     margin:0;
     position:absolute;
     display:none;
     z-index:1000;
+    
+    width:50px;
+    height:30px;
+    padding:0;
+    background:rgb(90,95,170);
+    color:#fff;
+
+    cursor:pointer;
+    text-align:center;
+
+    text-decoration:none;
+
+    font-size:14px;
+    padding-top:9px;
+    font-weight:bold;
+    transform:scale(0.75);
 }
 .button.show{
     display:block;
@@ -362,6 +382,7 @@ input.sub{
 .eight-white{
     width:100%;
     height:100%;
+
     transform-origin: center;
     transform:scaleY(0.7) rotate(180deg) translate(-3px,25px);
 }
@@ -410,7 +431,15 @@ input.sub{
     animation: shake 0.8s ease-in-out;
 }
 .magic-genre{
+	font-size:13px;
+	text-align:center;
     position:absolute;
+    width:55%;
+    height:50%;
+    top:27%;
+    left:22%;
+    margin:0;
+    display:none;
 }
 .record-case{
     cursor:pointer;
@@ -458,9 +487,22 @@ input.sub{
 }
 .menu{
     position:absolute;
-    width:10%;
-    height:5%;
-    background-color: blue;
+    text-align:center;
+    width:90px;
+    height:30px;
+    padding:0;
+    background:rgb(90,95,170);
+    color:#fff;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    font-size:14px;
+    padding-top:9px;
+    font-weight:bold;
+    padding-left:1%;
+    transform:scale(0.75);
 }
 
 </style>
@@ -527,6 +569,7 @@ input.sub{
             <div class="record-top" id="record-top"  data-mode="random" onclick="goToPosition()">
                 <img src="image/record-player-notuse90.png">
                 <img src="image/record-notuse90.png" class="loop" id="loop">
+                <div class="disk-word"><c:out value="${word.word}"/></div>>
                 <img src="image/record-needle90.png">
             </div>
             <div class="record-under" id="record-under" onclick="goToPosition()">
@@ -545,7 +588,7 @@ input.sub{
             <div class="eight-white" id="eight-white">
                 <img src="image/eightball-white.png">
                 <form id="magic-form"method="POST" action="/f2/MagicServlet">
-                	<p class="magic-genre" id="magic-genre">pタグ</p>
+                	<p class="magic-genre" id="magic-genre">用語</p>
                 	<input type="hidden" id="magic-hidden" value="1" name="genre_no">
                 </form>
                 
@@ -580,12 +623,12 @@ input.sub{
 <div class="kuuhaku"></div>
 
 
-<div class="menu" id="menu" onclick="menuServlet()"></div>
+<div class="menu" id="menu" onclick="menuServlet()">メニュー</div>
 
 </div>
 <!-- レイヤー -->
 <div id="overlay" class="overlay"></div>
-<div class="button" id="button" onclick="closeRayer()"></div>
+<div class="button" id="button" onclick="closeRayer()">✕</div>
 <div class="letdocument" id="letdocument">
     <img src="image/letter-document2.png" usemap="#letterMap">
     <map name="letterMap">
@@ -705,7 +748,7 @@ window.onload=function(){
     setDeskPosition(0,422);
     setFloorPosition(0,422);
     setShelfPosition(0,0);
-    setMenuPosition(110,434);
+    setMenuPosition(95,427);
     
     
     
@@ -759,6 +802,7 @@ function goToPosition(){
     zentai.classList.remove('right');
     zentai.classList.remove('left');
     zentai.classList.remove('center');
+    menu.style.display='none';
     
 
     if(mode==='random'){
@@ -769,6 +813,7 @@ function goToPosition(){
         setTimeout(()=>{
             disk.classList.remove('random');
             disk.classList.add('loop');
+            window.location.href="HomeServlet";
         },500);
     }else if(mode==='backhome'){
         //ホームのホームに戻る
@@ -796,6 +841,7 @@ function goToLeft(){
     setRecordcasePosition(10,650);
     setEightPosition(300,643);
     setLetterPosition(300,660);
+    menu.style.display='none';
     
     setTimeout(()=>{
         case1.classList.add('big');
@@ -843,6 +889,7 @@ function goToRight(){
     setLetterPosition(235,650);
     setRecordcasePosition(0,715);
     setEightPosition(19,643);
+    menu.style.display='none';
 
     letter.classList.add('bigletter');
 
@@ -907,12 +954,14 @@ function closeRayer(){
         right.classList.remove('show');
         left.classList.remove('show');
         overlay.style.display = 'none';
+        menu.style.display='none';
         fortune='genre';
     }
     
 }
 
 let fortune='select';
+let magicgenre=document.getElementById('magic-genre');
 const eightwhite=document.getElementById('eight-white');
 function goToCenter(){
     // document.body.style.zoom='2.2';
@@ -920,6 +969,7 @@ function goToCenter(){
     setEightPosition(155,700);
     setLetterPosition(350,660);
     setRecordcasePosition(-100,715);
+    menu.style.display='none';
 
     eight.classList.add('bigeight');
     eightwhite.classList.add('show');
@@ -929,6 +979,7 @@ function goToCenter(){
         mode='backhome';
         fortune='genre';
     }else if(fortune==='genre'){
+    	magicgenre.style.display="block";
         setEightPosition(155,650);
         setButtonPosition(110,470);
         eight.classList.add('eight-genre');
@@ -951,7 +1002,7 @@ function goToCenter(){
 }
 
 let val=1;
-let magicgenre=document.getElementById('magic-genre');
+let word;
 let hidden=document.getElementById('magic-hidden');
 function selectRight(){
     console.log(val);
@@ -959,8 +1010,28 @@ function selectRight(){
     if(val>=6){
         val=1;
     }
+    magicgenre.style.fonsSize="13px";
+    switch(val){
+    case 1:
+    	word='用語';
+    	break;
+    case 2:
+    	word='物品・サービス';
+    	magicgenre.style.fonsSize="5px";
+    	break;
+    case 3:
+    	word='人物';
+    	break;
+    case 4:
+    	word='ゲーム・アニメ';
+    	magicgenre.style.fonsSize="5px";
+    	break;
+    case 5:
+    	word='音楽';
+    	break;
+    }
     hidden.value=val;
-    magicgenre.textContent=val;
+    magicgenre.textContent=word;
 }
 function selectLeft(){
     console.log(val);
@@ -968,8 +1039,28 @@ function selectLeft(){
     if(val<=0){
         val=5;
     }
+    magicgenre.style.fonsSize="13px";
+    switch(val){
+    case 1:
+    	word='用語';
+    	break;
+    case 2:
+    	word='物品・サービス';
+    	magicgenre.style.fonsSize="5px";
+    	break;
+    case 3:
+    	word='人物';
+    	break;
+    case 4:
+    	word='ゲーム・アニメ';
+    	magicgenre.style.fonsSize="5px";
+    	break;
+    case 5:
+    	word='音楽';
+    	break;
+    }
     hidden.value=val;
-    magicgenre.textContent=val;
+    magicgenre.textContent=word;
 }
 
 function menuServlet(){
