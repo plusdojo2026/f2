@@ -8,33 +8,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>読み当てゲーム</title>
 <style>
-html,body{
+body{
     /* スクロール禁止 */
+    margin:0;
     overflow:hidden;
 }
 
-html{
-	margin:0;
-	padding:0;
-	width:100%;
-	height:100%;
-}
-body{
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	margin:0;
-	padding:0;
-	width:100%;
-	height:100%;
-}
 .box{
-	width:390px;
-	height:844px;
 	position:relative;
-	overflow:hidden;
-	background-color:red;
-	margin:0;
+
+    width:390px;
+    height:844px;
+
+    margin:auto;
+    overflow:hidden;
 }
 
 .read {
@@ -63,8 +50,8 @@ body{
 
 .channel {
     position: absolute;
-    top: 55%;   /* 上からの位置 */
-    right: 5%;  /* 左からの位置 */
+    top: 464.2px;   /* 上からの位置 */
+    right: 19.5px;  /* 左からの位置 */
     max-width: 20%;
 }
 
@@ -75,8 +62,8 @@ body{
 
 .read_word{
  	position: absolute;
-	top: 37.5%;        /* 上からの位置 */
-	left: 50%;       /* 左からの位置 */
+	top: 316.5px;        /* 上からの位置 */
+	left: 195px;       /* 左からの位置 */
 	transform: translate(-50%, -50%); /* 中央に配置 */
 	color: white;
 	font-size: 32px;
@@ -86,8 +73,8 @@ body{
 }
 .ansForm{
 	position: absolute;
-	top: 60.5%;        /* 上からの位置 */
-	left: 40%;       /* 左からの位置 */
+	top: 510.62px;        /* 上からの位置 */
+	left: 156px;       /* 左からの位置 */
 	transform: translate(-50%, -50%); /* 中央に配置 */
 }
 
@@ -243,13 +230,13 @@ body{
 
 @media (max-width:390px){
 
-#screen{
+.box{
     width:100vw;
     height:100vh;
 }
 
-.quiz{
-    width:100%;
+.read{
+	width:100%;
     height:100%;
 }
 
