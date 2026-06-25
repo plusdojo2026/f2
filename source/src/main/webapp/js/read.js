@@ -2,16 +2,43 @@
  * 
  */
  'use strict'
-        const spoon1 = document.getElementById("screen1");
-        const spoon2 = document.getElementById("screen2");
-        const quiz_word = document.getElementById("read_word");
+        const screen1 = document.getElementById("screen1");
+        const screen2 = document.getElementById("screen2");
+        const read_word = document.getElementById("read_word");
 		let actiond = false;
 		let startTime = null;
+		let duration = 1000;
+		let fade = true;
 
         function animate(timestamp) {
-            
+            if (!startTime) startTime = timestamp;
 
-
+    		let elapsed = timestamp - startTime;
+    		let progress = elapsed / duration;
+			
+			if (progress > 1) progress = 1;
+			
+    		screen2.classList.remove("off");
+    		
+    		if (fade === true) {
+    			screen1.style.opacity = (1-progress);
+    			screen2.style.opacity = progress;
+    			read_word.style.opacity = (1-progress);
+				
+				if (progress >= 1) {
+            		fade = false;
+            		startTime = timestamp; // 時間をリセット
+        		}
+			} else if (fade === false) {
+				screen1.style.opacity = progress;
+    			screen2.style.opacity = (1-progress);
+    			read_word.style.opacity = progress;
+    			
+    			if (progress >= 1) {
+					screen2.classList.add("off");
+				}
+			}
+			
 	        //お題変更機能
 			 if (!actiond) {
 				actiond = true;//ここでtrueにすることで上の!actiondが動作しない
@@ -20,7 +47,15 @@
  				.then(data => {
 					document.getElementById("read_word").innerText = data.theme;
    				});
-				actiond = false;
+			}
+			if (progress < 1) {
+        		requestAnimationFrame(animate);
+    		}else {
+        		// 終了後の後処理
+         		setTimeout(() => {
+            		screen2.classList.add("off");
+            		actiond = false;
+				});
 			}
     
         }
