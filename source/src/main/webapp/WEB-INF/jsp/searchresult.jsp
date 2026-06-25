@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>検索結果画面</title>
 <style>
 
@@ -37,11 +38,9 @@ img{
     width:100%;
     height:100%;
     margin:0;
-    /* display:block; */
-    transform:translate(0px,-422px) scale(2);
 }
 .zentai.top{
-    transform:translate(0px,422px) scale(2);
+    transform:translate(0px,422px) scale(1);
 }
 
 .main{
@@ -177,9 +176,13 @@ img{
     position:absolute;
     /* display:flex; */
     overflow-x:scroll;
+    overflow-y:hidden;
+    box-sizing:border-box;
     /* margin:15% auto; */
-    height:35%;
+    max-width:390px;
+    height:27%;
     width:100%;
+    left: 0;
     background-color:red;
     display:flex;
 }
@@ -199,6 +202,18 @@ img{
 #column{
     display:absolute;
 	grid-template-columns:1fr 1fr;
+}
+
+@media (max-width:390px){
+
+.box{
+    width:100vw;
+    height:100vh;
+}
+
+.zentai{
+    width:100%;
+    height:100%;
 }
 </style>
 </head>
@@ -250,12 +265,13 @@ img{
 
 <!-- <div id="column"> -->
     <div class="scroll" id="scroll">
-        <div class="item" id="item"></div>
-        <div class="item" id="item"></div>
-        <div class="item" id="item"></div>
-        <div class="item" id="item"></div>
-        <div class="item" id="item"></div>
-        <div class="item end" id="item"></div>
+        <c:forEach var="l" items="${list}" >
+			<p class="item" id="item">
+				<c:out value="${l.word}" /><br>
+				<c:out value="${l.era_name}" /><br>
+				<c:out value="${l.genre_name}" /><br>
+			</p>
+		</c:forEach>
     </div>
 <!-- </div> -->
 </div>
@@ -334,11 +350,11 @@ function setScrollPosition(x,y){
 //読み込み時、画面中央を表示
 window.onload=function(){
     //id属性のみ指定可能
-    setShelfPosition(0,0);
+	setShelfPosition(0,0);
     setRecordPosition(195,300);
     setDeskPosition(0,200);
-    // setColumnPosition(200,0);
-    setScrollPosition(100,30);
+
+    setScrollPosition(0,520);
 };
 
 //遷移用
