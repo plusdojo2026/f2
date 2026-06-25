@@ -521,6 +521,7 @@ input.sub{
 }
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 </head>
 <body>
 
@@ -549,7 +550,7 @@ input.sub{
                     </div>
                     <div class="genre">
                         <div class="selectbox">ジャンル</div>
-                        <select name="era_no">
+                        <select name="genre_no">
                             <option value="0">指定なし</option>
                             <option value="1">用語</option>
                             <option value="2">物品・サービス</option>
@@ -601,7 +602,7 @@ input.sub{
                 <img src="image/eightball-white.png">
                 <form id="magic-form"method="POST" action="/f2/MagicServlet">
                 	<p class="magic-genre" id="magic-genre">pタグ</p>
-                	<input type="hidden" id="magic-input" value="1">
+                	<input type="hidden" id="magic-input" value="1" name="genre_no">
                 </form>
                 
             </div>
@@ -642,10 +643,15 @@ input.sub{
 <div id="overlay" class="overlay"></div>
 <div class="button" id="button" onclick="closeRayer()"></div>
 <div class="letdocument" id="letdocument">
-    <img src="image/letter-document2.png">
-    <div class="selectQuiz" id="selectQuiz" onclick="quizServlet()"></div>
+    <img src="image/letter-document2.png" usemap="#letterMap">
+    <map name="letterMap">
+  		<area shape="rect" coords="110,616,1567,930" href="/f2/QuizServlet" alt="" />
+  		<area shape="rect" coords="103,1016,1570,1344" href="/f2/GestureServlet" alt="" />
+  		<area shape="rect" coords="119,1445,1560,1744" href="/f2/ReadServlet" alt="" />
+	</map>
+   <%-- <div class="selectQuiz" id="selectQuiz" onclick="quizServlet()"></div>
     <div class="selectGesture" id="selectGesture"  onclick="gestureServlet()"></div>
-    <div class="selectRead" id="selectRead" onclick="readServlet()"></div>
+    <div class="selectRead" id="selectRead" onclick="readServlet()"></div> --%>
 </div>
 
 <div class="eightright" id="eightright" onclick="selectRight()"></div>
@@ -659,7 +665,9 @@ input.sub{
 
 
 </div>
-
+<script>
+	imageMapResize();
+</script>
 </body>
 <script>
 'use strict'
