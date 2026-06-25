@@ -602,7 +602,7 @@ input.sub{
                 <img src="image/eightball-white.png">
                 <form id="magic-form"method="POST" action="/f2/MagicServlet">
                 	<p class="magic-genre" id="magic-genre">pタグ</p>
-                	<input type="hidden" id="magic-input" value="1" name="genre_no">
+                	<input type="hidden" id="magic-hidden" value="1" name="genre_no">
                 </form>
                 
             </div>
