@@ -226,6 +226,7 @@ input.sub{
 	width:70%;
 	top:47%;
 	left:15%;
+	color: #1E3A8A;
 }
 .loop{
     animation:move 3s linear infinite;

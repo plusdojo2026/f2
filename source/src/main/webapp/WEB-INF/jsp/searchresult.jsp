@@ -184,13 +184,6 @@ img{
     height:230px;
     width:47%;
     left: 0;
-/*    background-color:red;*/
-    /* margin:15% auto; */
-    max-width:390px;
-    height:27%;
-    width:100%;
-    background-color:red;
-    display:flex;
 }
     .for{
         display:grid;
@@ -323,12 +316,12 @@ img{
     
     <div class="gamen2" Id="gamen2">
         <div class="record polygon" id="record">
-            <div class="record-top polygon" id="record-top">
+            <div class="record-top polygon" id="record-top" onclick="goHome()">
                 <img src="image/record-player-notuse90.png">
                 <img src="image/record-notuse90.png" class="loop" id="loop">
                 <img src="image/record-needle90.png">
             </div>
-            <div class="record-under polygon" id="record-under">
+            <div class="record-under polygon" id="record-under" onclick="goHome()">
                 <img src="image/record-player-under.png">
             </div>
             
@@ -372,70 +365,6 @@ img{
 <div class="button" id="button" onclick="closeRayer()"></div>
 </div>
 </div>
-	<div class="box" id="box">
-		<div class="zentai top" id="zentai">
-			<div class="zentai2">
-			
-			<div class="main">
-			    <div class="side"></div>
-			    <div class="gamen">
-			         <div class="shelf" id="shelf">
-			            <img src="image/tana3.png">
-			        </div> 
-			    </div>
-			    <div class="side"></div>
-			</div>
-			
-			<!--背景-->
-			<div class="desk polygon" id="desk">
-			    <img src="image/背景3.png">
-			</div>
-			
-			<div class="main2">
-			    <div class="side"></div>
-			    
-			    <div class="gamen2" Id="gamen2">
-			        <div class="record polygon" id="record">
-			            <div class="record-top polygon" id="record-top">
-			                <img src="image/record-player-notuse90.png">
-			                <img src="image/record-notuse90.png" class="loop" id="loop">
-			                <img src="image/record-needle90.png">
-			            </div>
-			            <div class="record-under polygon" id="record-under">
-			                <img src="image/record-player-under.png">
-			            </div>
-			            
-			        </div>
-			        
-			    </div>
-			    <div class="side"></div>
-			</div>
-			
-			<div class="game"></div>
-			
-			<div class="kuuhaku"></div>
-		</div>
-			
-			<!-- <div id="column"> -->
-			    <div class="scroll" id="scroll">
-			        <c:forEach var="l" items="${list}" >
-						<p class="item" id="item">
-							<c:out value="${l.word}" /><br>
-							<c:out value="${l.era_name}" /><br>
-							<c:out value="${l.genre_name}" /><br>
-						</p>
-					</c:forEach>
-			    </div>
-			<!-- </div> -->
-			</div>
-			
-			
-			
-			
-			<!-- レイヤー -->
-			<div id="overlay" class="overlay"></div>
-			<div class="button" id="button" onclick="closeRayer()"></div>
-	</div>
 
 </body>
 <script>
@@ -541,6 +470,9 @@ function closeRayer(){
     
 }
 
+function goHome(){
+	window.location.href="HomeServlet";
+}
 
 // document.getElementsByClassName('eight').addEventListner('')
 </script>
