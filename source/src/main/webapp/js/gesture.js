@@ -15,10 +15,17 @@
  
  // クリックでアニメーション開始
 const bearnose = document.getElementById("bearnose");
+const nose = document.getElementById("nose");
 
 bearnose.addEventListener("click", (e) => {
 	e.preventDefault(); // href="#" の遷移を止める
+	nose.classList.add("press-effect");
+    
     requestAnimationFrame(animate);
+    
+    setTimeout(() => {
+    nose.classList.remove("press-effect");
+  }, 150);
 });
 
 //フォントサイズ自動調整

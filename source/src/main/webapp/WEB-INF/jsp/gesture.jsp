@@ -65,6 +65,12 @@ body{
    	object-fit: contain;
 }
 
+.press-effect {
+  filter: brightness(85%);
+  transform: translate(-50%, -50%) scale(0.95);
+  transition: filter 0.15s, transform 0.15s;
+}
+
 .gesture_word {
     position: absolute;
     top: 565.48px;
@@ -217,7 +223,7 @@ body{
         
         <img src="image/bear-back2.png"  class="bearback">
 
-        <img src="image/bear-nose.png"  class="bearnose" usemap="#bearnoseMap">
+        <img src="image/bear-nose.png"  class="bearnose" usemap="#bearnoseMap" id="nose">
 		<map name="bearnoseMap">
   			<area shape="circle" coords="249,386,62" href="#" alt="" id="bearnose"/>
 		</map>
