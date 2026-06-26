@@ -1,7 +1,9 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -16,6 +18,7 @@
                 height:100%;
             }
             body{
+                margin:0;
                 display:flex;
                 justify-content:center;
                 align-items:center;
@@ -25,7 +28,7 @@
                 height:844px;
                 position:relative;
                 overflow:hidden;
-                background-color:red;
+                margin:0;
             }
 img{
     width:100%;
@@ -40,7 +43,7 @@ img{
     margin:0;
 }
 .zentai.top{
-    transform:translate(0px,422px) scale(1);
+    transform:translate(0px,422px) scale(2);
 }
 
 .main{
@@ -174,30 +177,46 @@ img{
 }
 .scroll{
     position:absolute;
-    /* display:flex; */
+    display:flex;
+    flex-direction:row;
     overflow-x:scroll;
     overflow-y:hidden;
-    box-sizing:border-box;
-    /* margin:15% auto; */
-    max-width:390px;
-    height:27%;
-    width:100%;
+    height:230px;
+    width:47%;
     left: 0;
-    background-color:red;
-    display:flex;
+/*    background-color:red;*/
 }
-
+    .for{
+        display:grid;
+        width:50%;
+        height:100%;
+        grid-auto-flow:column;
+        grid-template-rows:repeat(2,1fr);
+        gap:10px;
+    }
 .item{
-    width:35%;
-    height:48%;
+    height:85%;
     aspect-ratio:1/1;
-    margin:5%;
-    background-color: blue;
-    flex-shrink:0;
+    margin:2.5%;
+    transition:transform 1.0s ease;
+    z-index: 1001;
+}
+.item img{
+    width:47%;
+    height:auto;
+    object-fit:cover;
+    display:block;
+    position:absolute;
 }
 
-.item.end{
-    background-color:yellow;
+.coment{
+	position:absolute;
+	font-size:10px;
+	width:47%;
+	height:auto;
+}
+.coment.show{
+    display:none;
 }
 #column{
     display:absolute;
@@ -205,15 +224,69 @@ img{
 }
 
 @media (max-width:390px){
-
-.box{
-    width:100vw;
-    height:100vh;
+    #screen{
+        width:100vw;
+        height:100vh;
+    }
 }
 
-.zentai{
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
     width:100%;
-    height:100%;
+    height:120%;
+    background:rgba(0,0,0,0.3);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+}
+.choice{
+    display:none;
+    position:absolute;
+    height:15%;
+    aspect-ratio:1/1;
+    margin:2.5%;
+    background-color: yellow;
+    opacity:0;
+    visibility: hidden;
+    z-index:1001;
+    transform:scale(0.5);
+    transition:opacity 0.5s,visibility 0.5s;
+}
+.choice.show{
+    transform:scale(1);
+    transition:transform 1s ease;
+    display:block;
+    visibility: visible;
+    opacity:1;
+}
+.button{
+    margin:0;
+    position:absolute;
+    display:none;
+    z-index:1000;
+    
+    width:50px;
+    height:30px;
+    padding:0;
+    background:rgb(90,95,170);
+    color:#fff;
+
+    cursor:pointer;
+    text-align:center;
+
+    text-decoration:none;
+
+    font-size:14px;
+    padding-top:9px;
+    font-weight:bold;
+    transform:scale(0.75);
+}
+.button.show{
+    display:block;
+    opacity:1;
 }
 </style>
 </head>
@@ -263,17 +336,23 @@ img{
 <div class="kuuhaku"></div>
 
 
-<!-- <div id="column"> -->
     <div class="scroll" id="scroll">
-        <c:forEach var="l" items="${list}" >
-			<p class="item" id="item">
-				<c:out value="${l.word}" /><br>
-				<c:out value="${l.era_name}" /><br>
-				<c:out value="${l.genre_name}" /><br>
-			</p>
+        <%--<c:forEach var="l" items="${list}" class="for">--%>
+        <div class="for">
+        <c:forEach var="l" items="${list}">
+        
+			<div class="item" id="item" onclick="diskChoice()">
+                <img src="image/recordcase1.jpeg">
+                <div class="coment">
+					<c:out value="${l.word}"/><br>
+	                <c:out value="${l.era_name}"/><br>
+					<c:out value="${l.genre_name}" /><br>
+				</div>
+			</div>
+		
 		</c:forEach>
+		</div>
     </div>
-<!-- </div> -->
 </div>
 
 
@@ -281,6 +360,8 @@ img{
 
 <!-- レイヤー -->
 <div id="overlay" class="overlay"></div>
+<div class="choice" id="choice">
+</div>
 <div class="button" id="button" onclick="closeRayer()"></div>
 </div>
 </div>
@@ -319,6 +400,7 @@ const shelf=document.getElementById('shelf');
 const desk=document.getElementById('desk');
 const column=document.getElementById('column');
 const scroll=document.getElementById('scroll');
+const choice=document.getElementById('choice');
 
 
 
@@ -346,7 +428,13 @@ function setScrollPosition(x,y){
     scroll.style.top=y+"px";
     scroll.style.left=x+"px";
 }
+function setChoicePosition(x,y){
+    choice.style.top=x+"px";
+    choice.style.left=y+"px";
+}
 
+
+const eras=document.querySelectorAll('.era');
 //読み込み時、画面中央を表示
 window.onload=function(){
     //id属性のみ指定可能
@@ -354,36 +442,31 @@ window.onload=function(){
     setRecordPosition(195,300);
     setDeskPosition(0,200);
 
-    setScrollPosition(0,520);
+    setScrollPosition(105,70);
+    setChoicePosition(110,130);
+    setButtonPosition(100,20);
+    
 };
 
 //遷移用
 const recordunder=document.getElementById('record-under');
 const recordtop=document.getElementById('record-top');
+const overlay=document.getElementById('overlay');
+const item=document.getElementById('item');
+
+
+function diskChoice(){
+	overlay.style.display='flex';
+    choice.classList.add('show');
+    button.classList.add('show');
+    item.classList.add('show');
+}
 
 function closeRayer(){
-    if(open==='goclose'){
-        setLetterPosition(235,650);
-        letter.classList.remove('rotate');
-        letter31.classList.remove('rotate');
-        letdocument.classList.remove('show');
-        button.classList.remove('show');
-        overlay.style.display = 'none';
-
-        setTimeout(()=>{
-            letter21.classList.remove('rotate');
-        },400);
-
-        open='open';
-    }else if(fortune==='shakes'){
-        setEightPosition(155,700);
-        eight.classList.remove('eight-genre');
-        button.classList.remove('show');
-        right.classList.remove('show');
-        left.classList.remove('show');
-        overlay.style.display = 'none';
-        fortune='genre';
-    }
+	overlay.style.display = 'none';
+	choice.classList.remove('show');
+    button.classList.remove('show');
+    item.classList.remove('show');
     
 }
 

@@ -96,44 +96,48 @@ img{
     position:absolute;
 }
 .form-search{
-    top:35%;
-    left:30%;
-    width:40%;
-    height:17%;
+	font-weight:bold;
+    top:34%;
+    left:29.5%;
+    width:160px;
+    height:60px;
     position:absolute;
     z-index:100;
 }
 .search-title{
     width:100%;
-    height:20%;
-    font-size:10%;
+    height:40%;
+    font-size:15px;
     text-align:center;
     margin-top:0px;
 }
 .select-eraandgenre{
     width:100%;
-    height:35%;
-    margin-top:5%; 
+    height:40%;
+    margin-top:0%; 
     display:flex;
 }
 .age{
     height:100%;
     width:30%;
-    left:10%;
+    margin:0 10%;
 }
 .genre{
     height:100%;
     width:30%;
-    right:10%;
+    margin:0 10%;
 }
 .selectbox{
-    font-size:6px;
+	height:10%;
+    font-size:8px;
     text-align:center;
+    margin:0;
 }
 select{
     font-size:6px;
     width:100%;
     height:50%;
+    margin:0;
     text-align:center;
 }
 .searchbox{
@@ -143,14 +147,17 @@ select{
 }
 input.word{
     font-size:10%;
-    height:100%;
-    width:80%;
+    height:80%;
+    width:75%;
 }
 input.sub{
     text-align: center;
     font-size:6px;
     height:100%;
     width:15%;
+    background:rgb(90,95,170);
+    color:#fff;
+    padding:0
 }
 .gamen2{
     margin:0;
@@ -214,6 +221,7 @@ input.sub{
 
 .disk-word{
 	position:absolute;
+	font-weight:bold;
 	text-align:center;
 	width:70%;
 	top:47%;
@@ -432,6 +440,7 @@ input.sub{
 }
 .magic-genre{
 	font-size:13px;
+	font-weight:bold;
 	text-align:center;
     position:absolute;
     width:55%;
@@ -547,7 +556,7 @@ input.sub{
                 </div>
                 <div class="searchbox">
                     <input type="text" name="word" class="word"> 
-                    <input type="submit" value="送信" class="sub">
+                    <input type="submit" value="検索" class="sub">
                 </div>
             </form>
         </div> 
