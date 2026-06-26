@@ -407,7 +407,6 @@ input.sub{
     transform:scale(1.7);
 }
 .eightright{
-    background-color:white;
     position:absolute;
     width:6%;
     height:7%;
@@ -418,12 +417,12 @@ input.sub{
     display:block;
 }
 .eightleft{
-    background-color:white;
     position:absolute;
     width:6%;
     height:7%;
     display:none;
     z-index:1000;
+    transform:scale(1.1);
 }
 .eightleft.show{
     display:block;
@@ -648,8 +647,12 @@ input.sub{
 	</map>
 </div>
 
-<div class="eightright" id="eightright" onclick="selectRight()"></div>
-<div class="eightleft" id="eightleft" onclick="selectLeft()"></div>
+<div class="eightright" id="eightright" onclick="selectRight()">
+	<img src="image/left-select.png">
+</div>
+<div class="eightleft" id="eightleft" onclick="selectLeft()">
+	<img src="image/right-select.png">
+</div>
 
 </div>
 
