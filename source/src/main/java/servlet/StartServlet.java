@@ -16,7 +16,7 @@ import dto.Word;
 /**
  * Servlet implementation class StartServlet
  */
-@WebServlet("/StartServlet")
+@WebServlet("")
 public class StartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
