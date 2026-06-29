@@ -46,9 +46,11 @@ public class SearchServlet extends HttpServlet {
 			HistoryDAO hdao = new HistoryDAO();
 			Set<Integer> history = hdao.getHistory(user_no);
 			
-			for(Word w : list){
-				if(history.contains(w.getWord_no())){
-					w.setViewed(true);
+			if(list != null){
+				for(Word w : list){
+					if(history.contains(w.getWord_no())){
+						w.setViewed(true);
+					}
 				}
 			}
 		}

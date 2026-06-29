@@ -32,6 +32,9 @@ public class HistoryServlet extends HttpServlet {
 			HistoryDAO dao = new HistoryDAO();
 
 			dao.addHistory(user_no, word_no);
+			response.getWriter().print("login");
+		}else {
+			response.getWriter().print("nologin");
 		}
 	}
 }

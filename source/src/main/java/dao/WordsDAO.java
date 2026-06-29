@@ -72,13 +72,13 @@ public class WordsDAO {
 					"f2", "VLKAX3uTDc9NJDQL");
 
 			// SQL文を準備する
-			String sql = "SELECT word_no, word, era_name, genre_name, pronounce, meaning "
+			String sql = "SELECT word_no, word, w.era_no, era_name, genre_name, pronounce, meaning "
 					+ "FROM words w "
 					+ "JOIN eras e ON w.era_no = e.era_no "
 					+ "JOIN genres g ON w.genre_no = g.genre_no "
 					+ "WHERE word LIKE ? "
 					+ "AND (? = 0 OR w.genre_no = ?) "
-					+ "AND (? = 0 OR w.era_no = ?)";
+					+ "AND (? = 0 OR w.era_no = ?);";
 			
 			//データベースに直接ユーザー入力値を入れず、?を介して安全に値をセットする(対SQLインジェクション)
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -94,7 +94,10 @@ public class WordsDAO {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Word w = new Word(rs.getInt("word_no"),rs.getString("word"),rs.getString("era_name"),rs.getString("genre_name"),rs.getString("pronounce"),rs.getString("meaning"));
+				Word w = new Word(rs.getInt("word_no"),rs.getString("word"),
+						rs.getInt("era_no"),rs.getString("era_name"),
+						rs.getString("genre_name"),rs.getString("pronounce"),
+						rs.getString("meaning"));
 				// 結果を返す
 				list.add(w);
 			}

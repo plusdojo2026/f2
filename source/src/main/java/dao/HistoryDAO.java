@@ -82,12 +82,9 @@ public class HistoryDAO {
 
 			
 			//SQL文を実行して検索結果を取得する
-			ResultSet rs = pStmt.executeQuery();
+			pStmt.executeUpdate();
 			
-			// 検索結果をコレクションに格納する
-			while (rs.next()) {
-			    return true;
-			}
+			return true;
 			
 		}catch(Exception e) {
 			// 例外処理
